@@ -1,0 +1,173 @@
+/* Move the colors from here, to the inline style with the "var" composition */
+
+.navbar{
+    padding: 1%;
+    background-color: #DBE5DD;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.navbar-elems{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Oracle Interface */
+
+.oracle-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 2rem;
+    /*background-color: #D8F8E5;*/
+    border-radius: 2%;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    background-color: #D8F8E5;
+}
+
+.oracle-prediction{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: center;
+    margin-top: 2.5%;
+    gap: 5rem;
+}
+
+.oracle-target{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2.5rem;
+
+}
+
+.oracle-results{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    row-gap: 3rem;
+}
+
+.oracle-results-title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+}
+
+.oracle-species-confidence{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 25.5rem;
+    gap: 2rem;  
+}
+
+.oracle-wiki-container{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;  
+    align-items: center;
+    border-radius: 1rem;
+    /*background-color: #D8F8E5;*/
+
+}
+
+.oracle-wiki-text{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+
+.oracle-wiki-description{
+    width: 35rem;
+}
+
+/* Interactive Interface */
+
+.interaction-container{
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap:5%;
+
+}
+
+.interaction-vertical{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.interaction-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.zoom-card{
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 16px;
+}
+
+.text-overflow{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+            line-clamp: 4; 
+    -webkit-box-orient: vertical;
+    text-overflow: "... Wikipedia";
+}
+
+/* Help Page */
+
+.interaction-help-page{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: baseline;
+    align-items: flex-start;
+    margin-right: 15rem;
+    margin-left: 15rem;
+    row-gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}

@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+.body-large{
+    /* material-theme/body/large */
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 150% */
+    letter-spacing: 0.03125rem;
+}
+
+.body-medium{
+    /* material-theme/body/medium */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 142.857% */
+    letter-spacing: 0.01563rem;
+}
+
+.body-small{
+    /* material-theme/body/small */
+    font-family: "DM Sans";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem; /* 133.333% */
+    letter-spacing: 0.025rem;
+}
+
+.label-large{
+    /* material-theme/label/large */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+    letter-spacing: 0.00625rem;
+}
+
+.label-medium{
+    /* material-theme/label/medium */
+    font-family: "DM Sans";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1rem; /* 133.333% */
+    letter-spacing: 0.03125rem;
+}
+
+.label-small{
+    /* material-theme/label/small */
+    font-family: "DM Sans";
+    font-size: 0.6875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1rem; /* 145.455% */
+    letter-spacing: 0.03125rem;
+}
+
+.display-large{
+    /* material-theme/display/large */
+    font-family: Inter;
+    font-size: 3.5625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 4rem; /* 112.281% */
+    letter-spacing: -0.01563rem;
+}
+
+.display-medium{
+    /* material-theme/display/medium */
+    font-family: Inter;
+    font-size: 2.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.25rem; /* 115.556% */
+}
+
+.display-small{
+    /* material-theme/display/small */
+    font-family: Inter;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.75rem; /* 122.222% */
+}
+
+
+.headline-large{
+    /* material-theme/headline/large */
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.5rem; /* 125% */
+}
+
+.headline-medium{
+    /* material-theme/headline/medium */
+    font-family: Inter;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.25rem; /* 128.571% */
+}
+
+.headline-small{
+    /* material-theme/headline/small */
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2rem; /* 133.333% */
+}
+
+.title-large{
+    /* material-theme/title/large */
+    font-family: "DM Sans";
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.75rem; /* 127.273% */
+}
+
+.title-medium{
+    /* material-theme/title/medium */
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem; /* 150% */
+    letter-spacing: 0.00938rem;
+}
+
+.title-small{
+    /* material-theme/title/small */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+    letter-spacing: 0.00625rem;
+}
+
+.wikilink{
+    font-weight: bold;
+    text-decoration: none;
+    color: #00452F;
+}
