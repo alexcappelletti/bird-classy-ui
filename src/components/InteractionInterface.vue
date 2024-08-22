@@ -1,12 +1,12 @@
 <template>
     <div v-if="!store.HelpPage" class="interaction-container" style="margin-top: 5%;">
 
-        <div class="interaction-vertical" style="position: fixed; left: 200px">
+        <div class="interaction-vertical" style="position: fixed; left: 20%">
             <p class="headline-large">Image to Identify</p>
             <img :src="store.currentTargetPic" style="border-radius: 5%;">
         </div>
 
-        <div class="interaction-vertical" style=" position: absolute; left: 600px"  v-if="!store.cardOpened" >
+        <div class="interaction-vertical" style=" position: relative; left: 15%"  v-if="!store.cardOpened" >
             <p class="headline-large">Suggested Images</p>
             <div class="interaction-cards">
                 <v-card v-for="i in 3" :key="i" width="180" class="rounded-lg" hover color="Secondary95" @click="store.openPage(i-1);">
@@ -14,25 +14,20 @@
                         :src="store.getSimilarityPicBest(store.currentTask, i-1, 0)"
                         cover
                         ></v-img>
-                        <!--<v-card-title>{{ store.speciesNames[0] }}</v-card-title>-->
-                        <!--
-                        <p class="body-large pa-4">{{ store.speciesNames[store.currentTask][i-1] }}</p>
-                        -->
+
                         <p class="body-large pa-4">{{ store.speciesNames[store.currentTask][i-1] }}</p>
                 </v-card>
             </div>
         </div>
         
         <v-fade-transition>
-            <div  v-show="store.appearInfo" style=" position: absolute; left: 500px; margin-bottom: 200px; margin-top: -32px;">
+            <div v-show="store.appearInfo" style=" position: relative; left: 15%; margin-bottom: 200px; margin-top: -32px;">
 
                 <v-sheet class="align-center justify-center text-center mx-auto py-6" color="Secondary95" elevation="5" max-width="800px">
                     <div class="zoom-card">
                         <v-img class="mx-auto" style="border-radius: 5%;" width="300px" :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, 0)"></v-img>
                         <p class="headline-large">{{ store.currentSpecies }}</p>
                         
-
-
                         <v-tabs
                             v-model="tab"
                             align-tabs="center"
@@ -62,22 +57,6 @@
                                             v-for="i in 8"
                                             :key="i"
                                         >
-                                            <!--<v-img 
-                                                v-if="n == 1"
-                                                class="ma-2"
-                                                :src= "store.bestPic(store.cardNumber, i+1)"
-                                                height="150px"
-                                                width="150px"
-                                                cover
-                                            ></v-img>
-                                            <v-img 
-                                                v-if="n == 2"
-                                                class="ma-2"
-                                                :src= "store.worstPic(store.cardNumber, i)"
-                                                height="150px"
-                                                width="150px"
-                                                cover
-                                            ></v-img>-->
 
                                             <v-img 
                                                 v-if="n == 1"
@@ -113,7 +92,7 @@
                             <v-btn rounded="pill" @click="store.closePage()" style="flex-grow: 1;" >
                                 Back
                             </v-btn>
-                            <v-btn rounded="pill" color="Primary" style="flex-grow: 2" @click="store.addCurrentTime(getNow()); store.addAnswer(); store.closePage(); store.nextTask(); store.removeBar(); store.createProgressbar('pgbar'); ">
+                            <v-btn rounded="pill" color="Primary" style="flex-grow: 2" @click="store.addCurrentTime(getNow()); store.addAnswer(); store.closePage(); store.nextTask(); store.removeBar(); store.createProgressbar();">
                                 Confirm
                             </v-btn>
                         </div>
@@ -167,7 +146,7 @@
             </p>
         </div>
         <div style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
-            <v-btn rounded="pill" color="Primary" @click="store.setStart(getNow()); store.createProgressbar('pgbar'); store.openHelp();">
+            <v-btn rounded="pill" color="Primary" @click="store.setStart(getNow()); store.createProgressbar(); store.openHelp();">
                 Switch to the Task
             </v-btn>
         </div>
@@ -181,14 +160,12 @@ import { interactionStore } from '@/store/iStore.js'
 const store = interactionStore()
 
 onBeforeMount(() => {
-	console.log("opening json file on interactive UI version")
     store.loadData('./src/assets/info.json')
 })
 
 
 function getNow(){
     var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     return today
 }
 

@@ -50,7 +50,7 @@
                     rounded="pill"
                     text="Confirm Selection"
                     height="2.5rem"
-                    @click="store.addCurrentTime(getNow()); store.addAnswer(); store.nextTask(); store.removeBar(); store.createProgressbar('pgbar');"
+                    @click="store.addCurrentTime(getNow()); store.addAnswer(); store.nextTask(); store.removeBar(); store.createProgressbar();"
                     ></v-btn>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         </div>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
-        <v-btn rounded="pill" color="Primary" @click="store.setStart(getNow()); store.createProgressbar('pgbar'); store.openHelp(); ">
+        <v-btn rounded="pill" color="Primary" @click="store.setStart(getNow()); store.createProgressbar(); store.openHelp(); ">
             Switch to the Task
         </v-btn>
     </div>
@@ -108,9 +108,7 @@ import { oracleStore } from '@/store/iStore.js'
 const store = oracleStore()
 
 onBeforeMount(() => {
-	console.log("opening json file on oracle UI version")
     store.loadData('./src/assets/info.json')
-    store.importPics()
 })
 
 function getNow(){

@@ -21,6 +21,9 @@ export const interactionStore = defineStore('interactionStore',{
 
             //path to the target images
             targetPics: [],
+            
+            //Index of the last task without timer, 1 means from the third one the timer will appear
+            indexNoTimer: 1,
 
             //Data regarding actions in the page
             cardOpened: false,
@@ -33,8 +36,8 @@ export const interactionStore = defineStore('interactionStore',{
             HelpPage: true,
 
             CollectedData:[{
-                "timePerTask": 0,
-                "answerGiven": 0,
+                "timePerTask": null,
+                "answerGiven": null,
                 "openedWiki": [false, false, false]
             }],
 
@@ -47,7 +50,7 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         currentDescription(state){
-            return state.speciesDescription[state.currentTask][state.cardNumber]?.substr(0, 260);
+            return state.speciesDescription[state.currentTask][state.cardNumber].substr(0, 260);
         },
 
         currentLink(state){
@@ -98,10 +101,12 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         closePage() {
-            this.appearInfo = false;
-            setTimeout(() => {
-                this.cardOpened = false;
-            }, 300);
+            if(this.appearInfo == true){
+                this.appearInfo = false;
+                setTimeout(() => {
+                    this.cardOpened = false;
+                }, 300);
+            }
         },
 
         getSimilarityPicBest(taskIndex, speciesIndex, picIndex){
@@ -149,7 +154,7 @@ export const interactionStore = defineStore('interactionStore',{
                 this.CollectedData[this.currentTask]["timePerTask"] =  Math.round((Math.abs(time - this.startingTime)/1000)*100)/100
             else{
                 var passedTime = 0
-                for(let i = 0; i< this.CollectedData.length; i++)
+                for(let i = 0; i < this.CollectedData.length; i++)
                     passedTime += this.CollectedData[i]["timePerTask"]
                 this.CollectedData[this.currentTask]["timePerTask"] = Math.round((Math.abs(time - this.startingTime)/1000 - passedTime)*100)/100
             }
@@ -170,8 +175,8 @@ export const interactionStore = defineStore('interactionStore',{
             }
             else if(this.currentTask < this.dataJson["tasks"].length){
                 this.CollectedData.push({
-                    "timePerTask": 0,
-                    "answerGiven": 0,
+                    "timePerTask": null,
+                    "answerGiven": null,
                     "openedWiki": [false, false, false]
                 });
                 this.timerOn = false;
@@ -183,7 +188,7 @@ export const interactionStore = defineStore('interactionStore',{
         //I should think of a way to pause the timer if one is on the helpPage
         createProgressbar(callback) {
 
-            if(this.timerOn == false){
+            if(this.timerOn == false && this.currentTask > this.indexNoTimer){
                 
                 this.timerOn = true;
 
@@ -196,12 +201,19 @@ export const interactionStore = defineStore('interactionStore',{
                 progressbarinner.setAttribute('id', 'innerbar');
             
                 // Now we set the animation parameters
-                progressbarinner.style.animationDuration = '30s';
-            
+                progressbarinner.style.animationDuration = '60s';
+
+
+                progressbarinner.addEventListener('animationend', (e) => {
+                    this.timeOut();
+                })
+
                 // Eventually couple a callback
                 if (typeof(callback) === 'function') {
                     progressbarinner.addEventListener('animationend', callback);
                 }
+
+
             
                 // Append the progressbar to the main progressbardiv
                 progressbar.appendChild(progressbarinner);
@@ -213,11 +225,20 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         removeBar(){
-            var progressbar = document.getElementById('innerbar');
-            progressbar.parentNode.removeChild(progressbar);
-
+            if(this.currentTask > this.indexNoTimer + 1){
+                var progressbar = document.getElementById('innerbar');
+                progressbar.parentNode.removeChild(progressbar);
+            }
+            
         },
 
+        timeOut(){
+            this.addCurrentTime(new Date());
+            this.closePage();
+            this.nextTask();
+            this.removeBar();
+            this.createProgressbar();
+        }
     }
 })
 
@@ -236,6 +257,9 @@ export const oracleStore = defineStore('oracleStore',{
             currentTask: 0,
             //Number of displayed results
             speciesNumber: 3,
+
+            //Index of the last task without timer, 1 means from the third one the timer will appear
+            indexNoTimer: 1,
 
             //paths to the target images
             targetPics: [],
@@ -258,19 +282,11 @@ export const oracleStore = defineStore('oracleStore',{
 
             //Used to check if the timer was already started for each task, reset on completion of previous task
             timerOn: false,
-
-            /*
-            //I can't seem to access the animation-play-state value so I just use this as reminder
-            isPaused: false,
-
-            //I need it to ignore the first change in value for the progressbar, since, for reasons, the first time the element is yet to be rendered
-            initialSwitch: true,
-            */
             
-
+            //Inital settings, empty, to add values during the usage
             CollectedData:[{
-                "timePerTask": 0,
-                "answerGiven": 0,
+                "timePerTask": null,
+                "answerGiven": null,
                 "openedWiki": [false, false, false]
             }],
 
@@ -283,7 +299,7 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         currentDescription(state){
-            return state.speciesDescription[state.currentTask][state.speciesVisualized]?.substr(0, 320)
+            return state.speciesDescription[state.currentTask][state.speciesVisualized].substr(0, 320)
         },
 
         currentLink(state){
@@ -327,31 +343,6 @@ export const oracleStore = defineStore('oracleStore',{
                 //this.speciesPics.push(this.dataJson["tasks"][i]["pics"])
             }
         },
-
-        importPics(){
-            //Replace with call to Wrapper
-            var padding = ''
-            var supportArray = []
-
-            for(var i = 1; i < 101; i++){
-                padding = i.toString().padStart(3, '0')
-                supportArray[i] = '/src/assets/ABBOTTS BABBLER/' + padding.toString() + '.jpg'
-            }
-            this.speciesPics.push(supportArray)
-            supportArray = []
-
-            for(var i = 1; i < 101; i++){
-                padding = i.toString().padStart(3, '0')
-                supportArray[i] = '/src/assets/ABBOTTS BOOBY/' + padding.toString() + '.jpg'
-            }
-            this.speciesPics.push(supportArray)
-            supportArray = []
-            for(var i = 1; i < 101; i++){
-                padding = i.toString().padStart(3, '0')
-                supportArray[i] = '/src/assets/ABYSSINIAN GROUND HORNBILL/' + padding.toString()  + '.jpg'
-            }
-            this.speciesPics.push(supportArray)
-        },
         
         bestPic(speciesIndex, picPosition){
             return this.speciesPics[speciesIndex][picPosition]
@@ -371,76 +362,8 @@ export const oracleStore = defineStore('oracleStore',{
             this.speciesVisualized = (this.speciesVisualized + 1) % this.speciesNumber;
         },
 
-        //I should think of a way to pause the timer if one is on the helpPage
-        createProgressbar(callback) {
-
-            if(this.timerOn == false){
-                
-                this.timerOn = true;
-
-                // We select the div that we want to turn into a progressbar
-                var progressbar = document.getElementById('pgbar');
-            
-                // We create the div that changes width to show progress
-                var progressbarinner = document.createElement('div');
-                progressbarinner.className = 'inner';
-                progressbarinner.setAttribute('id', 'innerbar');
-            
-                // Now we set the animation parameters
-                progressbarinner.style.animationDuration = '30s';
-            
-                // Eventually couple a callback
-                if (typeof(callback) === 'function') {
-                    progressbarinner.addEventListener('animationend', callback);
-                }
-            
-                // Append the progressbar to the main progressbardiv
-                progressbar.appendChild(progressbarinner);
-            
-                // When everything is set up we start the animation
-                progressbarinner.style.animationPlayState = 'running';
-
-            }
-        },
-
-        removeBar(){
-            var progressbar = document.getElementById('innerbar');
-            progressbar.parentNode.removeChild(progressbar);
-
-        },
-
         openHelp(){
             this.HelpPage = !this.HelpPage
-            /*
-            if(this.initialSwitch){
-                this.initialSwitch = false;
-            }
-            else{
-                this.changeBarState('innerbar');
-            }*/
-
-            /*
-            bar = document.getElementById('innerbar');
-            if(this.isPaused){
-                bar.style.animationPlayState = 'running';
-            }
-            else{
-                bar.style.animationPlayState = 'paused';
-            }
-            this.isPaused = !this.isPaused*/
-           
-        },
-
-        //Ideally we use this to stop the timer when someone is looking at the help page, but it doesn't work
-        changeBarState(id){
-            bar = document.getElementById(id);
-            if(this.isPaused){
-                bar.style.animationPlayState = 'running';
-            }
-            else{
-                bar.style.animationPlayState = 'paused';
-            }
-            this.isPaused = !this.isPaused
         },
 
         addWikiClick(){
@@ -475,8 +398,8 @@ export const oracleStore = defineStore('oracleStore',{
             }
             else if(this.currentTask < this.dataJson["tasks"].length){
                 this.CollectedData.push({
-                    "timePerTask": 0,
-                    "answerGiven": 0,
+                    "timePerTask": null,
+                    "answerGiven": null,
                     "openedWiki": [false, false, false]
                 });
                 this.speciesVisualized = 0;
@@ -496,6 +419,56 @@ export const oracleStore = defineStore('oracleStore',{
                 a.href = window.URL.createObjectURL(bb);
                 a.click();
             }
+        },
+
+        //I should think of a way to pause the timer if one is on the helpPage
+        createProgressbar(callback) {
+
+            if(this.timerOn == false && this.currentTask > this.indexNoTimer){
+                
+                this.timerOn = true;
+
+                // We select the div that we want to turn into a progressbar
+                var progressbar = document.getElementById('pgbar');
+            
+                // We create the div that changes width to show progress
+                var progressbarinner = document.createElement('div');
+                progressbarinner.className = 'inner';
+                progressbarinner.setAttribute('id', 'innerbar');
+            
+                // Now we set the animation parameters
+                progressbarinner.style.animationDuration = '60s';
+
+                progressbarinner.addEventListener('animationend', (e) =>{
+                    this.timeOut();
+                })
+            
+                // Eventually couple a callback
+                if (typeof(callback) === 'function') {
+                    progressbarinner.addEventListener('animationend', callback);
+                }
+            
+                // Append the progressbar to the main progressbardiv
+                progressbar.appendChild(progressbarinner);
+            
+                // When everything is set up we start the animation
+                progressbarinner.style.animationPlayState = 'running';
+
+            }
+        },
+
+        removeBar(){
+            if(this.currentTask > this.indexNoTimer + 1){
+                var progressbar = document.getElementById('innerbar');
+                progressbar.parentNode.removeChild(progressbar);
+            }
+        },
+
+        timeOut(){
+            this.addCurrentTime(new Date());
+            this.nextTask();
+            this.removeBar();
+            this.createProgressbar();
         },
     }
 })
