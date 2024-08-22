@@ -108,6 +108,7 @@ import { oracleStore } from '@/store/iStore.js'
 const store = oracleStore()
 
 onBeforeMount(() => {
+	console.log("opening json file on oracle UI version")
     store.loadData('./src/assets/info.json')
     store.importPics()
 })

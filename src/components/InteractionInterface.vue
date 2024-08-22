@@ -181,6 +181,7 @@ import { interactionStore } from '@/store/iStore.js'
 const store = interactionStore()
 
 onBeforeMount(() => {
+	console.log("opening json file on interactive UI version")
     store.loadData('./src/assets/info.json')
 })
 

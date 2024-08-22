@@ -4,27 +4,27 @@
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
 
-// Plugins
-import { registerPlugins } from '@/plugins'
-
-// Components
-import App from './App.vue'
-import InteractionPage from './InteractionPage.vue'
-
 // Composables
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+// Plugins
+import { registerPlugins } from '@/plugins'
+import { setupRouter } from '@/services/router'
+
+// Components
+import App from '@/App.vue'
+
 const app = createApp(App)
-const interaction = createApp(InteractionPage)
-const pinia = createPinia()
-
-
+app.config.errorHandler = (err) => {
+	console.log(err)
+}
 registerPlugins(app)
-registerPlugins(interaction)
-
+const pinia = createPinia()
 app.use(pinia)
-app.mount('#oracle')
 
-interaction.use(pinia)
-interaction.mount('#interaction')
+//router 
+const router = setupRouter();
+app.use(router)
+
+app.mount('#app')

@@ -47,7 +47,7 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         currentDescription(state){
-            return state.speciesDescription[state.currentTask][state.cardNumber].substr(0, 260);
+            return state.speciesDescription[state.currentTask][state.cardNumber]?.substr(0, 260);
         },
 
         currentLink(state){
@@ -283,7 +283,7 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         currentDescription(state){
-            return state.speciesDescription[state.currentTask][state.speciesVisualized].substr(0, 320)
+            return state.speciesDescription[state.currentTask][state.speciesVisualized]?.substr(0, 320)
         },
 
         currentLink(state){
