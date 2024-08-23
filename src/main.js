@@ -11,7 +11,7 @@ import { createPinia } from 'pinia'
 // Plugins
 import { registerPlugins } from '@/plugins'
 import { setupRouter } from '@/services/router'
-
+import { useMainStore } from './services/mainStore'
 // Components
 import App from '@/App.vue'
 
@@ -22,7 +22,7 @@ app.config.errorHandler = (err) => {
 registerPlugins(app)
 const pinia = createPinia()
 app.use(pinia)
-
+app.provide("mainStore", useMainStore());
 //router 
 const router = setupRouter();
 app.use(router)

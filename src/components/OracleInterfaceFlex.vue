@@ -104,13 +104,27 @@
 <script setup>
 import { onBeforeMount, onMounted } from 'vue';
 import { oracleStore } from '@/store/iStore.js'
-
+import { useMainStore } from '@/services/mainStore';
+import { traceLog } from '@/services/logToMongoDBAtlas';
 const store = oracleStore()
 
+const mainStore = useMainStore();
+console.log("count in mainstore " + mainStore.count)
 onBeforeMount(() => {
     store.loadData('./src/assets/info.json')
 })
 
+
+onMounted(async () =>{
+	try {
+		await traceLog(
+			{
+				event:"init oracle page",
+				params: "some param here",
+				userID: "my new user id"
+			})
+	}catch (err) {console.log(err)}
+})
 function getNow(){
     var today = new Date();
     //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

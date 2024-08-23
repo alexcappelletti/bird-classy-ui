@@ -2,13 +2,14 @@ import {
 	createRouter,
 	createWebHistory,
 } from 'vue-router'
-
+import { useMainStore } from '@/services/mainStore'
 
 import Oracle from '@/components/OracleInterfaceFlex.vue'
 import InteractionInterface from '@/components/InteractionInterface.vue'
 import Home from '@/views/HomeView.vue'
 
 export function setupRouter(){
+	const mainStore = useMainStore()
 	const routes = [
 		{
 			name: "home",
@@ -33,7 +34,9 @@ export function setupRouter(){
 	})
 	router.beforeEach(async (to, from) => {
 		try {
-			// if (to.meta.requiresAuth && !useAuth().isLoggedIn) {
+			console.log("to " + to.name);
+			if (to.name === "oracle-page") {mainStore.firstUI = mainStore.secondUI}
+
 			// 	return {path: "/", query: {redirect: to.fullPath}}
 			// }
 			//	if (to.name === "errorPage") {return true}
