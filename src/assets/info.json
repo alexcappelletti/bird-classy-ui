@@ -2,15 +2,16 @@
    "tasks":[
       {
          "targetpic":"src/assets/targetPics/tp0.jpg",
+         "correctAnswer": 0,
          "species":[
             "Shoebill",
             "Asian Openbil Stork",
             "Lesser Adjutant"
          ],
          "confidence":[
-            "95",
-            "3",
-            "2"
+            "80",
+            "15",
+            "5"
          ],
          "descriptions":[
             "The shoebill is a tall bird, with a typical height range of 110 to 140 cm (43 to 55 in) and some specimens reaching as much as 152 cm (60 in). Length from tail to beak can range from 100 to 140 cm (39 to 55 in) and wingspan is 230 to 260 cm (7 ft 7 in to 8 ft 6 in). Weight has reportedly ranged from 4 to 7 kg (8.8 to 15.4 lb). A male will weigh on average around 5.6 kg (12 lb) and is larger than a typical female of 4.9 kg (11 lb).",
@@ -30,43 +31,45 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp1.jpg",
+         "correctAnswer": 0,
          "species":[
-            "Ruby Crowned Kinglet",
-            "Common Firecrest",
-            "Forest Wagtail"
+            "Burcherll's Courser",
+            "Inland Dotterel",
+            "American Avocet"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "75",
+            "13",
+            "12"
          ],
          "descriptions":[
-            "The ruby-crowned kinglet is a very small bird, being 9 to 11 cm (3.5 to 4.3 in) long, having a wingspan of 16 to 18 cm (6.3 to 7.1 in), and weighing 5 to 10 g (0.2 to 0.4 oz). It has gray-green upperparts and olive-buff underparts. It has two white wingbars and a broken white eye ring. The wingbar on the greater secondary coverts (closer to the wing-tip) is wider, and is next to a dark band. The kinglet has a relatively plain face and head, although the male has a scarlet-red crown patch, which is usually concealed by the surrounding feathers. The crown patch is rarely orange, yellow, or not present.",
-            "The common firecrest is a small plump bird, 9 cm (3.5 in) in length with a wingspan of 13–16 cm (5.1–6.3 in), and weighs 4–7 grams (0.14–0.25 oz). It has bright olive-green upperparts with a bronze-coloured patch on each shoulder, and whitish underparts washed with brownish-grey on the breast and flanks. It has two white wingbars, a tiny black pointed bill, and brownish-black legs. The head pattern is striking, with a black eye stripe, long white supercilium, and a crest which is bright yellow in the female and mainly orange in the male.",
-            "This is a distinctive wagtail, the only one placed in the genus Dendronanthus (all other wagtails are placed in Motacilla). The forest wagtail is 18 cm (7.1 in) in length, a slender bird with a long tail. The back and crown are olive brown, and the wings are black with two yellow wing bars and white tertial edges. There is a white supercilium, above a dark stripe through the eye. The underparts are white, apart from a black double breast band. The upper breast band is bib-like while the lower band is often broken. The sexes are similar in appearance. Young birds are more yellowish on the underside."
+            "Burchell's courser has a graceful figure and an upright posture. It has a blue-grey hind crown which is mainly how it differs from the similar Temminck's Courser. It also has a horizontal black band demarcating a white underbelly, and an overall pale rufous colour. Its face features white supercilia above black eye lines, all ending at the back of the neck to form a double V. In terms of feathers, its secondaries are mostly white with a black underwing and brown to grey coverts.",
+            "The inland dotterel is a medium-sized plover with a distinctive cryptic plumage. Males and females are similarly sized: 19–23 cm (7.5–9 in) in length, a wingspan of 43–47 cm (17–19 in) a weight of 80–90 g (2.8–3.2 oz), and a short bill 1.7 cm (0.67 in). It is unlikely to be confused with any other species when found in its normal habitat. Its upperparts are a rich sandy buff, mottled with dark brown. The black band across the crown extending down through the eye is unique.",
+            "The American avocet measures 40–51 cm (16–20 in) in length, has a wingspan of 68–76 cm (27–30 in) and weighs 275–420 g (9.7–14.8 oz) The bill is black, pointed, and curved slightly upwards towards the tip. It is long, surpassing twice the length of the avocet's small, rounded head. Like many waders, the avocet has long, slender legs and slightly webbed feet. The legs are a pastel grey-blue, giving it its colloquial name, blue shanks. The plumage is black and white on the back, with white on the underbelly."
          ],
          "links":[
-            "https://en.wikipedia.org/wiki/Ruby-crowned_kinglet",
-            "https://en.wikipedia.org/wiki/Common_firecrest",
-            "https://en.wikipedia.org/wiki/Forest_wagtail"
+            "https://en.wikipedia.org/wiki/Burchell%27s_courser",
+            "https://en.wikipedia.org/wiki/Inland_dotterel",
+            "https://en.wikipedia.org/wiki/American_avocet"
          ],
          "pics":[
-            "src/assets/similarityPics/1/ruby crowned kinglet",
-            "src/assets/similarityPics/1/common firecrest",
-            "src/assets/similarityPics/1/forest wagtail"
+            "src/assets/similarityPics/1/burchells courser",
+            "src/assets/similarityPics/1/inland dotterel",
+            "src/assets/similarityPics/1/american avocet"
          ]
       },
       {
          "targetpic":"src/assets/targetPics/tp2.jpg",
+         "correctAnswer": 0,
          "species":[
             "Striped Owl",
             "Long-Eared Owl",
             "Snowy Owl"
          ],
          "confidence":[
-            "80",
-            "10",
-            "10"
+            "45",
+            "35",
+            "20"
          ],
          "descriptions":[
             "The striped owl is a relatively large species with prominent tufts of elongated feathers on the crown resembling ears. It is 30–38 cm (12–15 in) long and weighs from 320 to 546 g (11.3 to 19.3 oz). Its head, back, wings and tail are brown with black stripes and small markings while its underparts are buff-coloured with heavy black streaking on the breast. The facial disk is pure white with a thin black border.",
@@ -86,34 +89,36 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp3.jpg",
+         "correctAnswer": 2,
          "species":[
-            "Sand Martin",
             "Common House Martin",
-            "Violet Green Swallow"
+            "Violet Green Swallow",
+            "Sand Martin"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "80",
+            "12",
+            "8"
          ],
          "descriptions":[
-            "The sand martin is brown above, white below with a narrow brown band on the breast; the bill is black, the legs brown. The young have rufous tips to the coverts and margins to the secondaries. Its brown back, white throat, small size and quick jerky flight separate it at once from similar swallows, such as the common house martin (Delichon urbicum), the American cliff swallow (Petrochelidon pyrrhonota) or other species of Riparia. Only the banded martin (Neophedina cincta) of sub-Saharan Africa is similar, but the sand martin only occurs there in (the northern) winter.",
             "The adult western house martin is 13 cm (5 in) long, with a wingspan of 26–29 cm (10–11+1⁄2 in) and a weight averaging 18.3 g (21⁄32 oz). It is steel-blue above with a white rump, and white underparts, including the underwings; even its short legs have white downy feathering. It has brown eyes and a small black bill, and its toes and exposed parts of the legs are pink. The sexes are similar, but the juvenile bird is sooty black, and some of its wing coverts and quills have white tips and edgings. D. u. lagopodum differs from the nominate race in that its white rump extends much further onto the tail, and the fork of its tail is intermediate in depth between that of D. u. urbicum and that of the Asian house martin.",
-            "The distinct body form of swallows distinguishes them from other passerine birds. Their long pointed wings and slim, streamlined body evolved to catch insects while in flight. The body of the violet-green swallow is no exception. With an average body length of 5¼ in. (13 cm), the violet-green swallow is slightly shorter and appears more compact in flight compared to other members of the family Hirundinidae. The violet-green swallow most closely resembles the North American tree swallow, but can be distinguished by its shorter wings and colouration."
+            "The distinct body form of swallows distinguishes them from other passerine birds. Their long pointed wings and slim, streamlined body evolved to catch insects while in flight. The body of the violet-green swallow is no exception. With an average body length of 5¼ in. (13 cm), the violet-green swallow is slightly shorter and appears more compact in flight compared to other members of the family Hirundinidae. The violet-green swallow most closely resembles the North American tree swallow, but can be distinguished by its shorter wings and colouration.",
+            "The sand martin is brown above, white below with a narrow brown band on the breast; the bill is black, the legs brown. The young have rufous tips to the coverts and margins to the secondaries. Its brown back, white throat, small size and quick jerky flight separate it at once from similar swallows, such as the common house martin (Delichon urbicum), the American cliff swallow (Petrochelidon pyrrhonota) or other species of Riparia. Only the banded martin (Neophedina cincta) of sub-Saharan Africa is similar, but the sand martin only occurs there in (the northern) winter."
          ],
          "links":[
-            "https://en.wikipedia.org/wiki/Sand_martin",
             "https://en.wikipedia.org/wiki/Western_house_martin",
-            "https://en.wikipedia.org/wiki/Violet-green_swallow"
+            "https://en.wikipedia.org/wiki/Violet-green_swallow",
+            "https://en.wikipedia.org/wiki/Sand_martin"
          ],
          "pics":[
-            "src/assets/similarityPics/3/sand martin",
             "src/assets/similarityPics/3/common house martin",
-            "src/assets/similarityPics/3/violet green swallow"
+            "src/assets/similarityPics/3/violet green swallow",
+            "src/assets/similarityPics/3/sand martin"
          ]
       },
       {
          "targetpic":"src/assets/targetPics/tp4.jpg",
+         "correctAnswer": 2,
          "species":[
             "Mourning Dove",
             "European Turtle Dove",
@@ -142,15 +147,16 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp5.jpg",
+         "correctAnswer": 0,
          "species":[
             "Black Skimmer",
             "Oystercatcher",
             "Razorbill"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "68",
+            "22",
+            "10"
          ],
          "descriptions":[
             "The black skimmer is the largest of the three skimmer species. It measures 40–50 cm (16–20 in) long with a 107–127 cm (42–50 in) wingspan. This species ranges from 212 to 447 g (7.5 to 15.8 oz), with males averaging about 349 g (12.3 oz), as compared to the smaller females 254 g (9.0 oz). The basal half of the bill is red, the rest mainly black, and the lower mandible is much-elongated. The eye has a dark brown iris and catlike vertical pupil, unique for a bird. The legs are red. The call is a barking kak-kak-kak.",
@@ -170,15 +176,16 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp6.jpg",
+         "correctAnswer": 0,
          "species":[
             "American Goldfinch",
             "Yellow Canary",
             "Andead Siskin"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "43",
+            "38",
+            "19"
          ],
          "descriptions":[
             "The American goldfinch is a small finch, 11–14 cm (4.3–5.5 in) long, with a wingspan of 19–22 cm (7.5–8.7 in). It weighs between 11–20 g (0.39–0.71 oz). Among standard measurements, the wing chord is 6.5 to 7.8 cm (2.6 to 3.1 in), the tail is 4.2 to 5.1 cm (1.7 to 2.0 in), the culmen is 0.9 to 1.1 cm (0.35 to 0.43 in) and the tarsus is 1.2 to 1.4 cm (0.47 to 0.55 in). The beak is small, conical, and pink for most of the year, but turns bright orange with the spring molt in both sexes. The shape and size of the beak aid in the extraction of seeds from the seed heads of thistles, sunflowers, and other plants.",
@@ -198,43 +205,45 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp7.jpg",
+         "correctAnswer": 1,
          "species":[
-            "Dunlin",
             "Spoon Biled Sandpiper",
+            "Dunlin",
             "Red Knot"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "83",
+            "9",
+            "8"
          ],
          "descriptions":[
-            "An adult dunlin in breeding plumage shows the distinctive black belly which no other similar-sized wader possesses. In winter, dunlins are basically grey above and white below. Juveniles are brown above with two weak whitish 'V' shapes on the back, though less obvious than the same feature on little stint and some other species in the genus. They usually have black marks on the flanks or belly. All ages show a narrow white wingbar in flight.",
             "The most distinctive feature of this species is its spatulate bill. The breeding adult bird has a red-brown head, neck and breast with dark brown streaks, blackish upperparts with buff and pale rufous fringing. Non-breeding adults lack the reddish colouration, but have pale brownish-grey upperparts with whitish fringing to the wing-coverts. The underparts are white and the legs are black. It is 14–16 cm (5.5–6.3 in) long.",
+            "An adult dunlin in breeding plumage shows the distinctive black belly which no other similar-sized wader possesses. In winter, dunlins are basically grey above and white below. Juveniles are brown above with two weak whitish 'V' shapes on the back, though less obvious than the same feature on little stint and some other species in the genus. They usually have black marks on the flanks or belly. All ages show a narrow white wingbar in flight.",
             "An adult red knot is the second largest Calidris sandpiper, measuring 23–26 cm (9.1–10.2 in) long with a 47–53 cm (19–21 in) wingspan. The body shape is typical for the genus, with a small head and eyes, a short neck and a slightly tapering bill that is no longer than its head. It has short dark legs and a medium thin dark bill. The winter, or basic, plumage becomes uniformly pale grey, and is similar between the sexes. The alternate, or breeding, plumage is mottled grey on top with a cinnamon face, throat and breast and light-coloured rear belly."
          ],
          "links":[
-            "https://en.wikipedia.org/wiki/Dunlin",
             "https://en.wikipedia.org/wiki/Spoon-billed_sandpiper",
+            "https://en.wikipedia.org/wiki/Dunlin",
             "https://en.wikipedia.org/wiki/Red_knot"
          ],
          "pics":[
-            "src/assets/similarityPics/7/dunlin",
             "src/assets/similarityPics/7/spoon biled sandpiper",
+            "src/assets/similarityPics/7/dunlin",
             "src/assets/similarityPics/7/red knot"
          ]
       },
       {
          "targetpic":"src/assets/targetPics/tp8.jpg",
+         "correctAnswer": 0,
          "species":[
             "Smith's Longspur",
             "Austral Canastero",
             "American Pipit"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "72",
+            "14",
+            "14"
          ],
          "descriptions":[
             "These birds have short cone-shaped bills, streaked backs, and dark tails with white outer rectrices. In breeding state plumage (mostly formed by worn basic plumage), the male has a pumpkin-orange throat, nape, and underparts contrasting with an intricate black-and-white face pattern. The white lesser coverts are quite pronounced on a male in spring and early summer. Females and immatures have lightly streaked buffy underparts, dark crowns, brown wings with less obvious white lesser coverts, and a light-colored face. The tail is identical at all ages.",
@@ -254,30 +263,31 @@
       },
       {
          "targetpic":"src/assets/targetPics/tp9.jpg",
+         "correctAnswer": 1,
          "species":[
-            "Burcherll's Courser",
-            "Inland Dotterel",
-            "American Avocet"
+            "Forest Wagtail",
+            "Ruby Crowned Kinglet",
+            "Common Firecrest"
          ],
          "confidence":[
-            "50",
-            "30",
-            "20"
+            "44",
+            "40",
+            "16"
          ],
          "descriptions":[
-            "Burchell's courser has a graceful figure and an upright posture. It has a blue-grey hind crown which is mainly how it differs from the similar Temminck's Courser. It also has a horizontal black band demarcating a white underbelly, and an overall pale rufous colour. Its face features white supercilia above black eye lines, all ending at the back of the neck to form a double V. In terms of feathers, its secondaries are mostly white with a black underwing and brown to grey coverts.",
-            "The inland dotterel is a medium-sized plover with a distinctive cryptic plumage. Males and females are similarly sized: 19–23 cm (7.5–9 in) in length, a wingspan of 43–47 cm (17–19 in) a weight of 80–90 g (2.8–3.2 oz), and a short bill 1.7 cm (0.67 in). It is unlikely to be confused with any other species when found in its normal habitat. Its upperparts are a rich sandy buff, mottled with dark brown. The black band across the crown extending down through the eye is unique.",
-            "The American avocet measures 40–51 cm (16–20 in) in length, has a wingspan of 68–76 cm (27–30 in) and weighs 275–420 g (9.7–14.8 oz) The bill is black, pointed, and curved slightly upwards towards the tip. It is long, surpassing twice the length of the avocet's small, rounded head. Like many waders, the avocet has long, slender legs and slightly webbed feet. The legs are a pastel grey-blue, giving it its colloquial name, blue shanks. The plumage is black and white on the back, with white on the underbelly."
+            "This is a distinctive wagtail, the only one placed in the genus Dendronanthus (all other wagtails are placed in Motacilla). The forest wagtail is 18 cm (7.1 in) in length, a slender bird with a long tail. The back and crown are olive brown, and the wings are black with two yellow wing bars and white tertial edges. There is a white supercilium, above a dark stripe through the eye. The underparts are white, apart from a black double breast band. The upper breast band is bib-like while the lower band is often broken. The sexes are similar in appearance. Young birds are more yellowish on the underside.",
+            "The ruby-crowned kinglet is a very small bird, being 9 to 11 cm (3.5 to 4.3 in) long, having a wingspan of 16 to 18 cm (6.3 to 7.1 in), and weighing 5 to 10 g (0.2 to 0.4 oz). It has gray-green upperparts and olive-buff underparts. It has two white wingbars and a broken white eye ring. The wingbar on the greater secondary coverts (closer to the wing-tip) is wider, and is next to a dark band. The kinglet has a relatively plain face and head, although the male has a scarlet-red crown patch, which is usually concealed by the surrounding feathers. The crown patch is rarely orange, yellow, or not present.",
+            "The common firecrest is a small plump bird, 9 cm (3.5 in) in length with a wingspan of 13–16 cm (5.1–6.3 in), and weighs 4–7 grams (0.14–0.25 oz). It has bright olive-green upperparts with a bronze-coloured patch on each shoulder, and whitish underparts washed with brownish-grey on the breast and flanks. It has two white wingbars, a tiny black pointed bill, and brownish-black legs. The head pattern is striking, with a black eye stripe, long white supercilium, and a crest which is bright yellow in the female and mainly orange in the male."
          ],
          "links":[
-            "https://en.wikipedia.org/wiki/Burchell%27s_courser",
-            "https://en.wikipedia.org/wiki/Inland_dotterel",
-            "https://en.wikipedia.org/wiki/American_avocet"
+            "https://en.wikipedia.org/wiki/Forest_wagtail",
+            "https://en.wikipedia.org/wiki/Ruby-crowned_kinglet",
+            "https://en.wikipedia.org/wiki/Common_firecrest"
          ],
          "pics":[
-            "src/assets/similarityPics/9/burchells courser",
-            "src/assets/similarityPics/9/inland dotterel",
-            "src/assets/similarityPics/9/american avocet"
+            "src/assets/similarityPics/9/forest wagtail",
+            "src/assets/similarityPics/9/ruby crowned kinglet",
+            "src/assets/similarityPics/9/common firecrest"
          ]
       }
    ]
