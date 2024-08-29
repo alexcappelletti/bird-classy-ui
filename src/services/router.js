@@ -13,9 +13,9 @@ export function setupRouter(){
 	const routes = [
 		{
 			name: "home-page",
-			path: '/' ,
+			path: '/:ctx' ,
 			component: Home,
-			//props: true,
+			props: true,
 		},
 		{
 			name: "oracle-page",
@@ -35,12 +35,15 @@ export function setupRouter(){
 	})
 	router.beforeEach(async (to, from) => {
 		try {
-			console.log("beforeEach")
-			if (to.name === "home-page") {
-				// const exprContext = to.params.context ?? "";
-				// mainStore.setExperimentContext(to.params.context)
+			console.log("beforeEach " +to.name)
+			const toName = to.name ?? "home-page"
+			if (toName === "home-page" ) {
+				console.log("setting expr context")
+				const exprContext = to.params.context ?? "";
+				mainStore.setExperimentContext(to.params.context)
+				await mainStore.loadDatasets()
 			}
-			else if (to.name === "oracle-page") {mainStore.firstUI = mainStore.secondUI}
+			else if (toName === "oracle-page") {mainStore.firstUI = mainStore.secondUI}
 			
 
 			// 	return {path: "/", query: {redirect: to.fullPath}}

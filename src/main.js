@@ -17,7 +17,6 @@ import { oracleStore } from './store/iStore'
 import App from '@/App.vue'
 
 
-f = async ()=> {
 	const app = createApp(App)
 	app.config.errorHandler = (err) => {
 		console.log(err)
@@ -25,7 +24,6 @@ f = async ()=> {
 	registerPlugins(app)
 	const pinia = createPinia()
 	app.use(pinia)
-	await oracleStore().load('./ src / assets / info.json')
 	app.provide("mainStore", useMainStore());
 	//router 
 	const router = setupRouter();
@@ -33,6 +31,3 @@ f = async ()=> {
 
 	app.mount('#app')
 
-}
-
-f()
