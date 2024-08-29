@@ -6,6 +6,7 @@ import { useMainStore } from '@/services/mainStore'
 
 import Oracle from '@/components/OracleInterfaceFlex.vue'
 import InteractionInterface from '@/components/InteractionInterface.vue'
+import Results from '@/components/Results.vue'
 import Home from '@/views/HomeView.vue'
 
 export function setupRouter(){
@@ -26,6 +27,11 @@ export function setupRouter(){
 			name: "interactive-page",
 			path: "/similarity",
 			component: InteractionInterface,
+		},
+		{
+			name: "results-page",
+			path: '/results',
+			component: Results,
 		},
 	]
 	const router = createRouter({

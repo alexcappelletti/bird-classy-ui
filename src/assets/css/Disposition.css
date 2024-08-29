@@ -6,7 +6,7 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .navbar-elems{
@@ -170,4 +170,27 @@
     row-gap: 2rem;
     margin-top: 2rem;
     margin-bottom: 5rem;
+}
+
+/* Results Page */
+
+.result-page{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.result-interface{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 20px;
 }
