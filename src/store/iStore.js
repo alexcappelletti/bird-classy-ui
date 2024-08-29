@@ -54,8 +54,12 @@ export const interactionStore = defineStore('interactionStore',{
     },
     getters: {
         currentSpecies(state){
-			return state.currentTask?.speciesName?.su ?? "undefined";
-           //return state.speciesNames[state.currentTask][state.cardNumber];
+		    //return state.currentTask?.speciesName?.su ?? "undefined";
+            //return state.speciesNames[state.currentTask][state.cardNumber];
+            const species = state.speciesNames[state.currentTask][state.cardNumber]
+            if(species !== undefined)
+                return species
+            return "undefined"
         },
 
         currentDescription(state){
@@ -340,8 +344,8 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         currentDescription(state){
-			const descr = state.speciesDescription[state.currentTask][state.cardNumber]
-			if (descr !== undefined) { return descr.substr(0, 260) }
+			const descr = state.speciesDescription[state.currentTask][state.speciesVisualized];
+			if (descr != undefined) { return descr.substr(0, 260) }
 			return "undefined description"
 
         },
@@ -387,6 +391,7 @@ export const oracleStore = defineStore('oracleStore',{
             .then(response => {
                 var tempData = JSON.stringify(response)
                 this.dataJson = JSON.parse(tempData)
+                console.log(this.dataJson)
                 this.assignData()
             });
         

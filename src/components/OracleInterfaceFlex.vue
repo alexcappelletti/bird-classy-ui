@@ -129,9 +129,10 @@ onMounted(async () => {
     /*try {
         await traceLog(
             {
-                event:"init oracle page",
-                params: "some param here",
-                userID: "my new user id"
+                event:"oracleTask-numTask",
+                params: "TimePerTask=XXX;AnswerGiven=YYY;OpenedWiki={TFT}",
+                timestamp: new Date(),
+                userID: "UserID"
             })
     }catch (err) {console.log(err)}*/
 })
