@@ -54,17 +54,15 @@ export const interactionStore = defineStore('interactionStore',{
     },
     getters: {
         currentSpecies(state){
-            var species = state.speciesNames[state.currentTask][state.cardNumber];
-            if(species != undefined)
-                return species;
-            return null;
+			return state.currentTask?.speciesName?.su ?? "undefined";
+           //return state.speciesNames[state.currentTask][state.cardNumber];
         },
 
         currentDescription(state){
-            var descr = state.speciesDescription[state.currentTask][state.cardNumber];
-            if(descr != undefined)
-                return descr.substr(0, 260);
-            return null;
+			const descr = state.speciesDescription[state.currentTask][state.cardNumber] 
+			if (descr !== undefined) {return descr.substr(0, 260)}
+			return "undefined description"
+
         },
 
         currentLink(state){
@@ -342,10 +340,10 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         currentDescription(state){
-            var descr = state.speciesDescription[state.currentTask][state.speciesVisualized];
-            if(descr != undefined)
-                return descr.substr(0, 320);
-            return null;
+			const descr = state.speciesDescription[state.currentTask][state.cardNumber]
+			if (descr !== undefined) { return descr.substr(0, 260) }
+			return "undefined description"
+
         },
 
         currentLink(state){
