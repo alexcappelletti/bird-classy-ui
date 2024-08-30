@@ -100,7 +100,7 @@ export const useMainStore = defineStore('mainStore', ()=> {
 	}
 
 	async function loadDatasets(){
-		const response = await fetch("src/assets/tasks-ds1.json", {
+		const response = await fetch("src/assets/experiment.json", {
 			headers: {
 				'Accept': 'application/json',
 			}

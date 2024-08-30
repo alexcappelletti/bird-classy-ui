@@ -1,6 +1,6 @@
 <template>
 	<div>Here is the home view</div>
-	<RouterLink :to="store.nextUI">go to {{ store.nextUI }}</RouterLink>
+	<RouterLink :to="store.nextUI" @click="nextUI">go to {{ store.nextUI }}</RouterLink>
 </template>
 
 <script setup>
@@ -15,6 +15,10 @@ onBeforeMount(()=>{
 
 
 })
+function nextUI() {
+	console.log("cset new store content")
+	store.nextInContext();
+}
 onBeforeRouteUpdate(async (to, from) => {
 	// react to route changes...
 	console("on before route update");
