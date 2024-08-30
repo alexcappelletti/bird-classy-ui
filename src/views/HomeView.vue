@@ -5,13 +5,19 @@
 
 <script setup>
 import { inject, onBeforeMount } from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 const store = inject('mainStore')
 
 
 onBeforeMount(()=>{
-	console.log("onBefore su home")
+	//console.log(`${store.currentDs.name} ${store.currentDsNa}` ) 
+
 
 
 })
-
+onBeforeRouteUpdate(async (to, from) => {
+	// react to route changes...
+	console("on before route update");
+	
+})
 </script>

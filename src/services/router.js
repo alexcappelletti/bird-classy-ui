@@ -13,9 +13,9 @@ export function setupRouter(){
 	const routes = [
 		{
 			name: "home-page",
-			path: '/:ctx' ,
+			path: '/' ,
+			query:{ ctx: ""},
 			component: Home,
-			props: true,
 		},
 		{
 			name: "oracle-page",
@@ -38,9 +38,9 @@ export function setupRouter(){
 			console.log("beforeEach " +to.name)
 			const toName = to.name ?? "home-page"
 			if (toName === "home-page" ) {
-				console.log("setting expr context")
-				const exprContext = to.params.context ?? "";
-				mainStore.setExperimentContext(to.params.context)
+				console.log("setting expr context " + to.query.ctx)
+				const exprContext = to.query.ctx ?? "";
+				mainStore.setExperimentContext(exprContext)
 				await mainStore.loadDatasets()
 			}
 			else if (toName === "oracle-page") {mainStore.firstUI = mainStore.secondUI}

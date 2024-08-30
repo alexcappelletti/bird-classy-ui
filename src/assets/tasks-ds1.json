@@ -1,0 +1,36 @@
+[
+	{
+		"name": "sample-ds1",
+		"tasks": [
+			{
+				"name": "",
+				"currentAnswer": "undefined",
+				"targetImage": "/logo.png",
+				"species": {
+					"speciesName": "not specified",
+					"description": "not specified",
+					"wikiLink": "",
+					"confidence": 0,
+					"imageUri": ""
+				}
+			}
+		]
+	},
+	{
+		"name": "sample-ds2",
+		"tasks": [
+			{
+				"name": "",
+				"currentAnswer": "undefined",
+				"targetImage": "/logo.png",
+				"species": {
+					"speciesName": "not specified",
+					"description": "not specified",
+					"wikiLink": "",
+					"confidence": 0,
+					"imageUri": ""
+				}
+			}
+		]
+	}
+]
