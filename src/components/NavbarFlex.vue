@@ -26,7 +26,13 @@
                 Bird Classification
             </p>
             <v-spacer></v-spacer>
-            <div id='pgbar' class="progressbar"></div>
+            <!--<div id='pgbar' class="progressbar"></div>-->
+            <div id="timerDiv">
+                <p id="timerNum" class="body-medium">60s</p>
+                <div id="bgBar" style="min-width: 100px; background-color: gray; height: 5px; border-radius: 5px;">
+                    <div id="timerBar" style="width: 0px; height: 5px; background-color: #19ff85; border-radius: 5px;"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -36,10 +42,5 @@ import { interactionStore, oracleStore } from '@/store/iStore.js'
 const storeI = interactionStore()
 const storeO = oracleStore()
 
-function getNow(){
-    var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    return time
-}
 
 </script>

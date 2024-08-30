@@ -19,6 +19,10 @@ export const interactionStore = defineStore('interactionStore',{
             speciesWikiLink: [[]],
             speciesTimer: [],
 
+            //info about location of resources (pool is 1 or 2, while dataPath should be "./src/assets/pool"), generally used combined
+            poolData: null,
+            dataPath: null,
+
             //path to the target images
             targetPics: [],
             
@@ -42,12 +46,20 @@ export const interactionStore = defineStore('interactionStore',{
             }],
 
             totalTime: 0,
+
+            //Time given to each task before skipping
+            timerDuration: 60,
+            intervalID: null,
         }
     },
     getters: {
         currentSpecies(state){
-			return state.currentTask?.speciesName?.su ?? "undefined";
-           //return state.speciesNames[state.currentTask][state.cardNumber];
+		    //return state.currentTask?.speciesName?.su ?? "undefined";
+            //return state.speciesNames[state.currentTask][state.cardNumber];
+            const species = state.speciesNames[state.currentTask][state.cardNumber]
+            if(species !== undefined)
+                return species
+            return "undefined"
         },
 
         currentDescription(state){
@@ -58,16 +70,32 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         currentLink(state){
-            return state.speciesWikiLink[state.currentTask][state.cardNumber];
+            var link = state.speciesWikiLink[state.currentTask][state.cardNumber];
+            if(link != undefined)
+                return link;
+            return null;
         },
 
         currentTargetPic(state){
-            return state.targetPics[state.currentTask];
+            var targetPic = state.targetPics[state.currentTask];
+            if(targetPic != undefined)
+                return targetPic;   
+            return null;
         }
     },
     actions: {
         loadData(path){
-            fetch(path,{
+            //Depending on the URL, we load a different pool of images
+            var poolIndex = 0;
+            if((localStorage.getItem('FirstUI') == 'similarity' && localStorage.getItem('FirstPool') == '1') || (localStorage.getItem('FirstUI') == 'oracle' && localStorage.getItem('FirstPool') == '2'))
+                poolIndex = 1
+            else
+                poolIndex = 2
+
+            this.poolData = poolIndex;
+            this.dataPath = path;
+            var infoPath = path + poolIndex + "/info.json"
+            fetch(infoPath,{
                 headers: {
                     'Accept': 'application/json',
             }})
@@ -77,22 +105,28 @@ export const interactionStore = defineStore('interactionStore',{
                 this.dataJson = JSON.parse(tempData)
                 this.assignData()
             });
-        
         },
 
         assignData(){
             this.speciesNames.pop()
             this.speciesDescription.pop()
             this.speciesWikiLink.pop()
-            //this.speciesPics.pop()
+
             for(let i = 0; i < this.dataJson["tasks"].length; i++){
+
                 this.speciesNames.push(this.dataJson["tasks"][i]["species"])
+
                 this.speciesDescription.push(this.dataJson["tasks"][i]["descriptions"])
+
                 this.speciesWikiLink.push(this.dataJson["tasks"][i]["links"])
-                this.targetPics.push(this.dataJson["tasks"][i]["targetpic"])
+
+                //[this.dataPath + this.poolData + "/"] is needed to adapt the path of the pictures
+                this.targetPics.push(this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["targetpic"])
+
+                for(let j = 0; j < this.speciesNumber; j++)
+                    this.dataJson["tasks"][i]["pics"][j] = this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["pics"][j]
                 this.speciesPics.push(this.dataJson["tasks"][i]["pics"])
             }
-            //console.log(this.dataJson)
         },
 
         openPage(elemNumber){
@@ -121,20 +155,8 @@ export const interactionStore = defineStore('interactionStore',{
             return this.speciesPics[taskIndex][speciesIndex] + '/worst/' + picIndex + '.jpg'
         },
 
-        bestPic(speciesIndex, picPosition){
-            return this.speciesPics[speciesIndex][picPosition]
-        },
-
-        worstPic(speciesIndex, picPosition){
-            return this.speciesPics[speciesIndex][this.speciesPics[speciesIndex].length - picPosition]
-        },
-
         openHelp(){
             this.HelpPage = !this.HelpPage
-        },
-
-        setTimer(picNumber, time){
-            this.speciesTimer[picNumber] = time
         },
 
         nextPic(){
@@ -153,6 +175,7 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         addCurrentTime(time){
+
             //add the subtraction from startingTime and time
             if(this.currentTask == 0)
                 this.CollectedData[this.currentTask]["timePerTask"] =  Math.round((Math.abs(time - this.startingTime)/1000)*100)/100
@@ -170,12 +193,20 @@ export const interactionStore = defineStore('interactionStore',{
 
         nextTask(){
             if(this.currentTask + 1 == this.dataJson["tasks"].length){
-                var dataToWrite = JSON.stringify(this.CollectedData)
+
+                /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });
                 var a = document.createElement('a');
                 a.download = 'TaskFile.txt';
                 a.href = window.URL.createObjectURL(bb);
-                a.click();
+                a.click();*/
+
+                var dataToWrite = JSON.stringify(this.CollectedData)
+                localStorage.setItem('interactionResults', dataToWrite);
+                clearInterval(this.intervalID);
+                this.intervalID = null;
+                this.blockTimerVisual()
+
             }
             else if(this.currentTask < this.dataJson["tasks"].length){
                 this.CollectedData.push({
@@ -185,64 +216,66 @@ export const interactionStore = defineStore('interactionStore',{
                 });
                 this.timerOn = false;
                 this.currentTask = this.currentTask + 1;
-                //console.log(this.currentTask)
+
+                this.generateTimer();
             }
         },
 
-        //I should think of a way to pause the timer if one is on the helpPage
-        createProgressbar(callback) {
 
+        generateTimer(){
             if(this.timerOn == false && this.currentTask > this.indexNoTimer){
                 
                 this.timerOn = true;
 
-                // We select the div that we want to turn into a progressbar
-                var progressbar = document.getElementById('pgbar');
-            
-                // We create the div that changes width to show progress
-                var progressbarinner = document.createElement('div');
-                progressbarinner.className = 'inner';
-                progressbarinner.setAttribute('id', 'innerbar');
-            
-                // Now we set the animation parameters
-                progressbarinner.style.animationDuration = '60s';
-
-
-                progressbarinner.addEventListener('animationend', (e) => {
-                    this.timeOut();
-                })
-
-                // Eventually couple a callback
-                if (typeof(callback) === 'function') {
-                    progressbarinner.addEventListener('animationend', callback);
+                if(this.intervalID != null){
+                    clearInterval(this.intervalID)
+                    this.intervalID = null;
                 }
 
+                this.timerDuration = 60;
 
-            
-                // Append the progressbar to the main progressbardiv
-                progressbar.appendChild(progressbarinner);
-            
-                // When everything is set up we start the animation
-                progressbarinner.style.animationPlayState = 'running';
+                
+                var timerElement = document.getElementById("timerNum");
+                timerElement.textContent = this.timerDuration + "s";
 
+
+                var barElement = document.getElementById("timerBar");
+                barElement.style.width = "100px";
+                
+                this.intervalID = setInterval(this.reduceTime, 1000);
             }
+
         },
 
-        removeBar(){
-            if(this.currentTask > this.indexNoTimer + 1){
-                var progressbar = document.getElementById('innerbar');
-                progressbar.parentNode.removeChild(progressbar);
-            }
-            
+        blockTimerVisual(){
+            var bar = document.getElementById("timerBar")
+            bar.style.width = "0px"
+            var timer = document.getElementById("timerNum")
+            timer.textContent = "60s"
         },
 
-        timeOut(){
-            this.addCurrentTime(new Date());
-            this.closePage();
-            this.nextTask();
-            this.removeBar();
-            this.createProgressbar();
-        }
+        reduceTime(){
+
+            if(this.timerDuration > 1){
+
+                this.timerDuration -= 1;
+
+                var timerElement = document.getElementById("timerNum");
+                timerElement.textContent = this.timerDuration + "s";
+
+                var barElement = document.getElementById("timerBar");
+                barElement.style.width = 100 / 60 * this.timerDuration + "px";
+                //maybe also change color, let's see if doesn't explode
+
+            }
+            else{
+
+                this.addCurrentTime(new Date());
+                clearInterval(this.intervalID);
+                this.intervalID = null;
+                this.nextTask();
+            }
+        },
     }
 })
 
@@ -295,36 +328,62 @@ export const oracleStore = defineStore('oracleStore',{
             }],
 
             totalTime: 0,
+
+            //Time given to each task before skipping
+            timerDuration: 60,
+            intervalID: null,
+
         }
     },
     getters: {
         currentSpecies(state){
-            return state.speciesNames[state.currentTask][state.speciesVisualized]
+            var species = state.speciesNames[state.currentTask][state.speciesVisualized];
+            if(species != undefined)
+                return species;
+            return null;
         },
 
         currentDescription(state){
-			const descr = state.speciesDescription[state.currentTask][state.cardNumber]
-			if (descr !== undefined) { return descr.substr(0, 260) }
+			const descr = state.speciesDescription[state.currentTask][state.speciesVisualized];
+			if (descr != undefined) { return descr.substr(0, 260) }
 			return "undefined description"
 
         },
 
         currentLink(state){
-            return state.speciesWikiLink[state.currentTask][state.speciesVisualized]
+            var link = state.speciesWikiLink[state.currentTask][state.speciesVisualized];
+            if(link != undefined)
+                return link;
+            return null;
         },
 
         currentConfidence(state){
-            return state.speciesConfidence[state.currentTask][state.speciesVisualized]
+            var confidence = state.speciesConfidence[state.currentTask][state.speciesVisualized];
+            if(confidence != undefined)
+                return confidence;
+            return null;
         },
 
         currentTargetPic(state){
-            return state.targetPics[state.currentTask];
+            var targetPic = state.targetPics[state.currentTask];
+            if(targetPic != undefined)
+                return targetPic;
+            return null;
         }
     },
     actions: {
-
         loadData(path){
-            fetch(path,{
+            //Depending on the URL, we load a different pool of images
+            var poolIndex = 0;
+            if((localStorage.getItem('FirstUI') == 'oracle' && localStorage.getItem('FirstPool') == '1') || (localStorage.getItem('FirstUI') == 'similarity' && localStorage.getItem('FirstPool') == '2'))
+                poolIndex = 1
+            else
+                poolIndex = 2
+            
+            this.poolData = poolIndex;
+            this.dataPath = path;
+            var infoPath = path + poolIndex + "/info.json"
+            fetch(infoPath,{
                 headers: {
                     'Accept': 'application/json',
             }})
@@ -332,8 +391,10 @@ export const oracleStore = defineStore('oracleStore',{
             .then(response => {
                 var tempData = JSON.stringify(response)
                 this.dataJson = JSON.parse(tempData)
+                console.log(this.dataJson)
                 this.assignData()
             });
+        
         },
 
         assignData(){
@@ -346,17 +407,13 @@ export const oracleStore = defineStore('oracleStore',{
                 this.speciesDescription.push(this.dataJson["tasks"][i]["descriptions"])
                 this.speciesWikiLink.push(this.dataJson["tasks"][i]["links"])
                 this.speciesConfidence.push(this.dataJson["tasks"][i]["confidence"])
-                this.targetPics.push(this.dataJson["tasks"][i]["targetpic"])
-                //this.speciesPics.push(this.dataJson["tasks"][i]["pics"])
+                
+                //[this.dataPath + this.poolData + "/"] is needed to adapt the path of the pictures
+                this.targetPics.push(this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["targetpic"])
+
             }
         },
         
-        bestPic(speciesIndex, picPosition){
-            return this.speciesPics[speciesIndex][picPosition]
-        },
-        worstPic(speciesIndex, picPosition){
-            return this.speciesPics[speciesIndex][this.speciesPics[speciesIndex].length - picPosition]
-        },
 
         setStart(time){
             if(!this.startSet){
@@ -378,7 +435,7 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         addCurrentTime(time){
-            //add the subtraction from startingTime and time
+            
             if(this.currentTask == 0)
                 this.CollectedData[this.currentTask]["timePerTask"] =  Math.round((Math.abs(time - this.startingTime)/1000)*100)/100
             else{
@@ -396,12 +453,19 @@ export const oracleStore = defineStore('oracleStore',{
 
         nextTask(){
             if(this.currentTask + 1 == this.dataJson["tasks"].length){
-                var dataToWrite = JSON.stringify(this.CollectedData)
+
+                /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });
                 var a = document.createElement('a');
                 a.download = 'TaskFile.txt';
                 a.href = window.URL.createObjectURL(bb);
-                a.click();
+                a.click();*/
+
+                var dataToWrite = JSON.stringify(this.CollectedData)
+                localStorage.setItem('oracleResults', dataToWrite);
+                clearInterval(this.intervalID);
+                this.intervalID = null;
+                this.blockTimerVisual()
             }
             else if(this.currentTask < this.dataJson["tasks"].length){
                 this.CollectedData.push({
@@ -413,7 +477,8 @@ export const oracleStore = defineStore('oracleStore',{
                 this.currentTask = this.currentTask + 1;
 
                 this.timerOn = false;
-                this.createProgressbar('pgbar')
+
+                this.generateTimer();
             }
         },
 
@@ -428,54 +493,59 @@ export const oracleStore = defineStore('oracleStore',{
             }
         },
 
-        //I should think of a way to pause the timer if one is on the helpPage
-        createProgressbar(callback) {
-
+        generateTimer(){
             if(this.timerOn == false && this.currentTask > this.indexNoTimer){
                 
                 this.timerOn = true;
 
-                // We select the div that we want to turn into a progressbar
-                var progressbar = document.getElementById('pgbar');
-            
-                // We create the div that changes width to show progress
-                var progressbarinner = document.createElement('div');
-                progressbarinner.className = 'inner';
-                progressbarinner.setAttribute('id', 'innerbar');
-            
-                // Now we set the animation parameters
-                progressbarinner.style.animationDuration = '60s';
-
-                progressbarinner.addEventListener('animationend', (e) =>{
-                    this.timeOut();
-                })
-            
-                // Eventually couple a callback
-                if (typeof(callback) === 'function') {
-                    progressbarinner.addEventListener('animationend', callback);
+                if(this.intervalID != null){
+                    clearInterval(this.intervalID)
+                    this.intervalID = null;
                 }
-            
-                // Append the progressbar to the main progressbardiv
-                progressbar.appendChild(progressbarinner);
-            
-                // When everything is set up we start the animation
-                progressbarinner.style.animationPlayState = 'running';
 
+                this.timerDuration = 60;
+
+                
+                var timerElement = document.getElementById("timerNum");
+                timerElement.textContent = this.timerDuration + "s";
+
+
+                var barElement = document.getElementById("timerBar");
+                barElement.style.width = "100px";
+                
+                this.intervalID = setInterval(this.reduceTime, 1000);
             }
+
         },
 
-        removeBar(){
-            if(this.currentTask > this.indexNoTimer + 1){
-                var progressbar = document.getElementById('innerbar');
-                progressbar.parentNode.removeChild(progressbar);
-            }
+        blockTimerVisual(){
+            var bar = document.getElementById("timerBar")
+            bar.style.width = "0px"
+            var timer = document.getElementById("timerNum")
+            timer.textContent = "60s"
         },
 
-        timeOut(){
-            this.addCurrentTime(new Date());
-            this.nextTask();
-            this.removeBar();
-            this.createProgressbar();
+        reduceTime(){
+
+            if(this.timerDuration > 1){
+
+                this.timerDuration -= 1;
+
+                var timerElement = document.getElementById("timerNum");
+                timerElement.textContent = this.timerDuration + "s";
+
+                var barElement = document.getElementById("timerBar");
+                barElement.style.width = 100 / 60 * this.timerDuration + "px";
+                //maybe also change color, let's see if doesn't explode
+
+            }
+            else{
+
+                this.addCurrentTime(new Date());
+                clearInterval(this.intervalID);
+                this.intervalID = null;
+                this.nextTask();
+            }
         },
     }
 })
