@@ -12,7 +12,7 @@ import { onMounted, ref, watch } from "vue"
 
 //import NavBar from './components/NavBar.vue';
 import NavBar from './components/NavbarFlex.vue'
-import HomeView from './views/HomeView.vue'
+
 
 
 onMounted(async () => {
