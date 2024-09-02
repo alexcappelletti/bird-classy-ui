@@ -20,7 +20,6 @@
         </div>
 
         <v-fade-transition>
-
             <div v-show="store.appearInfo" style=" position: relative; left: 15%; margin-bottom: 200px; margin-top: -32px;">
                 <v-sheet class="align-center justify-center text-center mx-auto py-6" color="Secondary95" elevation="5"
                     max-width="800px">
@@ -30,11 +29,10 @@
                             :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, 0)"></v-img>
                         <p class="headline-large">{{ store.currentSpecies }}</p>
 
-                        <v-tabs v-model="initialVal" align-tabs="center" color="deep-purple-accent-4">
+                        <!--<v-tabs v-model="initialVal" align-tabs="center" color="deep-purple-accent-4">
                             <v-tab v-for="item in itemsPics" :key="item" :text="item" :value="item"></v-tab>
                         </v-tabs>
                         <v-tabs-window v-model="initialVal">
-
                             <v-tabs-window-item v-for="item in itemsPics" :key="item" :value="item">
                                 <v-sheet class="mx-auto" max-width="790" color="Secondary95">
                                     <v-slide-group v-model="model" class="pa-2" show-arrows>
@@ -52,7 +50,37 @@
                                     </v-slide-group>
                                 </v-sheet>
                             </v-tabs-window-item>
-                        </v-tabs-window>
+                        </v-tabs-window>-->
+
+
+                        <v-tabs align-tabs="center" color="deep-purple-accent-4">
+                            <v-tab :text="itemsPics[0]" @click="changeTab(0)"></v-tab>
+                            <v-tab :text="itemsPics[1]" @click="changeTab(1)"></v-tab>
+                        </v-tabs>
+                        
+                        <v-sheet v-if="idTab == 0" class="mx-auto" style="margin-top: -5px;" max-width="790" color="Secondary95">
+                            <v-slide-group v-model="model" class="pa-2" show-arrows>
+                                <v-slide-group-item v-for="i in 8" :key="i">
+
+                                    <v-img class="ma-2"
+                                        :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, i)"
+                                        height="150px" width="150px" cover></v-img>
+
+                                </v-slide-group-item>
+                            </v-slide-group>
+                        </v-sheet>
+                        <v-sheet v-if="idTab == 1" class="mx-auto" style="margin-top: -5px;" max-width="790" color="Secondary95">
+                            <v-slide-group v-model="model" class="pa-2" show-arrows>
+                                <v-slide-group-item v-for="i in 8" :key="i">
+
+                                    <v-img class="ma-2"
+                                        :src="store.getSimilarityPicWorst(store.currentTask, store.cardNumber, i - 1)"
+                                        height="150px" width="150px" cover></v-img>
+
+                                </v-slide-group-item>
+                            </v-slide-group>
+                        </v-sheet>
+                    
 
                         <div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
                             <p id="description" class="body-large text-justify">
@@ -157,7 +185,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 
 const store = interactionStore()
@@ -176,5 +204,20 @@ function getNow() {
 const initialVal = 'Most Similar Images from this Species';
 const itemsPics = ['Most Similar Images from this Species', 'Least Similar Images from this Species'];
 const model = null;
+
+var idTab = ref(0)
+var tab = null
+
+function changeTab(tabVal){
+    idTab.value = tabVal;
+    console.log(idTab.value)
+}
+
+function changeTabItem(item){
+    if(item == "Most Similar Images from this Species")
+        idTab.value = 0
+    else
+        idTab.value = 1 
+}
 
 </script>
