@@ -120,8 +120,8 @@ export const useMainStore = defineStore('mainStore', () => {
 
 	function similarityPic(taskIdx, speciesIdx, mode, imageIdx) {
 		const task = currentDs.value.tasks[taskIdx]
-		const species = task.species[idx]
-		const localUrl = `src/assets/images/${species.imagesFolder}/${mode}/${imageidx}.jpg`
+		const species = task.species[speciesIdx]
+		const localUrl = `src/assets/images/${species.imagesFolder}/${mode}/${imageIdx}.jpg`
 		return localUrl
 	}
 
