@@ -8,6 +8,7 @@ import Oracle from '@/components/OracleInterfaceFlex.vue'
 import InteractionInterface from '@/components/InteractionInterface.vue'
 import Results from '@/components/Results.vue'
 import Home from '@/views/HomeView.vue'
+import SurveyView from '@/views/SurveyView.vue'
 
 export function setupRouter(){
 	const mainStore = useMainStore()
@@ -22,10 +23,9 @@ export function setupRouter(){
 			name: "oracle-page",
 			path: '/oracle',
 			component: Oracle,
-			props: true,
 		},// only authenticated users can create posts
 		{
-			name: "interactive-page",
+			name: "similarity-page",
 			path: "/similarity",
 			component: InteractionInterface,
 		},
@@ -34,6 +34,12 @@ export function setupRouter(){
 			path: '/results',
 			component: Results,
 		},
+		{
+			name: "survey-page",
+			path: '/survey',
+			component: SurveyView,
+		},
+		
 	]
 	const router = createRouter({
 		history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -42,14 +48,14 @@ export function setupRouter(){
 	router.beforeEach(async (to, from) => {
 		try {
 			console.log("beforeEach " +to.name)
-			const toName = to.name ?? "home-page"
+			const toName = to.name 
 			if (toName === "home-page" ) {
 				console.log("setting expr context " + to.query.ctx)
 				const exprContext = to.query.ctx ?? "";
 				mainStore.setExperimentContext(exprContext)
 				await mainStore.loadDatasets()
 			}
-			else if (toName === "oracle-page") {mainStore.firstUI = mainStore.secondUI}
+			
 			
 
 			// 	return {path: "/", query: {redirect: to.fullPath}}

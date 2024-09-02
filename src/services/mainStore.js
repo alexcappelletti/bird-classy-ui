@@ -1,104 +1,67 @@
 import { defineStore } from "pinia"
 import { computed, ref, reactive } from "vue"
-
+//progetto feir x raman
 
 export const useMainStore = defineStore('mainStore', () => {
 
+	let datasetName = ""
 	const subject = ref("")
-	const ui = ref("no")
-	const currentDsName = ref("dd")
 	const uiLists = ref([])
+	const navigationPreset = ref([])
+	const surveyLinks = ref([])
 	const datasetList = ref([])
-	const ds1 = ref({
-		name: "",
-		tasks: [
-			{
-				name: "",
-				currentAnswer: "undefined",
-				targetImage: null,
-				species: {
-					speciesName: "not specified",
-					description: "not specified",
-					wikiLink: "",
-					confidence: 0,
-					imagesFolder: ""
-				}
-
-			}
-
-		]
-	})
-	const ds2 = ref({
-		name: "",
-		tasks: [
-			{
-				name: "",
-				currentAnswer: "undefined",
-				targetImage: null,
-				species: {
-					speciesName: "not specified",
-					description: "not specified",
-					wikiLink: "",
-					confidence: 0,
-					imagesFolder: ""
-				}
-
-			}
-
-		]
-	})
-	ds1.value.name = "ds1"
-	ds2.value.name = 'ds2'
-
-	// const nextUI = computed(() => {
-	// 		return (firstUI.value === "oracle")? "similarity": "oracle";
-	// 	})
-	// const nextDS = computed(() =>{
-	// 		return(firstDataset === "ds1") ? ds1 : ds2;
-	// 	})
+	const runningTasks = ref([])
+	const runTask = ref([])
+	const help = ref(true)
 	const currentUI = computed(() => {
 		return (uiLists.value[0])
 
 	})
-	
 
-	const currentDs = computed(() => {
-		currentDsName.value = currentDsName.value ?? "ds1"
-		return (currentDsName.value === 'ds1' ? ds1.value : ds2.value);
-	})
+	const showHelp = computed(() => {return help.value})
+	const currentDs = computed(() => { return datasetList.value[0]; })
+	const currentTask = computed(()=> {return runningTasks.value[0];})
+	const isTrainingTask = computed(() => {return runTask.value.length < 2;})
 
-	const currentDsNa = computed(() => {
-		return (currentDsName.value)
-
-	})
-
-
-	const nextUI = computed(() => {
-		return (currentUI.value === "oracle" ? "similarity" : "oracle");
-	})
+	const hasNextUI = computed(() => { return uiLists.value.length > 1; })
+	const nextUI = computed(() => {  return uiLists.value[1] ?? "undefined";})
+	const navigateTo = computed(()=>{return navigationPreset.value[0];})
+	const uiListsRead = computed(() => {return uiLists.value})
 
 	function setExperimentContext(ctx) {
 		const params = ctx.split("-");
-
 		if (params.length != 3) {
 			console.log("wron context params " + ctx)
 			return;
 		}
-		console.log("what parsed " + JSON.stringify(params))
 		subject.value = params[0]
+		uiLists.value = ["oracle", "similarity"],
+			navigationPreset.value = [
+				"oracle-page",
+				"survey-page",
+				"simiarity-page",
+				"survey-page",
+				"results-page"
+			]
+		surveyLinks.value = ["google.com", "fbk.eu"]
+		if (params[1] === "sp") {
+			uiLists.value = ["similarity", "oracle"]
+			navigationPreset.value= [
+				"simiarity-page", 
+				"survey-page", 
+				"oracle-page",
+				"survey-page", 
+				"results-page"
+			 ]
+			surveyLinks.value = ["fbk.eu", "google.com"]
+		}
+
 		uiLists.value = [
-			params[1], 
-			params[1] === "op" ? "oracle" : "similarity"
+			params[1] === "op" ? "oracle" : "similarity",
+			params[1] === "op" ? "similarity" : "oracle",
 		]
-		currentDsName.value = params[2]
+		datasetName = params[2]
 	}
-
-	function nextInContext() {
-		currentDsName.value = (currentDsName.value === "ds1" ? "ds2" : "ds1")
-		ui.value = nextUI
-	}
-
-	
 
 	async function loadDatasets() {
 		const response = await fetch("src/assets/experiment.json", {
@@ -108,15 +71,13 @@ export const useMainStore = defineStore('mainStore', () => {
 		})
 		const obj = await response.json()
 		console.log("what read " + JSON.stringify(obj[0]))
-		ds1.value = obj[0]
-		ds2.value = obj[1]
 		datasetList.value = [
-			currentDsName.value === 'ds1' ? obj[0] :obj[1],
-			currentDsName.value === 'ds1' ? obj[1] : obj[0],
+			datasetName === 'ds1' ? obj[0] :obj[1],
+			datasetName === 'ds1' ? obj[1] : obj[0],
 
 		]
+		runningTasks.value = datasetList.value[0].tasks;
 	}
-
 
 	function similarityPic(taskIdx, speciesIdx, mode, imageIdx) {
 		const task = currentDs.value.tasks[taskIdx]
@@ -125,14 +86,52 @@ export const useMainStore = defineStore('mainStore', () => {
 		return localUrl
 	}
 
+	function nextInContext() {
+		runTask.value = []
+		uiLists.value.shift()
+		datasetList.value.shift()
+	}
+	
+	function nextTask() {
+		if (runningTasks.value.length > 1) {
+			const t = runningTasks.value.shift()
+			runTask.value.push(t)
+			return;
+		}
+		if (hasNextUI) {
+			nextInContext()
+			runningTasks.value = datasetList.value[0].tasks
+		}
+		else {
+			console.error(" invokking next on empty dataset")
+			
+		}
+
+	}
+	function navigate() {
+		navigationPreset.value.shift();
+	}
+
+	function changeHelp() {
+		help.value = ! help.value
+	}
+
 	return {
+		navigationPreset,
+		isTrainingTask,
 		currentUI,
 		currentDs,
+		currentTask,
+		hasNextUI,
 		nextUI,
-		currentDsNa,
-		nextInContext,
 		setExperimentContext,
-		loadDatasets
-
-	};
-});
+		loadDatasets,
+		similarityPic,
+		nextTask,
+		nextInContext,
+		changeHelp,
+		showHelp,
+		navigateTo,
+		navigate
+	}
+})

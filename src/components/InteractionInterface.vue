@@ -187,6 +187,7 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
+import { useMainStore } from '@/services/mainStore';
 
 const store = interactionStore()
 
