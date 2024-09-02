@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from "pinia";
+import { useMainStore } from '@/services/mainStore';
 
 export const interactionStore = defineStore('interactionStore',{
     state: () => {
@@ -206,6 +207,7 @@ export const interactionStore = defineStore('interactionStore',{
                 clearInterval(this.intervalID);
                 this.intervalID = null;
                 this.blockTimerVisual()
+                
 
             }
             else if(this.currentTask < this.dataJson["tasks"].length){

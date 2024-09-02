@@ -1,46 +1,55 @@
 <template>
     <div class="result-page">
-        <h2 class="headline-large" style="margin-top: 10px;">
-            Oracle Interface Results
-        </h2>
-        <img style="max-width: 700px;" src="./../assets/HowToOracle.png">
-        <div>
-            <p class="title-medium">
-                Correct Answers: {{ oracleUserCorrectTotal }} / {{ 10 }}
-            </p>
-            <p class="title-medium">
-                Total Time: {{ oracleTotalTime }} seconds
-            </p>
-        </div>
-        <h2 class="headline-large" style="margin-top: 10px;">
-            Similarity Interface Results
-        </h2>
-        <img style="max-width: 700px;" src="./../assets/Step1Interaction.png">
-
-        <div>
-            <p class="title-medium">
-                Correct Answers: {{ similarityUserCorrectTotal }} / {{ 10 }}
-            </p>
-            <p class="title-medium">
-                Total Time: {{ similarityTotalTime }} seconds
-            </p>
-        </div>
 
         <div style="margin: 20px;" v-if="((similarityUserCorrectTotal + oracleUserCorrectTotal) > 18) && ((similarityTotalTime + oracleTotalTime) < 150)">
             <p class="title-large">
-                Congratulations, you are as good as a Professional Birdwatcher
+                Congratulations, you are as good as a <b>Professional Birdwatcher</b>
             </p>
         </div>
         <div style="margin: 20px;" v-else-if="((similarityUserCorrectTotal + oracleUserCorrectTotal) > 8) && ((similarityTotalTime + oracleTotalTime) < 250)">
             <p class="title-large">
-                Congratulations, you are as good as as Amateur Birdwatcher
+                Congratulations, you are as good as as <b>Amateur Birdwatcher</b>
             </p>
         </div>
         <div style="margin: 20px;" v-else>
             <p class="title-large">
-                Congratulations, you are as good as a Novice Birdwatcher
+                Congratulations, you are as good as a <b>Novice Birdwatcher</b>
             </p>
         </div>
+
+        <div style="text-align: center">
+            <p class="title-medium">Correct Answers: {{ oracleUserCorrectTotal + similarityUserCorrectTotal }} / 20</p>
+            <p class="title-medium">Total Time: {{ Math.floor((similarityTotalTime + oracleTotalTime)/60) }} minutes {{ ((similarityTotalTime + oracleTotalTime) % 60).toPrecision(2) }} seconds</p>
+        </div>
+
+        <h2 class="headline-medium" style="margin-top: 10px;">
+            Oracle Interface Results
+        </h2>
+
+        <img style="max-width: 500px;" src="./../assets/HowToOracle.png">
+        <div>
+            <p class="title-small">
+                Correct Answers: {{ oracleUserCorrectTotal }} / {{ 10 }}
+            </p>
+            <p class="title-small">
+                Total Time: {{ oracleTotalTime }} seconds
+            </p>
+        </div>
+        <h2 class="headline-medium" style="margin-top: 10px;">
+            Similarity Interface Results
+        </h2>
+        <img style="max-width: 500px;" src="./../assets/Step1Interaction.png">
+
+        <div>
+            <p class="title-small">
+                Correct Answers: {{ similarityUserCorrectTotal }} / {{ 10 }}
+            </p>
+            <p class="title-small">
+                Total Time: {{ similarityTotalTime }} seconds
+            </p>
+        </div>
+
+        
     </div>
 </template>
 
@@ -76,7 +85,7 @@ var similarityUserCorrectTotal = ref(0)
 var similarityTimePerTask = ref([])
 var similarityTotalTime = ref(0)
 
-fetch('./src/assets/pool1/info.json', {
+fetch('./src/assets/pool2/info.json', {
     headers: {
         'Accept': 'application/json',
     }
@@ -138,7 +147,5 @@ fetch('./src/assets/pool2/info.json', {
         }
 
     });
-
-
 
 </script>
