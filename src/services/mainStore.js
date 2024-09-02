@@ -60,7 +60,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		return (uiLists.value[0])
 
 	})
-	cosnt current
+	
 
 	const currentDs = computed(() => {
 		currentDsName.value = currentDsName.value ?? "ds1"
