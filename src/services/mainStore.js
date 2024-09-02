@@ -47,7 +47,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		if (params[1] === "sp") {
 			uiLists.value = ["similarity", "oracle"]
 			navigationPreset.value= [
-				"simiarity-page", 
+				"similarity-page", 
 				"survey-page", 
 				"oracle-page",
 				"survey-page", 
