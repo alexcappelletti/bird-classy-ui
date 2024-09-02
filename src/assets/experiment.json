@@ -4,14 +4,35 @@
 		"tasks": [
 			{
 				"name": "",
-				"currentAnswer": "undefined",
+				"currentAnswer": 0,
+				"targetImage": "/targetPics/tp0.jpg",
+				"species": [
+					{
+						"speciesName": "American Dipper",
+						"description": "It is a stocky grey bird with a head sometimes tinged with brown, and white feathers on the eyelids that cause the eyes to flash white as the bird blinks. It is 16.5 cm (6.5 in) long, has a wingspan of 23 cm (9.1 in), and weighs on average 46 g (1.6 oz). The name 'dipper' derives from its long legs, which it uses to bob its whole body up and down during pauses as it feeds on the bottom of fast-moving, rocky streams.",
+						"wikiLink": "https://en.wikipedia.org/wiki/American_dipper",
+						"confidence": 95,
+						"imagesFolder": "american dipper"
+					},
+					{
+						"speciesName": "Brewers Blackbird",
+						"description": "not specified",
+						"wikiLink": "",
+						"confidence": 0,
+						"imagesFolder": ""
+					}
+				]
+			},
+			{
+				"name": "",
+				"currentAnswer": 0,
 				"targetImage": "/logo.png",
 				"species": {
 					"speciesName": "not specified",
 					"description": "not specified",
 					"wikiLink": "",
 					"confidence": 0,
-					"imageUri": ""
+					"imagesFolder": ""
 				}
 			}
 		]
@@ -21,14 +42,14 @@
 		"tasks": [
 			{
 				"name": "",
-				"currentAnswer": "undefined",
+				"currentAnswer": 0,
 				"targetImage": "/logo.png",
 				"species": {
 					"speciesName": "not specified",
 					"description": "not specified",
 					"wikiLink": "",
 					"confidence": 0,
-					"imageUri": ""
+					"imagesFolder": ""
 				}
 			}
 		]

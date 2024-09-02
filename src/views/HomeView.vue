@@ -17,7 +17,7 @@ onBeforeMount(()=>{
 })
 function nextUI() {
 	console.log("cset new store content")
-	store.nextInContext();
+	
 }
 onBeforeRouteUpdate(async (to, from) => {
 	// react to route changes...
