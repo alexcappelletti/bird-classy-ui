@@ -1,10 +1,10 @@
 <template>
 	<div>Here is the home view</div>
-	<RouterLink :to="store.nextUI" @click="nextUI">go to {{ store.nextUI }}</RouterLink>
+	<RouterLink :to="{name: store.navigateTo}" @click="goToFirstUI">go to {{ pageLabel }}</RouterLink>
 </template>
 
 <script setup>
-import { inject, onBeforeMount } from 'vue'
+import { inject, onBeforeMount, computed } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'
 const store = inject('mainStore')
 
@@ -15,10 +15,20 @@ onBeforeMount(()=>{
 
 
 })
-function nextUI() {
-	console.log("cset new store content")
-	
+
+const pageLabel = computed(()=>{
+	const rawName = store.navigateTo
+	return rawName?.split("-")[0] ?? "next page"
+})
+
+function goToFirstUI() {
+	console.log("goto first UI")
+	store.navigate();
 }
+
+
+
+
 onBeforeRouteUpdate(async (to, from) => {
 	// react to route changes...
 	console("on before route update");
