@@ -189,8 +189,6 @@ import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 
-const mainStore = useMainStore();
-
 const store = interactionStore()
 const isHelpVisible = ref(true)
 const mainStore = useMainStore()
