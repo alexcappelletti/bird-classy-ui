@@ -206,11 +206,11 @@ const targetImage = computed(()=>{
 
 
 function bestSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/inferedPics/${species.imagesFolder}/best/${imageIdx}.jpg`
+	const localUrl = `src/assets/${species.imagesFolder}/best/${imageIdx}.jpg`
 	return localUrl
 }
 function worstSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/inferedPics/${species.imagesFolder}/worst/${imageIdx}.jpg`
+	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
 	return localUrl
 }
 
