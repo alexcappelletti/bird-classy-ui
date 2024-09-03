@@ -220,24 +220,16 @@ function getNow() {
     return today;
 }
 
-const initialVal = 'Most Similar Images from this Species';
+//const initialVal = 'Most Similar Images from this Species';
 const itemsPics = ['Most Similar Images from this Species', 'Least Similar Images from this Species'];
 const model = null;
 
 var idTab = ref(0)
-var tab = null
 
 function changeTab(tabVal){
     idTab.value = tabVal;
-    console.log(idTab.value)
 }
 
-function changeTabItem(item){
-    if(item == "Most Similar Images from this Species")
-        idTab.value = 0
-    else
-        idTab.value = 1 
-}
 
 
 async function startTask(ev) {

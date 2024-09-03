@@ -5,12 +5,54 @@ import { useMainStore } from '@/services/mainStore';
 export const interactionStore = defineStore('interactionStore',{
     state: () => {
         return {    
+
+            //Starting point for the timer
+            startingTime: 0,
+
+            //Variable that the timer is started only once
+            startSet: false,
+
+            //Index of the last task without timer, 1 means from the third one the timer will appear
+            indexNoTimer: 1,
+
+            //Variables that manage the opening and closing of the cards
+            cardOpened: false,
+            appearInfo: false,
+
+            //Indicates which card has been opened last
+            cardNumber: 0,
+
+            //Used to check if the timer (for the single task) was already started for each task, reset on completion of previous task
+            //For the graphical element
+            timerOn: false,
+
+            //PageHelp
+            HelpPage: true,
+
+            //Elements that saved the user actions
+            //timePerTask is the time from the start of the task, until the users click the "Confirm" Button or runs out of time
+            //answerGiven is the index of the species the user selected as answer
+            //openedWiki saves which links are opened by the user during the task, the index of this element is the index of the species, false = wikipedia page not opened
+            CollectedData:[{
+                "timePerTask": null,
+                "answerGiven": null,
+                "openedWiki": [false, false, false]
+            }],
+
+
+            //totalTime: 0, I don't think it's useful but I'm not 100% sure
+
+            //Time given to each task before skipping
+            timerDuration: 60,
+
+            //variable to saves setIntervalID to clear it after each task
+            intervalID: null,
+
+            /* -------------- Data to be removed after full merge of mainStore -------------- */
+
             //Storing the JSON
             dataJson:  {},
 
-            //Data to obtain before loading the page
-            startingTime: 0,
-            startSet: false,
             currentTask: 0,
             speciesNumber: 3,
             speciesNames: [[]],
@@ -18,7 +60,6 @@ export const interactionStore = defineStore('interactionStore',{
             //speciesPics:[],
             speciesPics:[],
             speciesWikiLink: [[]],
-            speciesTimer: [],
 
             //info about location of resources (pool is 1 or 2, while dataPath should be "./src/assets/pool"), generally used combined
             poolData: null,
@@ -27,32 +68,9 @@ export const interactionStore = defineStore('interactionStore',{
             //path to the target images
             targetPics: [],
             
-            //Index of the last task without timer, 1 means from the third one the timer will appear
-            indexNoTimer: 1,
-
-            //Data regarding actions in the page
-            cardOpened: false,
-            cardNumber: 0,
-            appearInfo: false,
-
-            timerOn: false,
-
-            //PageHelp
-            HelpPage: true,
-
-            CollectedData:[{
-                "timePerTask": null,
-                "answerGiven": null,
-                "openedWiki": [false, false, false]
-            }],
-
-            totalTime: 0,
-
-            //Time given to each task before skipping
-            timerDuration: 60,
-            intervalID: null,
         }
     },
+    // All getters should be removed
     getters: {
         currentSpecies(state){
 		    //return state.currentTask?.speciesName?.su ?? "undefined";
@@ -285,20 +303,56 @@ export const oracleStore = defineStore('oracleStore',{
     state: () => {
         return {
 
+            //Starting point for the timer
+            startingTime: 0,
+
+            //Variable that ensures that only one timer (globally) is started
+            startSet: false,
+
+            //Index of the last task without timer, 1 means from the third one the timer will appear
+            indexNoTimer: 1,
+
+            //Indicates which species is currently shown in the task
+            speciesVisualized: 0,
+
+            //PageHelp
+            HelpPage: true,
+
+            //Used to check if the timer (for the single task) was already started for each task, reset on completion of previous task
+            //For the graphical element
+            timerOn: false,
+            
+            //Elements that saved the user actions
+            //timePerTask is the time from the start of the task, until the users click the "Confirm" Button or runs out of time
+            //answerGiven is the index of the species the user selected as answer
+            //openedWiki saves which links are opened by the user during the task, the index of this element is the index of the species, false = wikipedia page not opened
+            CollectedData:[{
+                "timePerTask": null,
+                "answerGiven": null,
+                "openedWiki": [false, false, false]
+            }],
+
+
+            //totalTime: 0, I don't think it's useful but I'm not 100% sure
+
+            //Time given to each task before skipping
+            timerDuration: 60,
+
+            //variable to saves setIntervalID to clear it after each task
+            intervalID: null,
+
+
+            /* -------------- Data to be removed after full merge of mainStore -------------- */
+
+
             //Storing the JSON
             dataJson:  {},
 
-            //Data to obtain before loading the page
-            //Starting point for the timer
-            startingTime: 0,
-            startSet: false,
             //Index of the task the user is completing
             currentTask: 0,
             //Number of displayed results
             speciesNumber: 3,
 
-            //Index of the last task without timer, 1 means from the third one the timer will appear
-            indexNoTimer: 1,
 
             //paths to the target images
             targetPics: [],
@@ -310,33 +364,11 @@ export const oracleStore = defineStore('oracleStore',{
             speciesConfidence: [[]],
             speciesWikiLink: [[]],
 
-            //Timestamp to calculate how much time each task required to be completed
-            speciesTimer: [],
-
-            //Data for displaying information
-            speciesVisualized: 0,
-
-            //PageHelp
-            HelpPage: true,
-
-            //Used to check if the timer was already started for each task, reset on completion of previous task
-            timerOn: false,
             
-            //Inital settings, empty, to add values during the usage
-            CollectedData:[{
-                "timePerTask": null,
-                "answerGiven": null,
-                "openedWiki": [false, false, false]
-            }],
-
-            totalTime: 0,
-
-            //Time given to each task before skipping
-            timerDuration: 60,
-            intervalID: null,
 
         }
     },
+    // All getters should be removed
     getters: {
         currentSpecies(state){
             var species = state.speciesNames[state.currentTask][state.speciesVisualized];
@@ -454,6 +486,9 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         nextTask(){
+
+            //add if to check if task is finished (pass to next UI)
+
             if(this.currentTask + 1 == this.dataJson["tasks"].length){
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
@@ -467,7 +502,8 @@ export const oracleStore = defineStore('oracleStore',{
                 localStorage.setItem('oracleResults', dataToWrite);
                 clearInterval(this.intervalID);
                 this.intervalID = null;
-                this.blockTimerVisual()
+                this.blockTimerVisual();
+
             }
             else if(this.currentTask < this.dataJson["tasks"].length){
                 this.CollectedData.push({
@@ -482,6 +518,9 @@ export const oracleStore = defineStore('oracleStore',{
 
                 this.generateTimer();
             }
+
+            //useMainStore.nextTask();
+
         },
 
         writeData(){
