@@ -2,14 +2,14 @@
     <div class="navbar">
         <div class="navbar-elems">
             <v-btn
-            v-if=!storeI.HelpPage
+            v-if=!mainStore.showHelp
             width=130px
             color="OnSurfaceVariant"
             rounded="pill"
             text="How to use"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="storeI.openHelp(); storeO.openHelp();"
+            @click="mainStore.changeHelp()"
             ></v-btn>
             <v-btn
             v-else
@@ -19,7 +19,7 @@
             text="Go to Task"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="storeI.openHelp(); storeO.openHelp();"
+            @click="mainStore.changeHelp()"
             ></v-btn>
             <v-spacer></v-spacer>
             <p class="display-small" style="color: #404943;">
@@ -39,8 +39,9 @@
 
 <script setup>
 import { interactionStore, oracleStore } from '@/store/iStore.js'
+import { useMainStore } from '@/services/mainStore';
 const storeI = interactionStore()
 const storeO = oracleStore()
-
+const mainStore = useMainStore()
 
 </script>

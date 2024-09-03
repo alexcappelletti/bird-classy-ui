@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!mainStore.showHelp" class="interaction-container" style="margin-top: 5%;">
+    <div v-if="!store.HelpPage" class="interaction-container" style="margin-top: 5%;">
 
         <div class="interaction-vertical" style="position: fixed; left: 20%">
             <p class="headline-large">Image to Identify</p>
@@ -189,8 +189,9 @@ import { onBeforeMount, onMounted, ref } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 
+const mainStore = useMainStore();
+
 const store = interactionStore()
-const mainStore = useMainStore(0)
 
 onBeforeMount(() => {
     //get the info on which to load from the link
