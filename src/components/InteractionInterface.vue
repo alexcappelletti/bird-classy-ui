@@ -11,12 +11,11 @@
 
             <div class="interaction-cards">
                 <v-card v-for="s in mainStore.currentTask.species" :key="s.speciesName" width="180" class="rounded-lg" hover color="Secondary95"
-                    @click="store.openPage(i - 1);">
+                    @click="store.openPage(mainStore.currentTask.species.indexOf(s));">
                     <v-img :src="bestSimilarPicture(s, 0)" cover></v-img>
                     <p class="body-large pa-4">{{ s.speciesName }}</p>
                 </v-card>
             </div>
-
         </div>
 
         <v-fade-transition>
@@ -25,9 +24,11 @@
                     max-width="800px">
 
                     <div class="zoom-card">
+                        <!--<v-img class="mx-auto" style="border-radius: 5%;" width="300px"
+                            :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, 0)"></v-img>-->
                         <v-img class="mx-auto" style="border-radius: 5%;" width="300px"
-                            :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, 0)"></v-img>
-                        <p class="headline-large">{{ store.currentSpecies }}</p>
+                            :src="bestSimilarPicture(mainStore.currentTask.species[store.cardNumber], 0)"></v-img>
+                        <p class="headline-large">{{ mainStore.currentTask.species[store.cardNumber].speciesName }}</p>
 
                         <!--<v-tabs v-model="initialVal" align-tabs="center" color="deep-purple-accent-4">
                             <v-tab v-for="item in itemsPics" :key="item" :text="item" :value="item"></v-tab>
@@ -63,7 +64,7 @@
                                 <v-slide-group-item v-for="i in 8" :key="i">
 
                                     <v-img class="ma-2"
-                                        :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, i)"
+                                        :src="bestSimilarPicture(mainStore.currentTask.species[store.cardNumber], i)"
                                         height="150px" width="150px" cover></v-img>
 
                                 </v-slide-group-item>
@@ -74,7 +75,7 @@
                                 <v-slide-group-item v-for="i in 8" :key="i">
 
                                     <v-img class="ma-2"
-                                        :src="store.getSimilarityPicWorst(store.currentTask, store.cardNumber, i - 1)"
+                                        :src="worstSimilarPicture(mainStore.currentTask.species[store.cardNumber], i - 1)"
                                         height="150px" width="150px" cover></v-img>
 
                                 </v-slide-group-item>
@@ -84,7 +85,7 @@
 
                         <div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
                             <p id="description" class="body-large text-justify">
-                                {{ store.currentDescription }}.. <a class='wikilink' :href="store.currentLink"
+                                {{ mainStore.currentTask.species[store.cardNumber].description }}.. <a class='wikilink' :href="store.currentLink"
                                     target='_blank' @click="store.addWikiClick()">Wikipedia</a></p>
                         </div>
 
@@ -231,11 +232,9 @@ function changeTab(tabVal){
 }
 
 
-
 async function startTask(ev) {
 	store.setStart(getNow()) 
 	store.generateTimer()
 	isHelpVisible.value = false
-	
 }
 </script>
