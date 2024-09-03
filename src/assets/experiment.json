@@ -5,7 +5,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp0.jpg",
+				"targetImage": "targetPics/ds1/tp0.jpg",
 				"species": [
 					{
 						"speciesName": "Shoebill",
@@ -33,7 +33,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp1.jpg",
+				"targetImage": "targetPics/ds1/tp1.jpg",
 				"species": [
 					{
 						"speciesName": "Burcherll's Courser",
@@ -61,7 +61,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp2.jpg",
+				"targetImage": "targetPics/ds1/tp2.jpg",
 				"species": [
 					{
 						"speciesName": "Striped Owl",
@@ -89,7 +89,7 @@
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/tp3.jpg",
+				"targetImage": "targetPics/ds1/tp3.jpg",
 				"species": [
 					{
 						"speciesName": "Common House Martin",
@@ -117,7 +117,7 @@
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/tp4.jpg",
+				"targetImage": "targetPics/ds1/tp4.jpg",
 				"species": [
 					{
 						"speciesName": "Mourning Dove",
@@ -145,7 +145,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp5.jpg",
+				"targetImage": "targetPics/ds1/tp5.jpg",
 				"species": [
 					{
 						"speciesName": "Black Skimmer",
@@ -173,7 +173,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp6.jpg",
+				"targetImage": "targetPics/ds1/tp6.jpg",
 				"species": [
 					{
 						"speciesName": "American Goldfinch",
@@ -201,7 +201,7 @@
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/tp7.jpg",
+				"targetImage": "targetPics/ds1/tp7.jpg",
 				"species": [
 					{
 						"speciesName": "Spoon Biled Sandpiper",
@@ -229,7 +229,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp8.jpg",
+				"targetImage": "targetPics/ds1/tp8.jpg",
 				"species": [
 					{
 						"speciesName": "Smith's Longspur",
@@ -257,7 +257,7 @@
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/tp9.jpg",
+				"targetImage": "targetPics/ds1/tp9.jpg",
 				"species": [
 					{
 						"speciesName": "Forest Wagtail",
@@ -290,7 +290,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp0.jpg",
+				"targetImage": "targetPics/ds2/tp0.jpg",
 				"species": [
 					{
 						"speciesName": "American Dipper",
@@ -318,7 +318,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp1.jpg",
+				"targetImage": "targetPics/ds2/tp1.jpg",
 				"species": [
 					{
 						"speciesName": "American Kestrel",
@@ -346,7 +346,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp2.jpg",
+				"targetImage": "targetPics/ds2/tp2.jpg",
 				"species": [
 					{
 						"speciesName": "Anna's Hummingbird",
@@ -374,7 +374,7 @@
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/tp3.jpg",
+				"targetImage": "targetPics/ds2/tp3.jpg",
 				"species": [
 					{
 						"speciesName": "Red Crossbill",
@@ -402,7 +402,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp4.jpg",
+				"targetImage": "targetPics/ds2/tp4.jpg",
 				"species": [
 					{
 						"speciesName": "Black Breasted Puffbird",
@@ -430,7 +430,7 @@
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/tp5.jpg",
+				"targetImage": "targetPics/ds2/tp5.jpg",
 				"species": [
 					{
 						"speciesName": "Chucao Tapaculo",
@@ -458,7 +458,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp6.jpg",
+				"targetImage": "targetPics/ds2/tp6.jpg",
 				"species": [
 					{
 						"speciesName": "Dusky Robin",
@@ -486,7 +486,7 @@
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/tp7.jpg",
+				"targetImage": "targetPics/ds2/tp7.jpg",
 				"species": [
 					{
 						"speciesName": "Hepatic Tanager",
@@ -514,7 +514,7 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/tp8.jpg",
+				"targetImage": "targetPics/ds2/tp8.jpg",
 				"species": [
 					{
 						"speciesName": "Northern Mockingbird",
@@ -542,7 +542,7 @@
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/tp9.jpg",
+				"targetImage": "targetPics/ds2/tp9.jpg",
 				"species": [
 					{
 						"speciesName": "Says Phoebe",

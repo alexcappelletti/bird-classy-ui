@@ -50,16 +50,11 @@ export function setupRouter(){
 			console.log("beforeEach " +to.name)
 			const toName = to.name 
 			if (toName === "home-page" ) {
-				console.log("setting expr context " + to.query.ctx)
+				//console.log("setting expr context " + to.query.ctx)
 				const exprContext = to.query.ctx ?? "";
 				mainStore.setExperimentContext(exprContext)
 				await mainStore.loadDatasets()
 			}
-			
-			
-
-			// 	return {path: "/", query: {redirect: to.fullPath}}
-			// }
 			//	if (to.name === "errorPage") {return true}
 		}
 		catch (err) {
