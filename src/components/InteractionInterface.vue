@@ -1,19 +1,19 @@
 <template>
-    <div v-if="!store.HelpPage" class="interaction-container" style="margin-top: 5%;">
+    <div v-if="!isHelpVisible" class="interaction-container" style="margin-top: 5%;">
 
         <div class="interaction-vertical" style="position: fixed; left: 20%">
             <p class="headline-large">Image to Identify</p>
-            <img :src="store.currentTargetPic" style="border-radius: 5%;">
+            <img :src="targetImage" style="border-radius: 5%;">
         </div>
 
         <div class="interaction-vertical" style=" position: relative; left: 15%" v-if="!store.cardOpened">
             <p class="headline-large">Suggested Images</p>
 
             <div class="interaction-cards">
-                <v-card v-for="i in 3" :key="i" width="180" class="rounded-lg" hover color="Secondary95"
+                <v-card v-for="s in mainStore.currentTask.species" :key="s.speciesName" width="180" class="rounded-lg" hover color="Secondary95"
                     @click="store.openPage(i - 1);">
-                    <v-img :src="store.getSimilarityPicBest(store.currentTask, i - 1, 0)" cover></v-img>
-                    <p class="body-large pa-4">{{ store.speciesNames[store.currentTask][i - 1] }}</p>
+                    <v-img :src="bestSimilarPicture(s, 0)" cover></v-img>
+                    <p class="body-large pa-4">{{ s.speciesName }}</p>
                 </v-card>
             </div>
 
@@ -176,7 +176,7 @@
 
         <div style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary"
-                @click="store.setStart(getNow()); store.generateTimer(); store.openHelp();">
+                @click="startTask">
                 Switch to the Task
             </v-btn>
         </div>
@@ -185,18 +185,36 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, ref } from 'vue';
+import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 
 const mainStore = useMainStore();
 
 const store = interactionStore()
+const isHelpVisible = ref(true)
+const mainStore = useMainStore()
 
 onBeforeMount(() => {
     //get the info on which to load from the link
     store.loadData('./src/assets/pool', 2);
+	
 })
+
+const targetImage = computed(()=>{
+	const src = `src/assets/${mainStore.currentTask.targetImage}`
+	return src
+})
+
+
+function bestSimilarPicture(species, imageIdx) {
+	const localUrl = `src/assets/${species.imagesFolder}/best/${imageIdx}.jpg`
+	return localUrl
+}
+function worstSimilarPicture(species, imageIdx) {
+	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
+	return localUrl
+}
 
 
 function getNow() {
@@ -215,4 +233,11 @@ function changeTab(tabVal){
 }
 
 
+
+async function startTask(ev) {
+	store.setStart(getNow()) 
+	store.generateTimer()
+	isHelpVisible.value = false
+	
+}
 </script>

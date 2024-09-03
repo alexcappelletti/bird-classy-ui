@@ -5,280 +5,280 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp0.jpg",
+				"targetImage": "targetPics/ds1/tp0.jpg",
 				"species": [
 					{
 						"speciesName": "Shoebill",
 						"description": "The shoebill is a tall bird, with a typical height range of 110 to 140 cm (43 to 55 in) and some specimens reaching as much as 152 cm (60 in). Length from tail to beak can range from 100 to 140 cm (39 to 55 in) and wingspan is 230 to 260 cm (7 ft 7 in to 8 ft 6 in). Weight has reportedly ranged from 4 to 7 kg (8.8 to 15.4 lb). A male will weigh on average around 5.6 kg (12 lb) and is larger than a typical female of 4.9 kg (11 lb).",
 						"wikiLink": "https://en.wikipedia.org/wiki/Shoebill",
 						"confidence": 80,
-						"imagesFolder": "pics/shoebill"
+						"imagesFolder": "inferencedPics/shoebill"
 					},
 					{
 						"speciesName": "Asian Openbil Stork",
 						"description": "The Asian openbill stork is predominantly greyish (non-breeding season) or white (breeding season) with glossy black wings and tail that have a green or purple sheen. The name is derived from the distinctive gap formed between the recurved lower and arched upper mandible of the beak in adult birds. Young birds do not have this gap. The cutting edges of the mandible have a fine brush like structure that is thought to give them better grip on the shells of snails.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Asian_openbill",
 						"confidence": 15,
-						"imagesFolder": "pics/asian openbill stork"
+						"imagesFolder": "inferencedPics/asian openbill stork"
 					},
 					{
 						"speciesName": "Lesser Adjutant",
 						"description": "A large stork with an upright stance, a bare head and neck without a pendant pouch, it has a length of 87–93 cm (34–37 in) (outstretched from bill-to-tail measurement), weighs from 4 to 5.71 kg (8.8 to 12.6 lb) and stands about 110–120 cm (43–47 in) tall. The only confusable species is the greater adjutant, but this species is generally smaller and has a straight upper bill edge (culmen), measuring 25.8–30.8 cm (10.2–12.1 in) in length, with a paler base and appears slightly trimmer and less hunch-backed.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Lesser_adjutant",
 						"confidence": 5,
-						"imagesFolder": "pics/lesser adjutant"
+						"imagesFolder": "inferencedPics/lesser adjutant"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp1.jpg",
+				"targetImage": "targetPics/ds1/tp1.jpg",
 				"species": [
 					{
 						"speciesName": "Burcherll's Courser",
 						"description": "Burchell's courser has a graceful figure and an upright posture. It has a blue-grey hind crown which is mainly how it differs from the similar Temminck's Courser. It also has a horizontal black band demarcating a white underbelly, and an overall pale rufous colour. Its face features white supercilia above black eye lines, all ending at the back of the neck to form a double V. In terms of feathers, its secondaries are mostly white with a black underwing and brown to grey coverts.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Burchell%27s_courser",
 						"confidence": 75,
-						"imagesFolder": "pics/burchells courser"
+						"imagesFolder": "inferencedPics/burchells courser"
 					},
 					{
 						"speciesName": "Inland Dotterel",
 						"description": "The inland dotterel is a medium-sized plover with a distinctive cryptic plumage. Males and females are similarly sized: 19–23 cm (7.5–9 in) in length, a wingspan of 43–47 cm (17–19 in) a weight of 80–90 g (2.8–3.2 oz), and a short bill 1.7 cm (0.67 in). It is unlikely to be confused with any other species when found in its normal habitat. Its upperparts are a rich sandy buff, mottled with dark brown. The black band across the crown extending down through the eye is unique.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Inland_dotterel",
 						"confidence": 13,
-						"imagesFolder": "pics/inland dotterel"
+						"imagesFolder": "inferencedPics/inland dotterel"
 					},
 					{
 						"speciesName": "American Avocet",
 						"description": "The American avocet measures 40–51 cm (16–20 in) in length, has a wingspan of 68–76 cm (27–30 in) and weighs 275–420 g (9.7–14.8 oz) The bill is black, pointed, and curved slightly upwards towards the tip. It is long, surpassing twice the length of the avocet's small, rounded head. Like many waders, the avocet has long, slender legs and slightly webbed feet. The legs are a pastel grey-blue, giving it its colloquial name, blue shanks. The plumage is black and white on the back, with white on the underbelly.",
 						"wikiLink": "https://en.wikipedia.org/wiki/American_avocet",
 						"confidence": 12,
-						"imagesFolder": "pics/american avocet"
+						"imagesFolder": "inferencedPics/american avocet"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp2.jpg",
+				"targetImage": "targetPics/ds1/tp2.jpg",
 				"species": [
 					{
 						"speciesName": "Striped Owl",
 						"description": "The striped owl is a relatively large species with prominent tufts of elongated feathers on the crown resembling ears. It is 30–38 cm (12–15 in) long and weighs from 320 to 546 g (11.3 to 19.3 oz). Its head, back, wings and tail are brown with black stripes and small markings while its underparts are buff-coloured with heavy black streaking on the breast. The facial disk is pure white with a thin black border.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Striped_owl",
 						"confidence": 45,
-						"imagesFolder": "pics/striped owl"
+						"imagesFolder": "inferencedPics/striped owl"
 					},
 					{
 						"speciesName": "Long-Eared Owl",
 						"description": "This species is a rather slim and long winged owl with usually prominent erectile ear tufts, which are positioned closer to the center of the head than in many other types of owl. The purposes of ear tufts are not definitively known and are present in about half of living owls. Arguably the most popular theory amongst biologists and ornithologists is that ear tufts could be a means of intraspecies communication of intent and mood. In general coloration, the long-eared owl is often considered a hue of ochraceous-tawny with a grayish or brownish wash variably manifesting. The base color is commonly overlaid with variable blackish vertical streaks (and occasionally spots), which are usually more apparent about the wings and back",
 						"wikiLink": "https://en.wikipedia.org/wiki/Long-eared_owl",
 						"confidence": 35,
-						"imagesFolder": "pics/long-eared owl"
+						"imagesFolder": "inferencedPics/long-eared owl"
 					},
 					{
 						"speciesName": "Snowy Owl",
 						"description": "The snowy owl is mostly white. They are purer white than predatory mammals like polar bears (Ursus maritimus) and Arctic fox (Vulpes lagopus). Often when seen in the field, these owls can resemble a pale rock or a lump of snow on the ground. It usually appears to lack ear tufts but very short (and probably vestigial) tufts can be erected in some situations, perhaps most frequently by the female when she is sitting on the nest. The ear tufts measure about 20 to 25 mm (0.79 to 0.98 in) and consist of about 10 small feathers. The snowy owl has bright yellow eyes. The head is relatively small and, even for the relatively simply adapted hearing mechanism of a Bubo owl, the facial disc is shallow and the ear is uncomplicated",
 						"wikiLink": "https://en.wikipedia.org/wiki/Snowy_owl",
 						"confidence": 20,
-						"imagesFolder": "pics/snowy owl"
+						"imagesFolder": "inferencedPics/snowy owl"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/ds1/tp3.jpg",
+				"targetImage": "targetPics/ds1/tp3.jpg",
 				"species": [
 					{
 						"speciesName": "Common House Martin",
 						"description": "The adult western house martin is 13 cm (5 in) long, with a wingspan of 26–29 cm (10–11+1⁄2 in) and a weight averaging 18.3 g (21⁄32 oz). It is steel-blue above with a white rump, and white underparts, including the underwings; even its short legs have white downy feathering. It has brown eyes and a small black bill, and its toes and exposed parts of the legs are pink. The sexes are similar, but the juvenile bird is sooty black, and some of its wing coverts and quills have white tips and edgings. D. u. lagopodum differs from the nominate race in that its white rump extends much further onto the tail, and the fork of its tail is intermediate in depth between that of D. u. urbicum and that of the Asian house martin.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Western_house_martin",
 						"confidence": 80,
-						"imagesFolder": "pics/common house martin"
+						"imagesFolder": "inferencedPics/common house martin"
 					},
 					{
 						"speciesName": "Violet Green Swallow",
 						"description": "The distinct body form of swallows distinguishes them from other passerine birds. Their long pointed wings and slim, streamlined body evolved to catch insects while in flight. The body of the violet-green swallow is no exception. With an average body length of 5¼ in. (13 cm), the violet-green swallow is slightly shorter and appears more compact in flight compared to other members of the family Hirundinidae. The violet-green swallow most closely resembles the North American tree swallow, but can be distinguished by its shorter wings and colouration.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Violet-green_swallow",
 						"confidence": 12,
-						"imagesFolder": "pics/violet green swallow"
+						"imagesFolder": "inferencedPics/violet green swallow"
 					},
 					{
 						"speciesName": "Sand Martin",
 						"description": "The sand martin is brown above, white below with a narrow brown band on the breast; the bill is black, the legs brown. The young have rufous tips to the coverts and margins to the secondaries. Its brown back, white throat, small size and quick jerky flight separate it at once from similar swallows, such as the common house martin (Delichon urbicum), the American cliff swallow (Petrochelidon pyrrhonota) or other species of Riparia. Only the banded martin (Neophedina cincta) of sub-Saharan Africa is similar, but the sand martin only occurs there in (the northern) winter.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Sand_martin",
 						"confidence": 8,
-						"imagesFolder": "pics/sand martin"
+						"imagesFolder": "inferencedPics/sand martin"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/ds1/tp4.jpg",
+				"targetImage": "targetPics/ds1/tp4.jpg",
 				"species": [
 					{
 						"speciesName": "Mourning Dove",
 						"description": "The mourning dove is a medium-sized, slender dove approximately 31 cm (12 in) in length. Mourning doves weigh 112–170 g (4.0–6.0 oz), usually closer to 128 g (4.5 oz). The mourning dove has a wingspan of 37–45 cm. The elliptical wings are broad, and the head is rounded. Its tail is long and tapered ('macroura' comes from the Greek words for 'large' and 'tail'). Mourning doves have perching feet, with three toes forward and one reversed. The legs are short and reddish colored. The beak is short and dark, usually a brown-black hue.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Mourning_dove",
 						"confidence": 50,
-						"imagesFolder": "pics/mourning dove"
+						"imagesFolder": "inferencedPics/mourning dove"
 					},
 					{
 						"speciesName": "European Turtle Dove",
 						"description": "Smaller and slighter in build than many other doves, it measures 26–28 cm (10–11 in) in length, 47–53 cm (19–21 in) in wingspan and weighs 100–156 g (3.5–5.5 oz). The European turtle dove may be recognised by its browner colour, and the black-and-white-striped patch on the side of its neck. The tail is notable as the bird flies from the observer; it is wedge shaped, with a dark centre and white borders and tips. When viewed from below, this pattern, owing to the white under-tail coverts obscuring the dark bases, is a blackish chevron on a white ground. This can be seen when the bird stoops to drink and raises its spread tail.",
 						"wikiLink": "https://en.wikipedia.org/wiki/European_turtle_dove",
 						"confidence": 30,
-						"imagesFolder": "pics/european turtle dove"
+						"imagesFolder": "inferencedPics/european turtle dove"
 					},
 					{
 						"speciesName": "Zebra Dove",
 						"description": "The birds are small and slender with a long, narrow tail. The upperparts are brownish-grey with black-and-white barring. The underparts are pinkish with black bars on the sides of the neck, breast and belly. The face is blue-grey with bare blue skin around the eyes. There are white tips to the tail feathers. Juveniles are duller and paler than the adults. They can also have brown feathers. Zebra doves are 20–23 centimetres in length with a wingspan of 24–26 cm.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Zebra_dove",
 						"confidence": 20,
-						"imagesFolder": "pics/zebra dove"
+						"imagesFolder": "inferencedPics/zebra dove"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp5.jpg",
+				"targetImage": "targetPics/ds1/tp5.jpg",
 				"species": [
 					{
 						"speciesName": "Black Skimmer",
 						"description": "The black skimmer is the largest of the three skimmer species. It measures 40–50 cm (16–20 in) long with a 107–127 cm (42–50 in) wingspan. This species ranges from 212 to 447 g (7.5 to 15.8 oz), with males averaging about 349 g (12.3 oz), as compared to the smaller females 254 g (9.0 oz). The basal half of the bill is red, the rest mainly black, and the lower mandible is much-elongated. The eye has a dark brown iris and catlike vertical pupil, unique for a bird. The legs are red. The call is a barking kak-kak-kak.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Black_skimmer",
 						"confidence": 68,
-						"imagesFolder": "pics/black skimmer"
+						"imagesFolder": "inferencedPics/black skimmer"
 					},
 					{
 						"speciesName": "Oystercatcher",
 						"description": "The different species of oystercatcher show little variation in shape or appearance. They range from 39–50 centimetres (15+1⁄2–19+1⁄2 inches) in length and 72–91 cm (28+1⁄2–36 in) in wingspan. The Eurasian oystercatcher is the lightest on average, at 526 grams (1 pound 2+1⁄2 ounces), while the sooty oystercatcher is the heaviest, at 819 g (1 lb 13 oz). The plumage of all species is either all-black, or black (or dark brown) on top and white underneath.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Oystercatcher",
 						"confidence": 22,
-						"imagesFolder": "pics/oyster catcher"
+						"imagesFolder": "inferencedPics/oyster catcher"
 					},
 					{
 						"speciesName": "Razorbill",
 						"description": "The razorbill has a white belly and a black head, neck, back, and feet during the breeding season. A thin white line also extends from the eyes to the end of the bill. Its head is darker than that of a common murre. During the non-breeding season, the throat and face behind the eye become white, and the white line on the face and bill becomes less prominent. The bill is black, deep and laterally compressed, with a blunt end. It has several vertical grooves or furrows near the curved tip, one of them adorned with a white, broken vertical line.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Razorbill",
 						"confidence": 10,
-						"imagesFolder": "pics/razorbill"
+						"imagesFolder": "inferencedPics/razorbill"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp6.jpg",
+				"targetImage": "targetPics/ds1/tp6.jpg",
 				"species": [
 					{
 						"speciesName": "American Goldfinch",
 						"description": "The American goldfinch is a small finch, 11–14 cm (4.3–5.5 in) long, with a wingspan of 19–22 cm (7.5–8.7 in). It weighs between 11–20 g (0.39–0.71 oz). Among standard measurements, the wing chord is 6.5 to 7.8 cm (2.6 to 3.1 in), the tail is 4.2 to 5.1 cm (1.7 to 2.0 in), the culmen is 0.9 to 1.1 cm (0.35 to 0.43 in) and the tarsus is 1.2 to 1.4 cm (0.47 to 0.55 in). The beak is small, conical, and pink for most of the year, but turns bright orange with the spring molt in both sexes. The shape and size of the beak aid in the extraction of seeds from the seed heads of thistles, sunflowers, and other plants.",
 						"wikiLink": "https://en.wikipedia.org/wiki/American_goldfinch",
 						"confidence": 43,
-						"imagesFolder": "pics/american goldfinch"
+						"imagesFolder": "inferencedPics/american goldfinch"
 					},
 					{
 						"speciesName": "Yellow Canary",
 						"description": "The yellow canary is typically 10 cm in length. The adult male colour ranges from almost uniform yellow in the northwest of its range to streaked, olive backed birds in the southeast. The underparts, rump and tail sides are yellow. The female has grey-brown upperparts, black wings with yellow flight feathers, and a pale supercilium. The underparts are white with brown streaking. The juvenile resembles the female, but has heavier streaking.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Yellow_canary",
 						"confidence": 38,
-						"imagesFolder": "pics/canary"
+						"imagesFolder": "inferencedPics/canary"
 					},
 					{
 						"speciesName": "Andead Siskin",
 						"description": "This is a small green-and-yellow finch. According to some sources, it is the smallest species of finch on average, although others give this title to the lesser goldfinch. The total length can range from 9.5 to 11 cm (3.7 to 4.3 in). A weight of 11.5 g (0.41 oz) may be at the high end. Few standard measurements are known, although the bill has been recorded at 1.1 cm (0.43 in) and the wing chord length is reportedly around 6.4 cm (2.5 in). The Andean siskin has deep green upperparts with black and yellow coloration on the wings and tail.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Andean_siskin",
 						"confidence": 19,
-						"imagesFolder": "pics/andean siskin"
+						"imagesFolder": "inferencedPics/andean siskin"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/ds1/tp7.jpg",
+				"targetImage": "targetPics/ds1/tp7.jpg",
 				"species": [
 					{
 						"speciesName": "Spoon Biled Sandpiper",
 						"description": "The most distinctive feature of this species is its spatulate bill. The breeding adult bird has a red-brown head, neck and breast with dark brown streaks, blackish upperparts with buff and pale rufous fringing. Non-breeding adults lack the reddish colouration, but have pale brownish-grey upperparts with whitish fringing to the wing-coverts. The underparts are white and the legs are black. It is 14–16 cm (5.5–6.3 in) long.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Spoon-billed_sandpiper",
 						"confidence": 83,
-						"imagesFolder": "pics/spoon biled sandpiper"
+						"imagesFolder": "inferencedPics/spoon biled sandpiper"
 					},
 					{
 						"speciesName": "Dunlin",
 						"description": "An adult dunlin in breeding plumage shows the distinctive black belly which no other similar-sized wader possesses. In winter, dunlins are basically grey above and white below. Juveniles are brown above with two weak whitish 'V' shapes on the back, though less obvious than the same feature on little stint and some other species in the genus. They usually have black marks on the flanks or belly. All ages show a narrow white wingbar in flight.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Dunlin",
 						"confidence": 9,
-						"imagesFolder": "pics/dunlin"
+						"imagesFolder": "inferencedPics/dunlin"
 					},
 					{
 						"speciesName": "Red Knot",
 						"description": "An adult red knot is the second largest Calidris sandpiper, measuring 23–26 cm (9.1–10.2 in) long with a 47–53 cm (19–21 in) wingspan. The body shape is typical for the genus, with a small head and eyes, a short neck and a slightly tapering bill that is no longer than its head. It has short dark legs and a medium thin dark bill. The winter, or basic, plumage becomes uniformly pale grey, and is similar between the sexes. The alternate, or breeding, plumage is mottled grey on top with a cinnamon face, throat and breast and light-coloured rear belly.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_knot",
 						"confidence": 8,
-						"imagesFolder": "pics/red knot"
+						"imagesFolder": "inferencedPics/red knot"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds1/tp8.jpg",
+				"targetImage": "targetPics/ds1/tp8.jpg",
 				"species": [
 					{
 						"speciesName": "Smith's Longspur",
 						"description": "These birds have short cone-shaped bills, streaked backs, and dark tails with white outer rectrices. In breeding state plumage (mostly formed by worn basic plumage), the male has a pumpkin-orange throat, nape, and underparts contrasting with an intricate black-and-white face pattern. The white lesser coverts are quite pronounced on a male in spring and early summer. Females and immatures have lightly streaked buffy underparts, dark crowns, brown wings with less obvious white lesser coverts, and a light-colored face. The tail is identical at all ages.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Smith%27s_longspur",
 						"confidence": 72,
-						"imagesFolder": "pics/smiths longspur"
+						"imagesFolder": "inferencedPics/smiths longspur"
 					},
 					{
 						"speciesName": "Austral Canastero",
 						"description": "The austral canastero is 15.5 to 16.5 cm (6.1 to 6.5 in) long and weighs 21 to 23 g (0.74 to 0.81 oz). It is the southernmost canastero, and one of several streaked canasteros that have drab plumages with dark stripes on their upperparts. It has a shorter tail than many other canasteros. The sexes have the same plumage, but there is much individual variation. Adults have a whitish or pale buff supercilium and dark dusky lores on an otherwise sandy brownish face. Their crown, back, and rump are sandy brown with conspicuous blackish streaks.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Austral_canastero",
 						"confidence": 14,
-						"imagesFolder": "pics/austral canastero"
+						"imagesFolder": "inferencedPics/austral canastero"
 					},
 					{
 						"speciesName": "American Pipit",
 						"description": "Like most other pipits, the buff-bellied pipit is an undistinguished-looking species which usually can be seen to run around on the ground. The rubescens subspecies (or American pipit) has lightly streaked grey-brown upperparts and is diffusely streaked below on the buff breast and flanks. The belly is whitish, the bill and legs are dark. The japonicus subspecies (or Japanese pipit) is darker above and has bolder black streaking on its whiter underparts; its legs have a reddish hue. The call is a squeaky sip.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Buff-bellied_pipit",
 						"confidence": 14,
-						"imagesFolder": "pics/american pipit"
+						"imagesFolder": "inferencedPics/american pipit"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/ds1/tp9.jpg",
+				"targetImage": "targetPics/ds1/tp9.jpg",
 				"species": [
 					{
 						"speciesName": "Forest Wagtail",
 						"description": "This is a distinctive wagtail, the only one placed in the genus Dendronanthus (all other wagtails are placed in Motacilla). The forest wagtail is 18 cm (7.1 in) in length, a slender bird with a long tail. The back and crown are olive brown, and the wings are black with two yellow wing bars and white tertial edges. There is a white supercilium, above a dark stripe through the eye. The underparts are white, apart from a black double breast band. The upper breast band is bib-like while the lower band is often broken. The sexes are similar in appearance. Young birds are more yellowish on the underside.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Forest_wagtail",
 						"confidence": 44,
-						"imagesFolder": "pics/forest wagtail"
+						"imagesFolder": "inferencedPics/forest wagtail"
 					},
 					{
 						"speciesName": "Ruby Crowned Kinglet",
 						"description": "The ruby-crowned kinglet is a very small bird, being 9 to 11 cm (3.5 to 4.3 in) long, having a wingspan of 16 to 18 cm (6.3 to 7.1 in), and weighing 5 to 10 g (0.2 to 0.4 oz). It has gray-green upperparts and olive-buff underparts. It has two white wingbars and a broken white eye ring. The wingbar on the greater secondary coverts (closer to the wing-tip) is wider, and is next to a dark band. The kinglet has a relatively plain face and head, although the male has a scarlet-red crown patch, which is usually concealed by the surrounding feathers. The crown patch is rarely orange, yellow, or not present.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Ruby-crowned_kinglet",
 						"confidence": 40,
-						"imagesFolder": "pics/ruby crowned kinglet"
+						"imagesFolder": "inferencedPics/ruby crowned kinglet"
 					},
 					{
 						"speciesName": "Common Firecrest",
 						"description": "The common firecrest is a small plump bird, 9 cm (3.5 in) in length with a wingspan of 13–16 cm (5.1–6.3 in), and weighs 4–7 grams (0.14–0.25 oz). It has bright olive-green upperparts with a bronze-coloured patch on each shoulder, and whitish underparts washed with brownish-grey on the breast and flanks. It has two white wingbars, a tiny black pointed bill, and brownish-black legs. The head pattern is striking, with a black eye stripe, long white supercilium, and a crest which is bright yellow in the female and mainly orange in the male.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Common_firecrest",
 						"confidence": 16,
-						"imagesFolder": "pics/common firecrest"
+						"imagesFolder": "inferencedPics/common firecrest"
 					}
 				]
 			}
@@ -290,280 +290,280 @@
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp0.jpg",
+				"targetImage": "targetPics/ds2/tp0.jpg",
 				"species": [
 					{
 						"speciesName": "American Dipper",
 						"description": "It is a stocky grey bird with a head sometimes tinged with brown, and white feathers on the eyelids that cause the eyes to flash white as the bird blinks. It is 16.5 cm (6.5 in) long, has a wingspan of 23 cm (9.1 in), and weighs on average 46 g (1.6 oz). The name 'dipper' derives from its long legs, which it uses to bob its whole body up and down during pauses as it feeds on the bottom of fast-moving, rocky streams.",
 						"wikiLink": "https://en.wikipedia.org/wiki/American_dipper",
 						"confidence": 95,
-						"imagesFolder": "pics/american dipper"
+						"imagesFolder": "inferencedPics/american dipper"
 					},
 					{
 						"speciesName": "Brewers Blackbird",
 						"description": "Adult males have black plumage with an iridescent purple head and neck and glossy bluish-green highlights on the rest of the body. The feet and legs are black and the eye is bright yellow. The female is brownish-grey with slight hints of the male's iridescence. The female's eye is dark brown, while the male's is bright yellow. Overall, they resemble the eastern member of the same genus, the rusty blackbird; Brewer's blackbird, however, has a shorter bill and the male's head is iridescent purple.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Brewer%27s_blackbird",
 						"confidence": 3,
-						"imagesFolder": "pics/brewers blackbird"
+						"imagesFolder": "inferencedPics/brewers blackbird"
 					},
 					{
 						"speciesName": "Alpine Chough",
 						"description": "The adult of the nominate subspecies of the Alpine chough has glossy black plumage, a short yellow bill, dark brown irises, and red legs. It is slightly smaller than the red-billed chough, at 37–39 centimetres (15–15 inches) length with a 12–14 cm (4.7–5.5 in) tail and a 75–85 cm (30–33 in) wingspan, but has a proportionally longer tail and shorter wings. It has a similar buoyant and easy flight. The sexes are identical in appearance, although the male averages slightly larger than the female.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Alpine_chough",
 						"confidence": 2,
-						"imagesFolder": "pics/alpine chough"
+						"imagesFolder": "inferencedPics/alpine chough"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp1.jpg",
+				"targetImage": "targetPics/ds2/tp1.jpg",
 				"species": [
 					{
 						"speciesName": "American Kestrel",
 						"description": "Under traditional classification, the American kestrel is the smallest raptor in America. The American kestrel is sexually dimorphic, although there is some overlap in plumage coloration between the sexes. The bird ranges from 22 to 31 cm (8.7 to 12.2 in) in length with a wingspan of 51–61 cm (20–24 in). The female kestrel is larger than the male, though less so than larger falcons, being typically about 10% to 15% larger within a subspecies.",
 						"wikiLink": "https://en.wikipedia.org/wiki/American_kestrel",
 						"confidence": 69,
-						"imagesFolder": "pics/american kestrel"
+						"imagesFolder": "inferencedPics/american kestrel"
 					},
 					{
 						"speciesName": "Merlin",
 						"description": "The merlin is 24–33 cm (9.4–13.0 in) long with a 50–73 cm (20–29 in) wingspan. Compared with most other small falcons, it is more robust and heavily built. Males average at about 165 g (5.8 oz) and females are typically about 230 g (8.1 oz). There is considerable variation, however, throughout the birds' range and—in particular in migratory populations—over the course of a year.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Merlin_(bird)",
 						"confidence": 20,
-						"imagesFolder": "pics/merlin"
+						"imagesFolder": "inferencedPics/merlin"
 					},
 					{
 						"speciesName": "Red Tailed Hawk",
 						"description": "Red-tailed hawk plumage can be variable, depending on the subspecies and the region. These color variations are morphs, and are not related to molting. The western North American population, B. j. calurus, is the most variable subspecies and has three main color morphs: light, dark, and intermediate or rufous. The dark and intermediate morphs constitute 10–20% of the population in the Western United States, but seem to constitute only 1–2% of B. j. calurus in western Canada.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Red-tailed_hawk",
 						"confidence": 11,
-						"imagesFolder": "pics/red tailed hawk"
+						"imagesFolder": "inferencedPics/red tailed hawk"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp2.jpg",
+				"targetImage": "targetPics/ds2/tp2.jpg",
 				"species": [
 					{
 						"speciesName": "Anna's Hummingbird",
 						"description": "Anna's hummingbirds are 3.9 to 4.3 in (9.9 to 10.9 cm) long with a wingspan of 4.7 inches (12 cm) and a weight range of 0.1 to 0.2 oz (2.8 to 5.7 g). They have an iridescent bronze-green back, a pale grey chest and belly, and green flanks. Their bills are long, straight, and slender. The adult male has an iridescent crimson-red, derived from magenta, to a reddish-pink crown and gorget, which can look dull brown or gray without direct sunlight, and a dark, slightly forked tail.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Anna%27s_hummingbird",
 						"confidence": 39,
-						"imagesFolder": "pics/annas hummingbird"
+						"imagesFolder": "inferencedPics/annas hummingbird"
 					},
 					{
 						"speciesName": "White Eared Hummingbird",
 						"description": "The white-eared hummingbird is 9 to 10 cm (3.5 to 3.9 in) long. Males weigh an average of 3.6 g (0.13 oz) and females 3.2 g (0.11 oz). Adults of the three subspecies are very similar. Their bills are straight; males' are red with a black tip and females' are mostly blackish with some red to orange at the base. Males of the nominate subspecies in breeding plumage have a metallic violet or bluish violet forehead, a mostly black face with a wide white stripe behind the eye, and a dull black crown.",
 						"wikiLink": "https://en.wikipedia.org/wiki/White-eared_hummingbird",
 						"confidence": 31,
-						"imagesFolder": "pics/white eared hummingbird"
+						"imagesFolder": "inferencedPics/white eared hummingbird"
 					},
 					{
 						"speciesName": "Amethyst Woodstar",
 						"description": "The amethyst woodstar is 6 to 8.4 cm (2.4 to 3.3 in) long and weighs 3.2 to 2.5 g (0.11 to 0.088 oz). Both sexes have a medium length, straight, black bill. They have dark bronzy green upperparts with a large white spot on either side of the rump. Males have a small white spot behind the eye while females have a thin white stripe. Males in breeding plumage have an iridescent amethyst gorget with a whitish band below it.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Amethyst_woodstar",
 						"confidence": 30,
-						"imagesFolder": "pics/amethyst woodstar"
+						"imagesFolder": "inferencedPics/amethyst woodstar"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/ds2/tp3.jpg",
+				"targetImage": "targetPics/ds2/tp3.jpg",
 				"species": [
 					{
 						"speciesName": "Red Crossbill",
 						"description": "Crossbills are characterized by the mandibles crossing at their tips, which gives the group its English name. Using their crossed mandibles for leverage, crossbills are able to efficiently separate the scales of conifer cones and extract the seeds on which they feed. Adult males tend to be red or orange in colour, and females green or yellow, but there is much variation.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_crossbill",
 						"confidence": 73,
-						"imagesFolder": "pics/red crossbill"
+						"imagesFolder": "inferencedPics/red crossbill"
 					},
 					{
 						"speciesName": "I'Iwi",
 						"description": "The adult ʻiʻiwi is mostly scarlet, with black wings and tail and a long, curved, salmon-colored bill used primarily for drinking nectar. The contrast of the red and black plumage with surrounding green foliage makes the ʻiʻiwi one of Hawaiʻi's most easily seen native birds. Younger birds have golden plumage with more spots and ivory bills and were mistaken for a different species by early naturalists. Observations of young birds moulting into adult plumage resolved this confusion.",
 						"wikiLink": "https://en.wikipedia.org/wiki/%CA%BBI%CA%BBiwi",
 						"confidence": 24,
-						"imagesFolder": "pics/iwi"
+						"imagesFolder": "inferencedPics/iwi"
 					},
 					{
 						"speciesName": "Apapane",
 						"description": "Apapane are small at 13 cm (5.1 in) when fully grown. They are sexually dimorphic in size: male ʻapapane have a mass of 16 g (0.56 oz), while females average 14.4 g (0.51 oz). Adult ʻapapane are overall bright crimson, with distinct white undertail-coverts and lower abdomen feathers. They have black primaries and retricies. Juvenile ʻapapane are yellow-brown and gray, with the same white plumage as adults, and molt into crimson plumage over the course of two years. 'Apapane are often seen in a tail-up posture, showing off their white feathers.",
 						"wikiLink": "https://en.wikipedia.org/wiki/%CA%BBApapane",
 						"confidence": 3,
-						"imagesFolder": "pics/apapane"
+						"imagesFolder": "inferencedPics/apapane"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp4.jpg",
+				"targetImage": "targetPics/ds2/tp4.jpg",
 				"species": [
 					{
 						"speciesName": "Black Breasted Puffbird",
 						"description": "The black-breasted puffbird is 19 to 23 cm (7.5 to 9.1 in) long and weighs between 60 and 69 g (2.1 and 2.4 oz). The plumage is mostly glossy blue-black, with a white collar, cheeks, throat, and belly, a blue-black breast band, and a black tail with white tips on the feathers. The closed wing and rump show narrow white scallops. The flanks are dark gray with buffy marks. The heavy bill is black, as are the feet, and the iris of the eye is dark brown or red. The two sexes are the same, and the plumage of juvenile birds has not been described.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Black-breasted_puffbird",
 						"confidence": 46,
-						"imagesFolder": "pics/black breasted puffbird"
+						"imagesFolder": "inferencedPics/black breasted puffbird"
 					},
 					{
 						"speciesName": "Barred Puffbird",
 						"description": "The barred puffbird is about 22 cm (8.7 in) long and weighs about 63 g (2.2 oz). Its crown is blackish with dark rufous bars. The upper nape is black, the lower nape yellowish red, and the upper mantle black. The rest of the upperparts and the wings are dark chestnut with narrow black bands. The tail is long, narrow, and chestnut with narrow black bands. The chin is whitish. The face and underparts are pale rufous with fine blackish bars except in the center of the belly. The bill is grayish yellow to blackish, the eye creamy yellow, and the feet greenish gray. The 'fulvidus' morph is a deeper rufous overall.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Barred_puffbird",
 						"confidence": 40,
-						"imagesFolder": "pics/barred puffbird"
+						"imagesFolder": "inferencedPics/barred puffbird"
 					},
 					{
 						"speciesName": "Black Throated Warbler",
 						"description": "The black-throated gray warbler has mostly black, gray, and white plumage, which is soft, lacking gloss. With its striping and the small yellow spot between its eye and bill, it is a distinctive bird. The sexes differ slightly, both having gray upperparts with black streaks, and white underparts with black streaks on the flanks. The adult male is striped with black on the crown, throat, and below the eye, and has white around its chin and above its eye. The adult female has more dingy plumage on its head, with a white throat and dark gray cheeks.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Black-throated_gray_warbler",
 						"confidence": 14,
-						"imagesFolder": "pics/black throated warbler"
+						"imagesFolder": "inferencedPics/black throated warbler"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/ds2/tp5.jpg",
+				"targetImage": "targetPics/ds2/tp5.jpg",
 				"species": [
 					{
 						"speciesName": "Chucao Tapaculo",
 						"description": "The chucao tapaculo is 18.5 to 19 cm (7.3 to 7.5 in) long. Three specimens of unknown sex weighed 42.6 to 45.4 g (1.50 to 1.60 oz) and a single male specimen weighed 53.7 g (1.89 oz). The adult is dusky brown above; much of the face and the throat and upper breast are rufous. The rest of the breast is dark gray with white bars and the flanks and vent are reddish brown to olive brown.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Chucao_tapaculo",
 						"confidence": 49,
-						"imagesFolder": "pics/chucao tapaculo"
+						"imagesFolder": "inferencedPics/chucao tapaculo"
 					},
 					{
 						"speciesName": "Great Xenops",
 						"description": "The great xenops is 15 to 16 cm (5.9 to 6.3 in) long. It has a heavy, wedge-shaped, slightly upturned bill. The sexes' plumages are alike. Adults have a mostly light orange-rufous face with some blackish around the eye. Their forehead is pale but bright cinnamon-buff. Their crown and upperparts are unmarked bright rufous and their tail bright cinnamon-rufous. Their wing coverts are bright rufous, their primary coverts dull brownish, and their flight feathers bright orange-rufous with dark fuscous tips.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Great_xenops",
 						"confidence": 42,
-						"imagesFolder": "pics/great xenops"
+						"imagesFolder": "inferencedPics/great xenops"
 					},
 					{
 						"speciesName": "Collared Crescentchest",
 						"description": "The collared crescentchest is 14.5 cm (5.7 in) long. Two unsexed specimens of M. t. rufescens weighed 16.5 and 18.0 g (0.58 and 0.63 oz). The nominate subspecies' back and rump are brown and the underparts buff. The crown of the head is gray brown. It has a narrow white supercilium edged with black, a rufous 'collar' on the back of the neck, and a black band across the breast. Subspecies M. t. rufescens is almost identical but its crown is reddish brown.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Collared_crescentchest",
 						"confidence": 9,
-						"imagesFolder": "pics/collared crescentchest"
+						"imagesFolder": "inferencedPics/collared crescentchest"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp6.jpg",
+				"targetImage": "targetPics/ds2/tp6.jpg",
 				"species": [
 					{
 						"speciesName": "Dusky Robin",
 						"description": "Measuring from 14-16.5 centimetres in length, and weight around 27 grams, the dusky robin lacks the bright colours of its robin relatives. The bird has short, slender bill and a moderately long tail, and it is much larger than other Petroicidae that occur in Tasmania. It is almost impossible to differentiate male from female in the field. They have no seasonal variation nor sexual dimorphism. However, there are large, noticeable differences between adults and juvenile dusky robins.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Dusky_robin",
 						"confidence": 90,
-						"imagesFolder": "pics/dusky robin"
+						"imagesFolder": "inferencedPics/dusky robin"
 					},
 					{
 						"speciesName": "Says Phoebe",
 						"description": "Say's phoebe is a barrel-chested bird with a squared-off head. It is gray-brown above with a black tail and buffy cinnamon below, becoming more orange around the vent. The tail is long and the primaries end just past the rump on resting birds. The wings seem pale in flight and resemble a female mountain bluebird. The juvenile is similar to adult, but has buffy orange to whitish wingbars and a yellow gape. The adult bird is 7.5 in (19 cm) long, has a wingspan of 13 in (33 cm) and weighs 0.75 oz (21 g)",
 						"wikiLink": "https://en.wikipedia.org/wiki/Say%27s_phoebe",
 						"confidence": 7,
-						"imagesFolder": "pics/says phoebe"
+						"imagesFolder": "inferencedPics/says phoebe"
 					},
 					{
 						"speciesName": "Grandala",
 						"description": "The body length of the grandala is 20.5-23 cm, and it weighs from 38 to 52 g. The plumage of the male is blue-gray, only the tail and wings are black. The plumage of the female is brownish with white stripes; rump gray-blue; the tip and underside of the wing feathers are white. Birds usually make the sounds 'dew-ee' and 'dewee'. In young birds, the plumage is similar to females, but does not have a bluish tint on the rump and upper tail integuments.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Grandala",
 						"confidence": 3,
-						"imagesFolder": "pics/grandala"
+						"imagesFolder": "inferencedPics/grandala"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 1,
-				"targetImage": "/targetPics/ds2/tp7.jpg",
+				"targetImage": "targetPics/ds2/tp7.jpg",
 				"species": [
 					{
 						"speciesName": "Hepatic Tanager",
 						"description": "The species's plumage and vocalizations are similar to other members of the cardinal family. The hepatic tanager is a strongly built songbird up to 20 cm long with a short and quite thick beak and long wings and tail. The male is greyish brick-red above, reddish below with greyish ear-coverts. The female is olive yellow above, yellowish below with soot colored ear coverts. Both sexes have dark beaks and dark legs.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Hepatic_tanager",
 						"confidence": 83,
-						"imagesFolder": "pics/hepatic tanager"
+						"imagesFolder": "inferencedPics/hepatic tanager"
 					},
 					{
 						"speciesName": "Flame Tanager",
 						"description": "The flame-colored tanager is 18 to 19 cm (7.1 to 7.5 in) long. The nominate weighs 33.3 to 39.4 g (1.17 to 1.39 oz) and P. b. flammea 32 to 48.4 g (1.13 to 1.71 oz). The nominate male's head and underparts are red-orange becoming yellower towards the vent area. It has a brown patch below the eye from the bill to behind the eye. The mantle and back are dusky orange with an olive tint; the rump is paler with little or no streaking. The female has a similar pattern but its head and underparts are yellow and the back is olive with black streaks.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Flame-colored_tanager",
 						"confidence": 9,
-						"imagesFolder": "pics/flame tanager"
+						"imagesFolder": "inferencedPics/flame tanager"
 					},
 					{
 						"speciesName": "Red Fody",
 						"description": "The red fody is about 5 inches (13 cm) in length and weighs 14–19 grams (0.49–0.67 oz). The male of the species is bright red with black markings around each eye. Its wings and tail are brown. Its underparts are also red, which distinguishes it from other fodies in areas where it has been introduced. The female fody's upper parts are olive-brown and its underparts are greyish brown.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_fody",
 						"confidence": 8,
-						"imagesFolder": "pics/red fody"
+						"imagesFolder": "inferencedPics/red fody"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 0,
-				"targetImage": "/targetPics/ds2/tp8.jpg",
+				"targetImage": "targetPics/ds2/tp8.jpg",
 				"species": [
 					{
 						"speciesName": "Northern Mockingbird",
 						"description": "The northern mockingbird is a medium-sized mimid that has long legs and tail. Males and females look alike. Its upper parts are colored gray, while its underparts have a white or whitish-gray color. It has parallel wing bars on the half of the wings connected near the white patch giving it a distinctive appearance in flight. The black central rectrices and typical white lateral rectrices are also noticeable in flight. The iris is usually a light green-yellow or a yellow, but there have been instances of an orange color.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Northern_mockingbird",
 						"confidence": 72,
-						"imagesFolder": "pics/northern mockingbird"
+						"imagesFolder": "inferencedPics/northern mockingbird"
 					},
 					{
 						"speciesName": "Gray Kingbird",
 						"description": "The adult gray kingbird is an average-sized kingbird. It measures 23 cm (9.1 in) in length and weighs from 37 to 52 g (1.3 to 1.8 oz). The upperparts are gray, with brownish wings and tail, and the underparts are white with a gray tinge to the chest. The head has a concealed yellow crown stripe, and a dusky mask through the eyes. The dark bill is heavier than that of the related, slightly smaller, tropical kingbird. The sexes are similar, but young birds have rufous edges on the wing coverts, rump and tail.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Gray_kingbird",
 						"confidence": 29,
-						"imagesFolder": "pics/gray kingbird"
+						"imagesFolder": "inferencedPics/gray kingbird"
 					},
 					{
 						"speciesName": "Brown Thrasher",
 						"description": "The brown thrasher is bright reddish-brown above with thin, dark streaks on its buffy underparts. It has a whitish-colored chest with distinguished teardrop-shaped markings on its chest. Its long, rufous tail is rounded with paler corners, and eyes are a brilliant yellow. Its bill is brownish, long, and curves downward. Both male and females are similar in appearance. The juvenile appearance of the brown thrasher from the adult is not remarkably different, except for plumage texture, indiscreet upper part markings, and the irises having an olive color.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Brown_thrasher",
 						"confidence": 10,
-						"imagesFolder": "pics/brown thrasher"
+						"imagesFolder": "inferencedPics/brown thrasher"
 					}
 				]
 			},
 			{
 				"name": "",
 				"correctAnswer": 2,
-				"targetImage": "/targetPics/ds2/tp9.jpg",
+				"targetImage": "targetPics/ds2/tp9.jpg",
 				"species": [
 					{
 						"speciesName": "Says Phoebe",
 						"description": "Say's phoebe is a barrel-chested bird with a squared-off head. It is gray-brown above with a black tail and buffy cinnamon below, becoming more orange around the vent. The tail is long and the primaries end just past the rump on resting birds. The wings seem pale in flight and resemble a female mountain bluebird. The juvenile is similar to adult, but has buffy orange to whitish wingbars and a yellow gape. The adult bird is 7.5 in (19 cm) long, has a wingspan of 13 in (33 cm) and weighs 0.75 oz (21 g)",
 						"wikiLink": "https://en.wikipedia.org/wiki/Say%27s_phoebe",
 						"confidence": 43,
-						"imagesFolder": "pics/says phoebe-1"
+						"imagesFolder": "inferencedPics/says phoebe-1"
 					},
 					{
 						"speciesName": "Gray Kingbird",
 						"description": "The adult gray kingbird is an average-sized kingbird. It measures 23 cm (9.1 in) in length and weighs from 37 to 52 g (1.3 to 1.8 oz). The upperparts are gray, with brownish wings and tail, and the underparts are white with a gray tinge to the chest. The head has a concealed yellow crown stripe, and a dusky mask through the eyes. The dark bill is heavier than that of the related, slightly smaller, tropical kingbird. The sexes are similar, but young birds have rufous edges on the wing coverts, rump and tail.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Gray_kingbird",
 						"confidence": 30,
-						"imagesFolder": "pics/gray kingbird-1"
+						"imagesFolder": "inferencedPics/gray kingbird-1"
 					},
 					{
 						"speciesName": "Tropical Kingbird",
 						"description": "An adult tropical kingbird is 22 cm (8.7 in) long, weighs 39 g (1.4 oz) and has a wingspan range of 38–41 cm. The head is pale gray, with a darker eye mask, an orange crown stripe, and a heavy gray bill. The back is grayish-green, and the wing and forked tail are brown. The throat is pale gray, becoming olive on the breast, with the rest of the underparts being yellow. The sexes are similar, but young birds have pale buff edges on the wing coverts.",
 						"wikiLink": "https://en.wikipedia.org/wiki/Tropical_kingbird",
 						"confidence": 27,
-						"imagesFolder": "pics/tropical kingbird"
+						"imagesFolder": "inferencedPics/tropical kingbird"
 					}
 				]
 			}

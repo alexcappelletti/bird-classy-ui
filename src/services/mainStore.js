@@ -70,20 +70,13 @@ export const useMainStore = defineStore('mainStore', () => {
 			}
 		})
 		const obj = await response.json()
-		console.log("what read " + JSON.stringify(obj[0]))
+		//console.log("what read " + JSON.stringify(obj[0]))
 		datasetList.value = [
 			datasetName === 'ds1' ? obj[0] :obj[1],
 			datasetName === 'ds1' ? obj[1] : obj[0],
 
 		]
 		runningTasks.value = datasetList.value[0].tasks;
-	}
-
-	function similarityPic(taskIdx, speciesIdx, mode, imageIdx) {
-		const task = currentDs.value.tasks[taskIdx]
-		const species = task.species[speciesIdx]
-		const localUrl = `src/assets/images/${species.imagesFolder}/${mode}/${imageIdx}.jpg`
-		return localUrl
 	}
 
 	function nextInContext() {
@@ -126,7 +119,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		nextUI,
 		setExperimentContext,
 		loadDatasets,
-		similarityPic,
+		//similarityPic,
 		nextTask,
 		nextInContext,
 		changeHelp,
