@@ -191,7 +191,7 @@ import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 
 const store = interactionStore()
-const isHelpVisible = ref(true)
+const isHelpVisible = computed(() => mainStore.help)
 const mainStore = useMainStore()
 
 onBeforeMount(() => {
@@ -235,6 +235,6 @@ function changeTab(tabVal){
 async function startTask(ev) {
 	store.setStart(getNow()) 
 	store.generateTimer()
-	isHelpVisible.value = false
+	mainStore.hideHelp()
 }
 </script>

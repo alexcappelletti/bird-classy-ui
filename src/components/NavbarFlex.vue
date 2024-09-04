@@ -2,14 +2,14 @@
     <div class="navbar">
         <div class="navbar-elems">
             <v-btn
-            v-if=!mainStore.showHelp
+            v-if=!mainStore.help
             width=130px
             color="OnSurfaceVariant"
             rounded="pill"
             text="How to use"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="mainStore.changeHelp()"
+            @click="mainStore.showHelp()"
             ></v-btn>
             <v-btn
             v-else
@@ -19,7 +19,7 @@
             text="Go to Task"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="mainStore.changeHelp()"
+            @click="mainStore.hideHelp()"
             ></v-btn>
             <v-spacer></v-spacer>
             <p class="display-small" style="color: #404943;">
