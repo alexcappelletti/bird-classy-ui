@@ -12,13 +12,13 @@ export const useMainStore = defineStore('mainStore', () => {
 	const datasetList = ref([])
 	const runningTasks = ref([])
 	const runTask = ref([])
-	const help = ref(true)
+	const helpRef = ref(true)
 	const currentUI = computed(() => {
 		return (uiLists.value[0])
 
 	})
 
-	const showHelp = computed(() => {return help.value})
+	const help = computed(() => {return helpRef.value})
 	const currentDs = computed(() => { return datasetList.value[0]; })
 	const currentTask = computed(()=> {return runningTasks.value[0];})
 	const isTrainingTask = computed(() => {return runTask.value.length < 2;})
@@ -105,9 +105,10 @@ export const useMainStore = defineStore('mainStore', () => {
 		navigationPreset.value.shift();
 	}
 
-	function changeHelp() {
-		help.value = ! help.value
+	function hideHelp() {
+		helpRef.value = false
 	}
+	function showHelp() {helpRef.value = true}
 
 	return {
 		navigationPreset,
@@ -122,7 +123,8 @@ export const useMainStore = defineStore('mainStore', () => {
 		//similarityPic,
 		nextTask,
 		nextInContext,
-		changeHelp,
+		help,
+		hideHelp,
 		showHelp,
 		navigateTo,
 		navigate
