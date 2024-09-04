@@ -150,15 +150,20 @@ const targetImage = computed(()=>{
 	return src
 })
 
+async function logDBSwitchToTask(){
+    var taskId = mainStore.currentDs.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    try {
+        await traceLog(
+            {
+                task: "oracleTask-" + taskId,
+                params: "SwitchToTask",
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
 
-function bestSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species.imagesFolder}/best/${imageIdx}.jpg`
-	return localUrl
-}
-function worstSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
-	return localUrl
-}
 
 
 </script>

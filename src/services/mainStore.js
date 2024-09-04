@@ -28,6 +28,8 @@ export const useMainStore = defineStore('mainStore', () => {
 	const navigateTo = computed(()=>{return navigationPreset.value[0];})
 	const uiListsRead = computed(() => {return uiLists.value})
 
+	const user = computed(() => {return subject.value})
+ 
 	function setExperimentContext(ctx) {
 		const params = ctx.split("-");
 		if (params.length != 3) {
@@ -127,6 +129,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		hideHelp,
 		showHelp,
 		navigateTo,
-		navigate
+		navigate,
+		user
 	}
 })
