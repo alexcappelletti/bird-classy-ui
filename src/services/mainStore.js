@@ -83,6 +83,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		runTask.value = []
 		uiLists.value.shift()
 		datasetList.value.shift()
+		navigate();
 	}
 	
 	function nextTask() {

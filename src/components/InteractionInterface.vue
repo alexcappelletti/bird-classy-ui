@@ -186,14 +186,15 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, ref, computed } from 'vue';
+import { onBeforeMount, ref, computed, watch } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
+import { useRouter } from 'vue-router'
 
 const store = interactionStore()
 const isHelpVisible = computed(() => mainStore.help)
 const mainStore = useMainStore()
-
+const router = useRouter()
 onBeforeMount(() => {
     //get the info on which to load from the link
     store.loadData('./src/assets/pool', 2);
@@ -220,8 +221,6 @@ function confirm() {
 	store.addAnswer(); 
 	store.closePage(); 
 	mainStore.nextTask();
-
-
 }
 
 
@@ -239,11 +238,21 @@ var idTab = ref(0)
 function changeTab(tabVal){
     idTab.value = tabVal;
 }
+const navigateTo = computed(()=> {
+	return mainStore.navigateTo
 
-
+})
 async function startTask(ev) {
 	store.setStart(getNow()) 
 	store.generateTimer()
 	mainStore.hideHelp()
 }
+
+watch(
+	() => mainStore.navigateTo,
+	(newTo) => {
+		console.log("updating navigation " + newTo)
+		router.push({name:newTo})
+	})
+
 </script>

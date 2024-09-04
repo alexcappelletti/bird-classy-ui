@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!mainStore.showHelp" class="oracle-container">
+    <div v-if="!mainStore.help" class="oracle-container">
 
         <div class="oracle-prediction">
 
@@ -102,7 +102,7 @@
         <div
             style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary"
-                @click="store.setStart(new Date()); store.generateTimer(); mainStore.changeHelp();">
+                @click="store.setStart(new Date()); store.generateTimer(); mainStore.hideHelp();">
                 Switch to the Task
             </v-btn>
         </div>
