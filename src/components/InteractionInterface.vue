@@ -95,7 +95,7 @@
                             </v-btn>
 
                             <v-btn rounded="pill" color="Primary" style="flex-grow: 2"
-                                @click="store.addCurrentTime(getNow()); store.addAnswer(); store.closePage(); store.nextTask();">
+                                @click="confirm()">
                                 Confirm
                             </v-btn>
                         </div>
@@ -213,6 +213,15 @@ function bestSimilarPicture(species, imageIdx) {
 function worstSimilarPicture(species, imageIdx) {
 	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
 	return localUrl
+}
+
+function confirm() {
+	store.addCurrentTime(getNow()); 
+	store.addAnswer(); 
+	store.closePage(); 
+	mainStore.nextTask();
+
+
 }
 
 
