@@ -1,11 +1,11 @@
 <template>
-    <div v-if="!store.HelpPage" class="oracle-container">
+    <div v-if="!mainStore.showHelp" class="oracle-container">
 
         <div class="oracle-prediction">
 
             <div class="oracle-target">
                 <h2 class="headline-large">Target Image</h2>
-                <v-img style="border-radius: 10px;" height="250" width="250" :src="store.currentTargetPic"
+                <v-img style="border-radius: 10px;" height="250" width="250" :src="targetImage"
                     alt="Picture of a small bird" aspect-ratio="1/1"></v-img>
             </div>
 
@@ -14,13 +14,13 @@
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Species</h2>
-                    <h2 class="title-large">{{ store.currentSpecies }}</h2>
+                    <h2 class="title-large">{{ mainStore.currentTask.species[store.speciesVisualized].speciesName }}</h2>
                 </div>
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Confidence</h2>
-                    <v-progress-linear id="progressbar" bg-opacity="0.3" :model-value="store.currentConfidence"
-                        :color="barColor(store.currentConfidence / 100)" rounded rounded-bar height="20px"
+                    <v-progress-linear id="progressbar" bg-opacity="0.3" :model-value="mainStore.currentTask.species[store.speciesVisualized].confidence"
+                        :color="barColor(mainStore.currentTask.species[store.speciesVisualized].confidence / 100)" rounded rounded-bar height="20px"
                         style="width: 150px;"></v-progress-linear>
                 </div>
 
@@ -28,7 +28,7 @@
                     <v-btn color="Primary" rounded="pill" text="Other results" base-color="#FFFFFF" height="2.5rem"
                         variant="outlined" elevation="0" @click="store.rotateSpecies();"></v-btn>
                     <v-btn color="Primary" rounded="pill" text="Confirm Selection" height="2.5rem"
-                        @click="store.addCurrentTime(new Date()); store.addAnswer(); store.nextTask();"></v-btn>
+                        @click="store.addCurrentTime(new Date()); store.addAnswer(); store.nextTask(); mainStore.nextTask()"></v-btn>
                 </div>
 
             </div>
@@ -38,8 +38,8 @@
         <div class="oracle-wiki-container">
 
             <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
-                <p class="oracle-wiki-description body-large" style="color:#000000;"> {{ store.currentDescription }}...
-                    <a class='wikilink' @click="store.addWikiClick()" :href="store.currentLink"
+                <p class="oracle-wiki-description body-large" style="color:#000000;"> {{ mainStore.currentTask.species[store.speciesVisualized].description }}...
+                    <a class='wikilink' @click="store.addWikiClick()" :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
                         target='_blank'>Wikipedia</a>
                 </p>
             </div>
@@ -102,7 +102,7 @@
         <div
             style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary"
-                @click="store.setStart(new Date()); store.generateTimer(); store.openHelp();">
+                @click="store.setStart(new Date()); store.generateTimer(); mainStore.changeHelp();">
                 Switch to the Task
             </v-btn>
         </div>
@@ -112,7 +112,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
@@ -143,6 +143,24 @@ function barColor(percentage) {
 
     return "rgb(" + c1 + "," + c2 + ",0)";
 }
+
+
+const targetImage = computed(()=>{
+	const src = `src/assets/${mainStore.currentTask.targetImage}`
+	return src
+})
+
+
+function bestSimilarPicture(species, imageIdx) {
+	const localUrl = `src/assets/${species.imagesFolder}/best/${imageIdx}.jpg`
+	return localUrl
+}
+function worstSimilarPicture(species, imageIdx) {
+	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
+	return localUrl
+}
+
+
 </script>
 
 
