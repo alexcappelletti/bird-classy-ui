@@ -1,5 +1,6 @@
 <template>
     <div v-if="!mainStore.help" class="oracle-container">
+    <div v-if="!mainStore.help" class="oracle-container">
 
         <div class="oracle-prediction">
 
@@ -26,9 +27,9 @@
 
                 <div class="oracle-species-confidence">
                     <v-btn color="Primary" rounded="pill" text="Other results" base-color="#FFFFFF" height="2.5rem"
-                        variant="outlined" elevation="0" @click="store.rotateSpecies();"></v-btn>
+                        variant="outlined" elevation="0" @click="store.rotateSpecies(); logDBSwitchSpecies()"></v-btn>
                     <v-btn color="Primary" rounded="pill" text="Confirm Selection" height="2.5rem"
-                        @click="store.addCurrentTime(new Date()); store.addAnswer(); store.nextTask(); mainStore.nextTask()"></v-btn>
+                        @click="store.addCurrentTime(new Date()); store.addAnswer(); logDBConfirmSelection(); store.nextTask(); mainStore.nextTask()"></v-btn>
                 </div>
 
             </div>
@@ -39,7 +40,7 @@
 
             <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
                 <p class="oracle-wiki-description body-large" style="color:#000000;"> {{ mainStore.currentTask.species[store.speciesVisualized].description }}...
-                    <a class='wikilink' @click="store.addWikiClick()" :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
+                    <a class='wikilink' @click="store.addWikiClick(); logDBOpenWiki()" :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
                         target='_blank'>Wikipedia</a>
                 </p>
             </div>
@@ -151,15 +152,67 @@ const targetImage = computed(()=>{
 })
 
 
-function bestSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species.imagesFolder}/best/${imageIdx}.jpg`
-	return localUrl
-}
-function worstSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species.imagesFolder}/worst/${imageIdx}.jpg`
-	return localUrl
+async function logDBSwitchToTask(){
+    console.log(mainStore.currentDs)
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    try {
+        await traceLog(
+            {
+                event: "oracleTask-" + taskId,
+                params: "SwitchToTask",
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
 }
 
+//to call after the value of store.speciesVisualized was changed
+async function logDBSwitchSpecies(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
+    try {
+        await traceLog(
+            {
+                event: "oracleTask-" + taskId,
+                params: "ChangeVisualizedSpeciesTo: " + speciesSwitched,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+async function logDBOpenWiki(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
+    try {
+        await traceLog(
+            {
+                event: "oracleTask-" + taskId,
+                params: "OpenedWikipediaPageOf: " + speciesSwitched,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+//To call before NextTask
+async function logDBConfirmSelection(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
+    try {
+        await traceLog(
+            {
+                event: "oracleTask-" + taskId,
+                params: "SelectedSpecies: " + speciesSwitched,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
 
 </script>
 

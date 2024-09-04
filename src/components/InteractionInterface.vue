@@ -11,7 +11,7 @@
 
             <div class="interaction-cards">
                 <v-card v-for="s in mainStore.currentTask.species" :key="s.speciesName" width="180" class="rounded-lg" hover color="Secondary95"
-                    @click="store.openPage(mainStore.currentTask.species.indexOf(s));">
+                    @click="store.openPage(mainStore.currentTask.species.indexOf(s)); logDBOpenSpeciesPage();">
                     <v-img :src="bestSimilarPicture(s, 0)" cover></v-img>
                     <p class="body-large pa-4">{{ s.speciesName }}</p>
                 </v-card>
@@ -55,8 +55,8 @@
 
 
                         <v-tabs align-tabs="center" color="deep-purple-accent-4">
-                            <v-tab :text="itemsPics[0]" @click="changeTab(0)"></v-tab>
-                            <v-tab :text="itemsPics[1]" @click="changeTab(1)"></v-tab>
+                            <v-tab :text="itemsPics[0]" @click="changeTab(0); logDBOpenPics('Most');"></v-tab>
+                            <v-tab :text="itemsPics[1]" @click="changeTab(1); logDBOpenPics('Least'); "></v-tab>
                         </v-tabs>
                         
                         <v-sheet v-if="idTab == 0" class="mx-auto" style="margin-top: -5px;" max-width="790" color="Secondary95">
@@ -86,16 +86,16 @@
                         <div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
                             <p id="description" class="body-large text-justify">
                                 {{ mainStore.currentTask.species[store.cardNumber].description }}.. <a class='wikilink' :href="store.currentLink"
-                                    target='_blank' @click="store.addWikiClick()">Wikipedia</a></p>
+                                    target='_blank' @click="store.addWikiClick(); logDBOpenWiki()">Wikipedia</a></p>
                         </div>
 
                         <div style="display: flex; flex-direction: row; justify-content: space-between; min-width: 600px; gap: 10px;">
-                            <v-btn rounded="pill" @click="store.closePage()" style="flex-grow: 1;">
+                            <v-btn rounded="pill" @click="store.closePage();" style="flex-grow: 1;">
                                 Back
                             </v-btn>
 
                             <v-btn rounded="pill" color="Primary" style="flex-grow: 2"
-                                @click="confirm()">
+                                @click="logDBConfirmSelection(); confirm()">
                                 Confirm
                             </v-btn>
                         </div>
@@ -177,7 +177,7 @@
 
         <div style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary"
-                @click="startTask">
+                @click="startTask /* logDBSwitchToTask() */">
                 Switch to the Task
             </v-btn>
         </div>
@@ -247,6 +247,87 @@ async function startTask(ev) {
 	store.generateTimer()
 	mainStore.hideHelp()
 }
+
+async function logDBSwitchToTask(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    console.log(taskId)
+    try {
+        await traceLog(
+            {
+                event: "similarityTask-" + taskId,
+                params: "SwitchToTask",
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+async function logDBOpenSpeciesPage(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
+
+    try {
+        await traceLog(
+            {
+                event: "similarityTask-" + taskId,
+                params: "CardSpeciesOpened: " + openedSpecies,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+async function logDBOpenPics(param){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
+
+    try {
+        await traceLog(
+            {
+                event: "similarityTask-" + taskId,
+                params: "SwitchedTo"+ param +"SimilarImagesFor: " + openedSpecies,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+async function logDBOpenWiki(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
+
+    try {
+        await traceLog(
+            {
+                event: "similarityTask-" + taskId,
+                params: "OpenedWikipediaPageOf: " + openedSpecies,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+async function logDBConfirmSelection(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var user = mainStore.user
+    var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
+
+    try {
+        await traceLog(
+            {
+                event: "similarityTask-" + taskId,
+                params: "SelectedSpecies: " + openedSpecies,
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+
+
 
 watch(
 	() => mainStore.navigateTo,

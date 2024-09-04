@@ -9,7 +9,7 @@
             text="How to use"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="mainStore.showHelp()"
+            @click="mainStore.showHelp(); logDBSwitchToHelp();"
             ></v-btn>
             <v-btn
             v-else
@@ -19,7 +19,7 @@
             text="Go to Task"
             variant="outlined"
             :disabled="!(storeI.startSet || storeO.startSet)"
-            @click="mainStore.hideHelp()"
+            @click="mainStore.hideHelp(); logDBSwitchToTask();"
             ></v-btn>
             <v-spacer></v-spacer>
             <p class="display-small" style="color: #404943;">
@@ -47,6 +47,37 @@ const mainStore = useMainStore()
 
 const isTraining = computed(() => mainStore.isTrainingTask)
 
+async function logDBSwitchToTask(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var interfaceTask = mainStore.currentUI
+    var user = mainStore.user
+    console.log(interfaceTask)
+    try {
+        await traceLog(
+            {
+                event: interfaceTask + "Task-" + taskId,
+                params: "SwitchToTask",
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
+
+async function logDBSwitchToHelp(){
+    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    var interfaceTask = mainStore.currentUI
+    var user = mainStore.user
+    console.log(interfaceTask)
+    try {
+        await traceLog(
+            {
+                event: interfaceTask + "Task-" + taskId,
+                params: "SwitchToHelp",
+                timestamp: new Date(),
+                userID: user
+            })
+    }catch (err) {console.log(err)}
+}
 
 </script>
 
