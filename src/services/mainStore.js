@@ -13,23 +13,24 @@ export const useMainStore = defineStore('mainStore', () => {
 	const runningTasks = ref([])
 	const runTask = ref([])
 	const helpRef = ref(true)
-	const currentUI = computed(() => {
-		return (uiLists.value[0])
+	const currentUIName = ref("")
 
-	})
 
-	const help = computed(() => {return helpRef.value})
+
+	const help = computed(() => { return helpRef.value })
+	const currentUI = computed(() => currentUIName.value)
+	const hasNextUI = computed(() => { return uiLists.value.length >= 1; })
+	const nextUI = computed(() => { return uiLists.value[1] ?? undefined })
+
 	const currentDs = computed(() => { return datasetList.value[0]; })
-	const currentTask = computed(()=> {return runningTasks.value[0];})
-	const isTrainingTask = computed(() => {return runTask.value.length < 2;})
+	const currentTask = computed(() => { return runningTasks.value[0]; })
+	const isTrainingTask = computed(() => { return runTask.value.length < 2; })
+	const hasNextTask = computed(() => runningTasks.value.length >= 1)
 
-	const hasNextUI = computed(() => { return uiLists.value.length > 1; })
-	const nextUI = computed(() => {  return uiLists.value[1] ?? "undefined";})
-	const navigateTo = computed(()=>{return navigationPreset.value[0];})
-	const uiListsRead = computed(() => {return uiLists.value})
+	const navigateNext = computed(() => { return navigationPreset.value[0] ?? ""; })
+	const uiListsRead = computed(() => { return uiLists.value })
+	const user = computed(() => { return subject.value })
 
-	const user = computed(() => {return subject.value})
- 
 	function setExperimentContext(ctx) {
 		const params = ctx.split("-");
 		if (params.length != 3) {
@@ -41,20 +42,20 @@ export const useMainStore = defineStore('mainStore', () => {
 			navigationPreset.value = [
 				"oracle-page",
 				"survey-page",
-				"simiarity-page",
+				"similarity-page",
 				"survey-page",
 				"results-page"
 			]
 		surveyLinks.value = ["google.com", "fbk.eu"]
 		if (params[1] === "sp") {
 			uiLists.value = ["similarity", "oracle"]
-			navigationPreset.value= [
-				"similarity-page", 
-				"survey-page", 
+			navigationPreset.value = [
+				"similarity-page",
+				"survey-page",
 				"oracle-page",
-				"survey-page", 
+				"survey-page",
 				"results-page"
-			 ]
+			]
 			surveyLinks.value = ["fbk.eu", "google.com"]
 		}
 
@@ -62,6 +63,7 @@ export const useMainStore = defineStore('mainStore', () => {
 			params[1] === "op" ? "oracle" : "similarity",
 			params[1] === "op" ? "similarity" : "oracle",
 		]
+		currentUIName.value = uiLists.value[0]
 		datasetName = params[2]
 	}
 
@@ -74,7 +76,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		const obj = await response.json()
 		//console.log("what read " + JSON.stringify(obj[0]))
 		datasetList.value = [
-			datasetName === 'ds1' ? obj[0] :obj[1],
+			datasetName === 'ds1' ? obj[0] : obj[1],
 			datasetName === 'ds1' ? obj[1] : obj[0],
 
 		]
@@ -82,36 +84,35 @@ export const useMainStore = defineStore('mainStore', () => {
 	}
 
 	function nextInContext() {
+
+	}
+
+	function nextTask() {
+		console.log(`nextTask`)
+		const t = runningTasks.value.shift()
+		runTask.value.push(t)
+		if (runningTasks.value.length >= 1) { return; }
 		runTask.value = []
 		uiLists.value.shift()
 		datasetList.value.shift()
-		navigate();
-	}
-	
-	function nextTask() {
-		if (runningTasks.value.length > 1) {
-			const t = runningTasks.value.shift()
-			runTask.value.push(t)
+		if (uiLists.value.length > 0 && datasetList.value.length > 0) {
+			console.log(`set new task list`)
+			runningTasks.value = datasetList.value[0].tasks
+			currentUIName.value = uiLists.value[0]
 			return;
 		}
-		if (hasNextUI) {
-			nextInContext()
-			runningTasks.value = datasetList.value[0].tasks
-		}
-		else {
-			console.error(" invokking next on empty dataset")
-			
-		}
+		currentUIName.value = ""
+		navigationPreset.value.shift()
 
 	}
-	function navigate() {
-		navigationPreset.value.shift();
+	function consumePage() {
+		navigationPreset.value.shift()
 	}
 
 	function hideHelp() {
 		helpRef.value = false
 	}
-	function showHelp() {helpRef.value = true}
+	function showHelp() { helpRef.value = true }
 
 	return {
 		navigationPreset,
@@ -120,17 +121,18 @@ export const useMainStore = defineStore('mainStore', () => {
 		currentDs,
 		currentTask,
 		hasNextUI,
+		hasNextTask,
 		nextUI,
 		setExperimentContext,
 		loadDatasets,
 		//similarityPic,
 		nextTask,
-		nextInContext,
+		//nextInContext,
 		help,
 		hideHelp,
 		showHelp,
-		navigateTo,
-		navigate,
+		navigateNext,
+		consumePage,
 		user
 	}
 })
