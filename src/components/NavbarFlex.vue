@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar">
+    <div class="navbar" :class="{training:isTraining}">
         <div class="navbar-elems">
             <v-btn
             v-if=!mainStore.help
@@ -38,10 +38,25 @@
 </template>
 
 <script setup>
+import {computed} from 'vue'
 import { interactionStore, oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 const storeI = interactionStore()
 const storeO = oracleStore()
 const mainStore = useMainStore()
 
+const isTraining = computed(() => mainStore.isTrainingTask)
+
+
 </script>
+
+
+<style lang="css">
+
+.training{
+	background-color: rgb(226, 214, 43);
+
+
+}
+
+</style>
