@@ -91,13 +91,13 @@
 						<div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
 							<p id="description" class="body-large text-justify">
 								{{ mainStore.currentTask?.species[store.cardNumber]?.description }}.. <a
-									class='wikilink' :href="currentLink" target='_blank'
-									@click="openWikiLinkAsync">Wikipedia</a></p>
+									class='wikilink' :href="mainStore.currentTask?.species[store.cardNumber]?.wikiLink ?? '#' " target='_blank'
+									@click="openWikiLinkAsync(mainStore.currentTask?.species[store.cardNumber])">Wikipedia</a></p>
 						</div>
 
 						<div
 							style="display: flex; flex-direction: row; justify-content: space-between; min-width: 600px; gap: 10px;">
-							<v-btn rounded="pill" @click="handleClosePageAsync" style="flex-grow: 1;">
+							<v-btn rounded="pill" @click="handleClosePageAsync(mainStore.currentTask?.species[store.cardNumber])" style="flex-grow: 1;">
 								Back
 							</v-btn>
 
@@ -219,7 +219,6 @@ onBeforeMount(() => {
 })
 
 const isHelpVisible = computed(() => mainStore.help)
-const wikilink = computed(() => mainStore.currentTask?.species[store.cardNumber]?.wikilink ?? "#")
 
 const targetImage = computed(() => {
 	const src = `src/assets/${mainStore.currentTask?.targetImage}`
@@ -294,21 +293,22 @@ async function openTabAsync(tabIdx, label) {
 async function openSpeciesCard(s) {
 	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 	const species = s ?? []
+	const speciesIdx = mainStore.currentTask?.species?.indexOf(s) ?? 0
 	try {
 		await traceLog({
 			event: "openSpeciesCard",
 			params: {
 				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
-				species: mainStore.currentTask.species[tabIdx].speciesName,
+				species: species
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
 	} catch (err) { console.log(err) }
-	store.openPage(species.indexOf(s))
+	store.openPage(speciesIdx)
 }
 
-async function openWikiLinkAsync(){
+async function openWikiLinkAsync(species){
 	store.addWikiClick(); 
 	try {
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
@@ -316,18 +316,18 @@ async function openWikiLinkAsync(){
 			event: "openWikiLink",
 			params: {
 				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
-				species: mainStore.currentTask.species[tabIdx].speciesName
+				species: species.speciesName
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
 	}
 	catch (error) {
-		console.error(JSON.stringify(error))
+		console.error(error)
 	}
 }
 
-async function handleClosePageAsync(params) {
+async function handleClosePageAsync(species) {
 	store.closePage();
 	try {
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
@@ -335,14 +335,13 @@ async function handleClosePageAsync(params) {
 			event: "closeSpeciesCard",
 			params: {
 				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
-				species: mainStore.currentTask.species[tabIdx].speciesName,
-				caseLabel: label
+				species: species?.speciesName,
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
 	}
-	catch (error) {console.error(JSON.stringify(error))}
+	catch (error) {console.error(error)}
 }
 async function confirmAsync(ev) {
 	try {
