@@ -92,7 +92,7 @@
 							<p id="description" class="body-large text-justify">
 								{{ mainStore.currentTask?.species[store.cardNumber]?.description }}.. <a
 									class='wikilink' :href="currentLink" target='_blank'
-									@click="store.addWikiClick(); logDBOpenWiki()">Wikipedia</a></p>
+									@click="openWikiLinkAsync">Wikipedia</a></p>
 						</div>
 
 						<div
