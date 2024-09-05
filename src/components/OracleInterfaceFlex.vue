@@ -91,11 +91,18 @@
                 the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
             </p>
             <h2 class="headline-large">
-                Example of a Task
+                Example of the interface of a Task
             </h2>
             <div>
                 <img style="max-width: 100%;" src="./../assets/HowToOracle.png">
             </div>
+            <h2 class="headline-medium">Note</h2>
+            <p class="body-large">
+                The first two tasks will be for you to explore and learn the interface, the timer for neither of the tasks will be started. 
+                During this time, you can also ask any question to the assistant.
+                After the second task, the bar on top will change color, to signal that the experiment is started. The timer for the task will be started and 
+                from that moment up until you complete the task, you should avoid interacting with the assistant.
+            </p>
 
         </div>
 
@@ -158,7 +165,7 @@ function confirm() {
 }
 
 async function logDBSwitchToTask(){
-    console.log(mainStore.currentDs)
+/*     console.log(mainStore.currentDs)
     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     try {
@@ -169,12 +176,12 @@ async function logDBSwitchToTask(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 //to call after the value of store.speciesVisualized was changed
 async function logDBSwitchSpecies(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
     try {
@@ -185,11 +192,11 @@ async function logDBSwitchSpecies(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 async function logDBOpenWiki(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
     try {
@@ -200,12 +207,12 @@ async function logDBOpenWiki(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 //To call before NextTask
 async function logDBConfirmSelection(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var speciesSwitched = mainStore.currentTask.species[store.speciesVisualized].speciesName
     try {
@@ -216,7 +223,7 @@ async function logDBConfirmSelection(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 watch(
 	() => mainStore.currentUI,
