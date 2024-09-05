@@ -23,7 +23,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	const currentUI = computed(() => currentUIName.value)
 	const hasNextUI = computed(() => { return uiLists.value.length >= 1; })
 	const nextUI = computed(() => { return uiLists.value[1] ?? undefined })
-
+	const preset = computed(() => navigationPreset.value)
 	const currentDs = computed(() => { return datasetList.value[0]; })
 	const exprContext = computed(() => exprContextRef.value)
 	const currentTask = computed(() => { return runningTasks.value[0]; })
@@ -91,7 +91,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		runningTasks.value = datasetList.value[0].tasks;
 		exprContextRef.value = {
 			dsList: datasetList.value.map(x => x.name),
-			uiList: uiLists.value
+			uiList: uiLists.value.map(x => x)
 		}
 	}
 
@@ -130,7 +130,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	function showHelp() { helpRef.value = true }
 
 	return {
-		navigationPreset,
+		preset,
 		isTrainingTask,
 		currentUI,
 		currentDs,
