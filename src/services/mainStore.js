@@ -16,6 +16,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	const training = ref(false)
 	const helpRef = ref(true)
 	const currentUIName = ref("")
+	const pageHistory = reactive([])
 
 
 
@@ -23,7 +24,6 @@ export const useMainStore = defineStore('mainStore', () => {
 	const currentUI = computed(() => currentUIName.value)
 	const hasNextUI = computed(() => { return uiLists.value.length >= 1; })
 	const nextUI = computed(() => { return uiLists.value[1] ?? undefined })
-	const preset = computed(() => navigationPreset.value)
 	const currentDs = computed(() => { return datasetList.value[0]; })
 	const exprContext = computed(() => exprContextRef.value)
 	const currentTask = computed(() => { return runningTasks.value[0]; })
@@ -32,6 +32,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	const surveyLink = computed(() => surveyLinks.value[0] ?? "not set")
 	const navigateNext = computed(() => { return navigationPreset.value[0] ?? ""; })
 	const user = computed(() => { return subject.value })
+	const pages = computed(() => pageHistory)
 
 	function setExperimentContext(ctx) {
 		const params = ctx.split("-");
@@ -117,11 +118,12 @@ export const useMainStore = defineStore('mainStore', () => {
 		}
 		training.value = false
 		currentUIName.value = ""
-		navigationPreset.value.shift()
+		//pageHistory.push(navigationPreset.value.shift())
 
 	}
 	function consumePage() {
-		navigationPreset.value.shift()
+		const page = navigationPreset.value.shift()
+		pageHistory.push(page)
 	}
 
 	function hideHelp() {
@@ -130,7 +132,8 @@ export const useMainStore = defineStore('mainStore', () => {
 	function showHelp() { helpRef.value = true }
 
 	return {
-		preset,
+		navigationPreset,
+		pages,
 		isTrainingTask,
 		currentUI,
 		currentDs,

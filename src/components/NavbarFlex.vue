@@ -40,9 +40,9 @@ const versionLabelRef = ref("");
 const isTraining = computed(() => mainStore.isTrainingTask)
 const trainingLabel = computed(() => mainStore.isTrainingTask? "training": "")
 const versionLabel = computed(() => {
-	const length = mainStore.preset.length
-	if (length <=5  && length  >=3) { return "ver. #1" }
-	if (length <= 2 && length > 1) { return  "ver. #2" }
+	const length = mainStore.pages.length
+	if (length >= 1  && length <3) { return "ver. #1" }
+	if (length >= 3 && length  < 5) { return  "ver. #2" }
 	return ""
 })
 
@@ -59,7 +59,7 @@ function updateLabel(){
 }
 
 watch(
-	() => mainStore.navigationPreset,
+	() => mainStore.page,
 	(newVal, oldV) =>{
 		console.log("updating navigationPreset")
 		updateLabel()
