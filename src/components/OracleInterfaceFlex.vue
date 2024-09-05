@@ -161,6 +161,7 @@ function confirm() {
 	store.setStart(new Date())
 	store.generateTimer(); 
 	mainStore.hideHelp();
+	mainStore.train()
 }
 
 async function logDBSwitchToTask(){

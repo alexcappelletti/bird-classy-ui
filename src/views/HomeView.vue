@@ -24,6 +24,7 @@ const pageLabel = computed(() => {
 function goToFirstUI() {
 	console.log("goto first UI")
 	store.consumePage();
+	
 }
 
 
