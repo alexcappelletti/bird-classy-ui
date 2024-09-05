@@ -48,7 +48,7 @@ const mainStore = useMainStore()
 const isTraining = computed(() => mainStore.isTrainingTask)
 
 async function logDBSwitchToTask(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+   /*  var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var interfaceTask = mainStore.currentUI
     var user = mainStore.user
     console.log(interfaceTask)
@@ -60,11 +60,11 @@ async function logDBSwitchToTask(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 async function logDBSwitchToHelp(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+    /* var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var interfaceTask = mainStore.currentUI
     var user = mainStore.user
     console.log(interfaceTask)
@@ -76,7 +76,7 @@ async function logDBSwitchToHelp(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 </script>

@@ -156,7 +156,7 @@
                 the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
             </p>
             <h2 class="headline-large">
-                Example of a Task
+                Example of the interface of a Task
             </h2>
             <p class="body-large" style="line-height: 1.5;">
                 1. This will be the initial interface, with the <b>Target Image</b> on the left and the 3 <b>Suggested
@@ -172,7 +172,13 @@
                 3. Once you analysed the information, you will be able to confirm the selection, if you believe that the
                 species is the correct one, or go back to the initial interface and analyse the others species
             </p>
-
+            <h2 class="headline-medium">Note</h2>
+            <p class="body-large">
+                The first two tasks will be for you to explore and learn the interface, the timer for neither of the tasks will be started. 
+                During this time, you can also ask any question to the assistant.
+                After the second task, the bar on top will change color, to signal that the experiment is started. The timer for the task will be started and 
+                from that moment up until you complete the task, you should avoid interacting with the assistant.
+            </p>
         </div>
 
         <div style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
@@ -219,6 +225,7 @@ function confirm() {
 	store.addCurrentTime(getNow()); 
 	store.addAnswer(); 
 	store.closePage(); 
+    store.nextTask();
 	mainStore.nextTask();
 
 
@@ -248,7 +255,7 @@ async function startTask(ev) {
 }
 
 async function logDBSwitchToTask(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     console.log(taskId)
     try {
@@ -259,11 +266,11 @@ async function logDBSwitchToTask(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 async function logDBOpenSpeciesPage(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
 
@@ -275,11 +282,11 @@ async function logDBOpenSpeciesPage(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 async function logDBOpenPics(param){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
 
@@ -291,10 +298,10 @@ async function logDBOpenPics(param){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 async function logDBOpenWiki(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
 
@@ -306,11 +313,11 @@ async function logDBOpenWiki(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 async function logDBConfirmSelection(){
-    var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
+/*     var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
     var user = mainStore.user
     var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
 
@@ -322,7 +329,7 @@ async function logDBConfirmSelection(){
                 timestamp: new Date(),
                 userID: user
             })
-    }catch (err) {console.log(err)}
+    }catch (err) {console.log(err)} */
 }
 
 
