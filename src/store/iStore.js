@@ -48,6 +48,9 @@ export const interactionStore = defineStore('interactionStore',{
             //variable to saves setIntervalID to clear it after each task
             intervalID: null,
 
+
+            mainStore: useMainStore(),
+
             /* -------------- Data to be removed after full merge of mainStore -------------- */
 
             //Storing the JSON
@@ -211,7 +214,9 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         nextTask(){
-            if(this.currentTask + 1 == this.dataJson["tasks"].length){
+            //if(this.currentTask + 1 == this.dataJson["tasks"].length){
+            if(this.mainStore.currentDs.tasks.length == 1){
+                console.log("Finito")
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });
@@ -228,7 +233,7 @@ export const interactionStore = defineStore('interactionStore',{
                 
 
             }
-            else if(this.currentTask < this.dataJson["tasks"].length){
+            else{
                 this.CollectedData.push({
                     "timePerTask": null,
                     "answerGiven": null,
@@ -489,7 +494,7 @@ export const oracleStore = defineStore('oracleStore',{
 
             //add if to check if task is finished (pass to next UI)
 
-            if(this.currentTask + 1 == this.dataJson["tasks"].length){
+            if(this.mainStore.currentDs.tasks.length == 1){
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });

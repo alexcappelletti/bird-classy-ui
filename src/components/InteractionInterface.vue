@@ -91,8 +91,8 @@
 						<div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
 							<p id="description" class="body-large text-justify">
 								{{ mainStore.currentTask?.species[store.cardNumber]?.description }}.. <a
-									class='wikilink' :href="store.currentLink" target='_blank'
-									@click="openWikiLinkAsync">Wikipedia</a></p>
+									class='wikilink' :href="currentLink" target='_blank'
+									@click="store.addWikiClick(); logDBOpenWiki()">Wikipedia</a></p>
 						</div>
 
 						<div
@@ -219,7 +219,7 @@ onBeforeMount(() => {
 })
 
 const isHelpVisible = computed(() => mainStore.help)
-
+const wikilink = computed(() => mainStore.currentTask?.species[store.cardNumber]?.wikilink ?? "#")
 
 const targetImage = computed(() => {
 	const src = `src/assets/${mainStore.currentTask?.targetImage}`
