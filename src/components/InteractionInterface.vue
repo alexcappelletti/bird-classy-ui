@@ -92,12 +92,12 @@
 							<p id="description" class="body-large text-justify">
 								{{ mainStore.currentTask?.species[store.cardNumber]?.description }}.. <a
 									class='wikilink' :href="store.currentLink" target='_blank'
-									@click="store.addWikiClick(); logDBOpenWiki()">Wikipedia</a></p>
+									@click="openWikiLinkAsync">Wikipedia</a></p>
 						</div>
 
 						<div
 							style="display: flex; flex-direction: row; justify-content: space-between; min-width: 600px; gap: 10px;">
-							<v-btn rounded="pill" @click="store.closePage();" style="flex-grow: 1;">
+							<v-btn rounded="pill" @click="handleClosePageAsync" style="flex-grow: 1;">
 								Back
 							</v-btn>
 
@@ -190,8 +190,8 @@
 
 		<div
 			style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
-			<v-btn rounded="pill" color="Primary" @click="startTask /* logDBSwitchToTask() */">
-				Switch to the Task
+			<v-btn rounded="pill" color="Primary" @click="startTaskAsync /* logDBSwitchToTask() */">
+				Begin Task
 			</v-btn>
 		</div>
 
@@ -219,7 +219,7 @@ onBeforeMount(() => {
 })
 
 const isHelpVisible = computed(() => mainStore.help)
-const hasNext = computed(() => mainStore.hasNextTask)
+
 
 const targetImage = computed(() => {
 	const src = `src/assets/${mainStore.currentTask?.targetImage}`
@@ -237,26 +237,6 @@ function pictureSourceFormat(species, imageIdx, mode){
 	return localUrl
 }
 
-async function confirmAsync(ev) {
-	try {
-		await traceLog({
-				event: "confirm-selection",
-				params: {
-					species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
-					'similarity-task-idx': mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask)
-				},
-				timestamp: new Date(),
-				userID: mainStore.user
-			})
-		store.addCurrentTime(getNow())
-		store.addAnswer()
-		store.closePage()
-		mainStore.nextTask()
-	}
-	catch (err) {console.error(JSON.stringify(err))}
-}
-
-
 function getNow() {
 	var today = new Date();
 	return today;
@@ -272,107 +252,140 @@ function changeTab(tabVal) {
 	idTab.value = tabVal;
 }
 
-async function startTask(ev) {
+async function startTaskAsync(ev) {
+	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 	store.setStart(getNow())
 	store.generateTimer()
 	mainStore.hideHelp()
 	mainStore.train()
-
-}
-
-async function logDBSwitchToTask() {
 	try {
-		await traceLog(
-			{
-				event: "similarityTask-" + mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
-				params: "SwitchToTask",
-				timestamp: new Date(),
-				userID: mainStore.user
-			})
-	} catch (err) { console.log(err) }
-}
-
-async function logDBOpenSpeciesPage() {
-	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
-	var user = mainStore.user
-	var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
-
-	try {
-		await traceLog(
-			{
-				event: "similarityTask-" + taskId,
-				params: "CardSpeciesOpened: " + openedSpecies,
-				timestamp: new Date(),
-				userID: user
-			})
-	} catch (err) { console.log(err) }
-}
-
-async function logDBOpenPics(param) {
-	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
-	var user = mainStore.user
-	var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
-
-	try {
-		await traceLog(
-			{
-				event: "similarityTask-" + taskId,
-				params: "SwitchedTo" + param + "SimilarImagesFor: " + openedSpecies,
-				timestamp: new Date(),
-				userID: user
-			})
-	} catch (err) { console.log(err) }
-}
-async function logDBOpenWiki() {
-
-	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
-	var user = mainStore.user
-	var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
-
-	try {
-		await traceLog(
-			{
-				event: "similarityTask-" + taskId,
-				params: "OpenedWikipediaPageOf: " + openedSpecies,
-				timestamp: new Date(),
-				userID: user
-			})
-	} catch (err) { console.log(err) }
-}
-
-async function logDBConfirmSelection() {
-	if (mainStore.currentTask === undefined) {return;}
-	try {
-		await traceLog(
-			{
-				event: "similarityTask-" + mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask),
-				params: "SelectedSpecies: " + mainStore.currentTask?.species[store.cardNumber]?.speciesName,
-				timestamp: new Date(),
-				userID: mainStore.user
-			})
-	} catch (err) { console.log(err) }
+		await traceLog({
+			event: "start-task-similar-ui",
+			params: {
+				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				datasetName: mainStore.currentDs.name
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (error) { console.error(JSON.stringify(error)) }
 }
 
 async function openTabAsync(tabIdx, label) {
 	idTab.value = tabIdx
-	await logDBOpenPics(label);
+	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) {return;}
+	try {
+		await traceLog(
+			{
+				event: "switch-images-tabSet" ,
+				params: {
+					taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+					species: mainStore.currentTask.species[tabIdx].speciesName,
+					caseLabel: label
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+	}
+	catch (error){console.error(JSON.stringify(error))}
 }
 
-async function openSpeciesCard(s) {
-	if (mainStore.currentTask === undefined) {return;}
-	const species = mainStore.currentTask?.species ?? []
+async function openSpeciesCard(species) {
+	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+	const species = mainStore.currentTask.species ?? []
+	try {
+		await traceLog({
+			event: "openSpeciesCard",
+			params: {
+				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				species: mainStore.currentTask.species[tabIdx].speciesName,
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	} catch (err) { console.log(err) }
 	store.openPage(species.indexOf(s))
-	
+}
+
+async function openWikiLinkAsync(){
+	store.addWikiClick(); 
+	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		await traceLog({
+			event: "openWikiLink",
+			params: {
+				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				species: mainStore.currentTask.species[tabIdx].speciesName
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (error) {
+		console.error(JSON.stringify(error))
+	}
+}
+
+async function handleClosePageAsync(params) {
+	store.closePage();
+	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		await traceLog({
+			event: "closeSpeciesCard",
+			params: {
+				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				species: mainStore.currentTask.species[tabIdx].speciesName,
+				caseLabel: label
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (error) {console.error(JSON.stringify(error))}
+}
+async function confirmAsync(ev) {
+	try {
+		await traceLog({
+			event: "confirm-selection-similar-ui",
+			params: {
+				species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
+				taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask)
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		store.addCurrentTime(getNow())
+		store.addAnswer()
+		store.closePage()
+		mainStore.nextTask()
+	}
+	catch (err) { console.error(JSON.stringify(err)) }
 }
 
 watch(
 	() => mainStore.currentUI,
-	(newV, old) => {
+	async (newV, old) => {
 		const nextPage = mainStore.navigateNext
 		console.log(`hasNext ${newV} <- ${old}; navigateNext ${nextPage} `)
-		mainStore.consumePage();
-		console.log("updating navigation to " + nextPage)
-		router.push({ name: nextPage })
+		try {
+			await traceLog({
+				event: "complete-similar-ui-tasks",
+				params: {
+					species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
+					taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask),
+					datasetName: mainStore.currentDs?.name
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+			mainStore.consumePage();
+			console.log("updating navigation to " + nextPage)
+			router.push({ name: nextPage })
+		}
+		catch (err) { console.error(JSON.stringify(err)) }
+
+		
 
 	})
 
