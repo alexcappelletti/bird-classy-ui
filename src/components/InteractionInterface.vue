@@ -291,9 +291,9 @@ async function openTabAsync(tabIdx, label) {
 	catch (error){console.error(JSON.stringify(error))}
 }
 
-async function openSpeciesCard(species) {
+async function openSpeciesCard(s) {
 	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
-	const species = mainStore.currentTask.species ?? []
+	const species = s ?? []
 	try {
 		await traceLog({
 			event: "openSpeciesCard",
