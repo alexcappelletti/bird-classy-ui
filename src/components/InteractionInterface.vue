@@ -10,10 +10,10 @@
 			<p class="headline-large">Suggested Images</p>
 
 			<div class="interaction-cards">
-				<v-card v-for="s in mainStore.currentTask.species" :key="s.speciesName" width="180" class="rounded-lg"
+				<v-card v-for="s in mainStore.currentTask?.species" :key="s.speciesName" width="180" class="rounded-lg"
 					hover color="Secondary95"
-					@click="store.openPage(mainStore.currentTask.species.indexOf(s)); logDBOpenSpeciesPage();">
-					<v-img :src="bestSimilarPicture(s, 0)" cover></v-img>
+					@click="openSpeciesCard(s)">
+					<v-img :src="pictureSourceFormat(s, 0, 'best')" cover></v-img>
 					<p class="body-large pa-4">{{ s.speciesName }}</p>
 				</v-card>
 			</div>
@@ -29,7 +29,7 @@
 						<!--<v-img class="mx-auto" style="border-radius: 5%;" width="300px"
                             :src="store.getSimilarityPicBest(store.currentTask, store.cardNumber, 0)"></v-img>-->
 						<v-img class="mx-auto" style="border-radius: 5%;" width="300px"
-							:src="bestSimilarPicture(mainStore.currentTask?.species[store.cardNumber], 0)"></v-img>
+							:src="pictureSourceFormat(store.cardNumber, 0, 'best')"></v-img>
 						<p class="headline-large">{{ mainStore.currentTask?.species[store.cardNumber]?.speciesName }}
 						</p>
 
@@ -58,8 +58,8 @@
 
 
 						<v-tabs align-tabs="center" color="deep-purple-accent-4">
-							<v-tab :text="itemsPics[0]" @click="changeTab(0); logDBOpenPics('Most');"></v-tab>
-							<v-tab :text="itemsPics[1]" @click="changeTab(1); logDBOpenPics('Least');"></v-tab>
+							<v-tab :text="itemsPics[0]" @click="openTabAsync(0, 'Most')"></v-tab>
+							<v-tab :text="itemsPics[1]" @click="openTabAsync(1, 'Least')"></v-tab>
 						</v-tabs>
 
 						<v-sheet v-if="idTab == 0" class="mx-auto" style="margin-top: -5px;" max-width="790"
@@ -68,7 +68,7 @@
 								<v-slide-group-item v-for="i in 8" :key="i">
 
 									<v-img class="ma-2"
-										:src="bestSimilarPicture(mainStore.currentTask?.species[store.cardNumber], i)"
+										:src="pictureSourceFormat(store.cardNumber, i, 'best')"
 										height="150px" width="150px" cover></v-img>
 
 								</v-slide-group-item>
@@ -80,7 +80,7 @@
 								<v-slide-group-item v-for="i in 8" :key="i">
 
 									<v-img class="ma-2"
-										:src="worstSimilarPicture(mainStore.currentTask?.species[store.cardNumber], i - 1)"
+										:src="pictureSourceFormat(store.cardNumber, i - 1, 'worst')"
 										height="150px" width="150px" cover></v-img>
 
 								</v-slide-group-item>
@@ -102,7 +102,7 @@
 							</v-btn>
 
 							<v-btn rounded="pill" color="Primary" style="flex-grow: 2"
-								@click="logDBConfirmSelection(); confirm()">
+								@click="confirmAsync">
 								Confirm
 							</v-btn>
 						</div>
@@ -200,13 +200,17 @@ import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
 import { useRouter } from 'vue-router'
+import { amber } from 'vuetify/util/colors';
 
 const store = interactionStore()
 const mainStore = useMainStore()
 const router = useRouter()
+
+const idTab = ref(0)
+
 onBeforeMount(() => {
 	//get the info on which to load from the link
-	store.loadData('./src/assets/pool', 2);
+	//store.loadData('./src/assets/pool', 2);
 
 })
 
@@ -218,21 +222,34 @@ const targetImage = computed(() => {
 	return src
 })
 
-
-function bestSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species?.imagesFolder}/best/${imageIdx}.jpg`
+function pictureSourceFormat(species, imageIdx, mode){
+	if (mainStore.currentTask === undefined){return "";}
+	let speciesObj = {};
+	if (typeof species === "number") {
+		speciesObj = mainStore.currentTask.species[species]
+	}
+	else {speciesObj = species}
+	const localUrl = `src/assets/${speciesObj?.imagesFolder}/${mode}/${imageIdx}.jpg`
 	return localUrl
 }
-function worstSimilarPicture(species, imageIdx) {
-	const localUrl = `src/assets/${species?.imagesFolder}/worst/${imageIdx}.jpg`
-	return localUrl
-}
 
-function confirm() {
-	store.addCurrentTime(getNow());
-	store.addAnswer();
-	store.closePage();
-	mainStore.nextTask();
+async function confirmAsync(ev) {
+	try {
+		await traceLog({
+				event: "confirm-selection",
+				params: {
+					species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
+					'similarity-task-idx': mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask)
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+		store.addCurrentTime(getNow())
+		store.addAnswer()
+		store.closePage()
+		mainStore.nextTask()
+	}
+	catch (err) {console.error(JSON.stringify(err))}
 }
 
 
@@ -245,7 +262,7 @@ function getNow() {
 const itemsPics = ['Most Similar Images from this Species', 'Least Similar Images from this Species'];
 const model = null;
 
-var idTab = ref(0)
+
 
 function changeTab(tabVal) {
 	idTab.value = tabVal;
@@ -255,19 +272,18 @@ async function startTask(ev) {
 	store.setStart(getNow())
 	store.generateTimer()
 	mainStore.hideHelp()
+	mainStore.train()
+
 }
 
 async function logDBSwitchToTask() {
-	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
-	var user = mainStore.user
-	console.log(taskId)
 	try {
 		await traceLog(
 			{
-				event: "similarityTask-" + taskId,
+				event: "similarityTask-" + mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
 				params: "SwitchToTask",
 				timestamp: new Date(),
-				userID: user
+				userID: mainStore.user
 			})
 	} catch (err) { console.log(err) }
 }
@@ -304,6 +320,7 @@ async function logDBOpenPics(param) {
 	} catch (err) { console.log(err) }
 }
 async function logDBOpenWiki() {
+
 	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
 	var user = mainStore.user
 	var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
@@ -320,23 +337,32 @@ async function logDBOpenWiki() {
 }
 
 async function logDBConfirmSelection() {
-	var taskId = mainStore.currentDs.tasks.indexOf(mainStore.currentTask)
-	var user = mainStore.user
-	var openedSpecies = mainStore.currentTask.species[store.cardNumber].speciesName
-
+	if (mainStore.currentTask === undefined) {return;}
 	try {
 		await traceLog(
 			{
-				event: "similarityTask-" + taskId,
-				params: "SelectedSpecies: " + openedSpecies,
+				event: "similarityTask-" + mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask),
+				params: "SelectedSpecies: " + mainStore.currentTask?.species[store.cardNumber]?.speciesName,
 				timestamp: new Date(),
-				userID: user
+				userID: mainStore.user
 			})
 	} catch (err) { console.log(err) }
 }
 
+async function openTabAsync(tabIdx, label) {
+	idTab.value = tabIdx
+	await logDBOpenPics(label);
+}
+
+async function openSpeciesCard(s) {
+	if (mainStore.currentTask === undefined) {return;}
+	const species = mainStore.currentTask?.species ?? []
+	store.openPage(species.indexOf(s))
+	
+}
+
 watch(
-	() => mainStore.nextUI,
+	() => mainStore.currentUI,
 	(newV, old) => {
 		const nextPage = mainStore.navigateNext
 		console.log(`hasNext ${newV} <- ${old}; navigateNext ${nextPage} `)

@@ -16,10 +16,10 @@ const credentials = Realm.Credentials.anonymous();
 console.log("created const var in logto...")
 
 export async function traceLog(l){
-	// const user = await app.logIn(credentials);
-	// const log = await user.functions.birdStoreLog(
-	// 	l.event, 
-	// 	new Date(),
-	// 	l.params, 
-	// 	l.userID)
+	const user = await app.logIn(credentials);
+	const log = await user.functions.birdStoreLog(
+		l.event, 
+		l.timestamp ?? new Date(),
+		l.params, 
+		l.userID)
 }
