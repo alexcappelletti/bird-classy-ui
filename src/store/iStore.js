@@ -215,7 +215,8 @@ export const interactionStore = defineStore('interactionStore',{
 
         nextTask(){
             //if(this.currentTask + 1 == this.dataJson["tasks"].length){
-            if(!this.mainStore.hasNextTask){
+            if(this.mainStore.currentDs.tasks.length == 1){
+                console.log("Finito")
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });
@@ -493,7 +494,7 @@ export const oracleStore = defineStore('oracleStore',{
 
             //add if to check if task is finished (pass to next UI)
 
-            if(this.currentTask + 1 == this.dataJson["tasks"].length){
+            if(this.mainStore.currentDs.tasks.length == 1){
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
                 var bb = new Blob([dataToWrite],{ type: "application/json" });
