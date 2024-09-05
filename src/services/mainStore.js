@@ -7,6 +7,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	let datasetName = ""
 	const subject = ref("")
 	const uiLists = ref([])
+	const exprContextRef = ref({})
 	const navigationPreset = ref([])
 	const surveyLinks = ref([])
 	const datasetList = ref([])
@@ -24,6 +25,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	const nextUI = computed(() => { return uiLists.value[1] ?? undefined })
 
 	const currentDs = computed(() => { return datasetList.value[0]; })
+	const exprContext = computed(() => exprContextRef.value)
 	const currentTask = computed(() => { return runningTasks.value[0]; })
 	const isTrainingTask = computed(() => { return runTask.value.length < 2 && training.value; })
 	const hasNextTask = computed(() => runningTasks.value.length >= 1)
@@ -87,11 +89,14 @@ export const useMainStore = defineStore('mainStore', () => {
 
 		]
 		runningTasks.value = datasetList.value[0].tasks;
+		exprContextRef.value = {
+			dsList: datasetList.value.map(x => x.name),
+			uiList: uiLists.value
+		}
 	}
 
 	function train() {
 		training.value = true;
-
 	}
 
 	function nextTask() {
@@ -144,6 +149,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		navigateNext,
 		consumePage,
 		user, 
-		surveyLink
+		surveyLink, 
+		exprContext
 	}
 })

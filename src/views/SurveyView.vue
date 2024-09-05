@@ -1,7 +1,7 @@
 <template>
 	<div>Here is the survey view</div>
 	<div><a :href="link" target="_blank" @click="showNext = true">survey now!</a></div>
-	<RouterLink :v-if="showNext" :to="{name: store.navigateNext}" @click="nextUI">go to {{ pageLabel }}</RouterLink>
+	<RouterLink v-if="showNext" :to="{name: store.navigateNext}" @click="nextUI">go to {{ pageLabel }}</RouterLink>
 </template>
 
 <script setup>
