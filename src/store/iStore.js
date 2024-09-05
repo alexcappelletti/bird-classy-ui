@@ -346,6 +346,7 @@ export const oracleStore = defineStore('oracleStore',{
             //variable to saves setIntervalID to clear it after each task
             intervalID: null,
 
+            mainStore: useMainStore(),
 
             /* -------------- Data to be removed after full merge of mainStore -------------- */
 

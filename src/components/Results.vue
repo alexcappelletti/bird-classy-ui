@@ -55,16 +55,17 @@
 
 <script setup>
 import { ref } from 'vue';
-import { oracleStore } from '@/store/iStore';
-import { interactionStore } from '@/store/iStore';
+import { oracleStore, interactionStore } from '@/store/iStore';
+import { useMainStore } from '@/services/mainStore';
 
 const iStore = interactionStore()
 const oStore = oracleStore()
+const mainStore = useMainStore()
 
 
 const localOracle = JSON.parse(localStorage.getItem('oracleResults'))
 const localSimilarity = JSON.parse(localStorage.getItem('interactionResults'))
-var correctOracle, correctSimilarity
+/*var correctOracle, correctSimilarity
 
 var oracleAnswersUser = ref([])
 var oracleAnswersCorrect = ref([])
@@ -83,9 +84,9 @@ var similarityUserCorrect = ref([])
 var similarityUserCorrectTotal = ref(0)
 
 var similarityTimePerTask = ref([])
-var similarityTotalTime = ref(0)
+var similarityTotalTime = ref(0)*/
 
-fetch('./src/assets/pool2/info.json', {
+/*fetch('./src/assets/pool2/info.json', {
     headers: {
         'Accept': 'application/json',
     }
@@ -145,6 +146,54 @@ fetch('./src/assets/pool2/info.json', {
             similarityTotalTime.value += (localSimilarity[i]["timePerTask"])
             similarityTotalTime.value = Math.round(similarityTotalTime.value * 100) / 100
         }
+
+    });*/
+
+// ------------------------------------------------------------------------------------------------------
+
+var answerJson = ref([])
+var ds1 = ref([])
+var ds2 = ref([])
+var oracleCorrects = ref(0)
+var similarityCorrects = ref(0)
+
+    fetch('./src/assets/experiment-short.json', {
+    headers: {
+        'Accept': 'application/json',
+    }
+})
+    .then(response => response.json())
+    .then(response => {
+        var tempData = JSON.stringify(response)
+        answerJson = JSON.parse(tempData)
+
+        console.log(answerJson)
+        console.log(localOracle)
+        console.log(localSimilarity)
+
+        ds1 = answerJson[0].tasks
+        ds2 = answerJson[1].tasks
+
+
+
+
+
+        /*for (let i = 0; i < 10; i++) {
+            similarityAnswersCorrect[i] = correctSimilarity['tasks'][i]["correctAnswer"]
+            similarityAnswersUser[i] = localSimilarity[i]["answerGiven"]
+
+            if (similarityAnswersCorrect[i] == similarityAnswersUser[i]) {
+                similarityUserCorrect.value.push(1)
+                similarityUserCorrectTotal.value += 1
+            }
+            else {
+                similarityUserCorrect.value.push(0)
+            }
+
+            similarityTimePerTask[i] = localSimilarity[i]["timePerTask"]
+            similarityTotalTime.value += (localSimilarity[i]["timePerTask"])
+            similarityTotalTime.value = Math.round(similarityTotalTime.value * 100) / 100
+        }*/
 
     });
 
