@@ -25,6 +25,6 @@ onBeforeMount(() => {
 
 function nextUI() {
 	console.log("cset new store content")
-	
+	store.consumePage()
 }
 </script>
