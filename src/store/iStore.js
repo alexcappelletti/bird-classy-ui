@@ -51,106 +51,14 @@ export const interactionStore = defineStore('interactionStore',{
 
             mainStore: useMainStore(),
 
-            /* -------------- Data to be removed after full merge of mainStore -------------- */
+            currentTask: 0, //non dovrebbe essere qui
 
-            //Storing the JSON
-            dataJson:  {},
-
-            currentTask: 0,
-            speciesNumber: 3,
-            speciesNames: [[]],
-            speciesDescription: [[]],
-            //speciesPics:[],
-            speciesPics:[],
-            speciesWikiLink: [[]],
-
-            //info about location of resources (pool is 1 or 2, while dataPath should be "./src/assets/pool"), generally used combined
-            poolData: null,
-            dataPath: null,
-
-            //path to the target images
-            targetPics: [],
             
         }
     },
-    // All getters should be removed
-    getters: {
-        currentSpecies(state){
-		    //return state.currentTask?.speciesName?.su ?? "undefined";
-            //return state.speciesNames[state.currentTask][state.cardNumber];
-            const species = state.speciesNames[state.currentTask][state.cardNumber]
-            if(species !== undefined)
-                return species
-            return "undefined"
-        },
-
-        currentDescription(state){
-			const descr = state.speciesDescription[state.currentTask][state.cardNumber] 
-			if (descr !== undefined) {return descr.substr(0, 260)}
-			return "undefined description"
-
-        },
-
-        currentLink(state){
-            var link = state.speciesWikiLink[state.currentTask][state.cardNumber];
-            if(link != undefined)
-                return link;
-            return null;
-        },
-
-        currentTargetPic(state){
-            var targetPic = state.targetPics[state.currentTask];
-            if(targetPic != undefined)
-                return targetPic;   
-            return null;
-        }
-    },
     actions: {
-        loadData(path){
-            //Depending on the URL, we load a different pool of images
-            var poolIndex = 0;
-            if((localStorage.getItem('FirstUI') == 'similarity' && localStorage.getItem('FirstPool') == '1') || (localStorage.getItem('FirstUI') == 'oracle' && localStorage.getItem('FirstPool') == '2'))
-                poolIndex = 1
-            else
-                poolIndex = 2
 
-            this.poolData = poolIndex;
-            this.dataPath = path;
-            var infoPath = path + poolIndex + "/info.json"
-            fetch(infoPath,{
-                headers: {
-                    'Accept': 'application/json',
-            }})
-            .then(response => response.json())
-            .then(response => {
-                var tempData = JSON.stringify(response)
-                this.dataJson = JSON.parse(tempData)
-                this.assignData()
-            });
-        },
-
-        assignData(){
-            this.speciesNames.pop()
-            this.speciesDescription.pop()
-            this.speciesWikiLink.pop()
-
-            for(let i = 0; i < this.dataJson["tasks"].length; i++){
-
-                this.speciesNames.push(this.dataJson["tasks"][i]["species"])
-
-                this.speciesDescription.push(this.dataJson["tasks"][i]["descriptions"])
-
-                this.speciesWikiLink.push(this.dataJson["tasks"][i]["links"])
-
-                //[this.dataPath + this.poolData + "/"] is needed to adapt the path of the pictures
-                this.targetPics.push(this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["targetpic"])
-
-                for(let j = 0; j < this.speciesNumber; j++)
-                    this.dataJson["tasks"][i]["pics"][j] = this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["pics"][j]
-                this.speciesPics.push(this.dataJson["tasks"][i]["pics"])
-            }
-        },
-
+        
         openPage(elemNumber){
             setTimeout(() => {    
                 this.cardOpened = true;
@@ -167,14 +75,6 @@ export const interactionStore = defineStore('interactionStore',{
                     this.cardOpened = false;
                 }, 300);
             }
-        },
-
-        getSimilarityPicBest(taskIndex, speciesIndex, picIndex){
-            return this.speciesPics[taskIndex][speciesIndex] + '/best/' + picIndex + '.jpg'
-        },
-
-        getSimilarityPicWorst(taskIndex, speciesIndex, picIndex){
-            return this.speciesPics[taskIndex][speciesIndex] + '/worst/' + picIndex + '.jpg'
         },
 
         openHelp(){
@@ -214,20 +114,12 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         nextTask(){
-            //if(this.currentTask + 1 == this.dataJson["tasks"].length){
-			if (this.mainStore?.currentDs === undefined)  {return}
+			if(this.mainStore?.currentDs === undefined){ return }
             if(this.mainStore.currentDs.tasks.length == 1){
-                console.log("Finito")
+
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
-                var bb = new Blob([dataToWrite],{ type: "application/json" });
-                var a = document.createElement('a');
-                a.download = 'TaskFile.txt';
-                a.href = window.URL.createObjectURL(bb);
-                a.click();*/
-
-                var dataToWrite = JSON.stringify(this.CollectedData)
-                localStorage.setItem('interactionResults', dataToWrite);
+                localStorage.setItem('interactionResults', dataToWrite);*/
                 clearInterval(this.intervalID);
                 this.intervalID = null;
                 this.blockTimerVisual()
@@ -348,114 +240,16 @@ export const oracleStore = defineStore('oracleStore',{
             intervalID: null,
 
             mainStore: useMainStore(),
+            
+            //Index of the task the user is completing
+            currentTask: 0,
 
             /* -------------- Data to be removed after full merge of mainStore -------------- */
 
 
-            //Storing the JSON
-            dataJson:  {},
-
-            //Index of the task the user is completing
-            currentTask: 0,
-            //Number of displayed results
-            speciesNumber: 3,
-
-
-            //paths to the target images
-            targetPics: [],
-
-            speciesNames: [[]],
-            speciesDescription: [[]],
-            speciesPics:[],
-            //speciesPics:[[]],
-            speciesConfidence: [[]],
-            speciesWikiLink: [[]],
-
-            
-
-        }
-    },
-    // All getters should be removed
-    getters: {
-        currentSpecies(state){
-            var species = state.speciesNames[state.currentTask][state.speciesVisualized];
-            if(species != undefined)
-                return species;
-            return null;
-        },
-
-        currentDescription(state){
-			const descr = state.speciesDescription[state.currentTask][state.speciesVisualized];
-			if (descr != undefined) { return descr.substr(0, 260) }
-			return "undefined description"
-
-        },
-
-        currentLink(state){
-            var link = state.speciesWikiLink[state.currentTask][state.speciesVisualized];
-            if(link != undefined)
-                return link;
-            return null;
-        },
-
-        currentConfidence(state){
-            var confidence = state.speciesConfidence[state.currentTask][state.speciesVisualized];
-            if(confidence != undefined)
-                return confidence;
-            return null;
-        },
-
-        currentTargetPic(state){
-            var targetPic = state.targetPics[state.currentTask];
-            if(targetPic != undefined)
-                return targetPic;
-            return null;
         }
     },
     actions: {
-        loadData(path){
-            //Depending on the URL, we load a different pool of images
-            var poolIndex = 0;
-            if((localStorage.getItem('FirstUI') == 'oracle' && localStorage.getItem('FirstPool') == '1') || (localStorage.getItem('FirstUI') == 'similarity' && localStorage.getItem('FirstPool') == '2'))
-                poolIndex = 1
-            else
-                poolIndex = 2
-            
-            this.poolData = poolIndex;
-            this.dataPath = path;
-            var infoPath = path + poolIndex + "/info.json"
-            fetch(infoPath,{
-                headers: {
-                    'Accept': 'application/json',
-            }})
-            .then(response => response.json())
-            .then(response => {
-                var tempData = JSON.stringify(response)
-                this.dataJson = JSON.parse(tempData)
-                console.log(this.dataJson)
-                this.assignData()
-            });
-        
-        },
-
-        assignData(){
-            this.speciesNames.pop()
-            this.speciesDescription.pop()
-            this.speciesWikiLink.pop()
-            this.speciesConfidence.pop()
-            for(let i = 0; i < this.dataJson["tasks"].length; i++){
-                this.speciesNames.push(this.dataJson["tasks"][i]["species"])
-                this.speciesDescription.push(this.dataJson["tasks"][i]["descriptions"])
-                this.speciesWikiLink.push(this.dataJson["tasks"][i]["links"])
-                this.speciesConfidence.push(this.dataJson["tasks"][i]["confidence"])
-                
-                //[this.dataPath + this.poolData + "/"] is needed to adapt the path of the pictures
-                this.targetPics.push(this.dataPath + this.poolData + "/" + this.dataJson["tasks"][i]["targetpic"])
-
-            }
-        },
-        
-
         setStart(time){
             if(!this.startSet){
                 this.startingTime = time
@@ -464,7 +258,8 @@ export const oracleStore = defineStore('oracleStore',{
         },
 
         rotateSpecies(){
-            this.speciesVisualized = (this.speciesVisualized + 1) % this.speciesNumber;
+            console.log()
+            this.speciesVisualized = (this.speciesVisualized + 1) % this.mainStore.currentTask.species.length;
         },
 
         openHelp(){
@@ -498,12 +293,6 @@ export const oracleStore = defineStore('oracleStore',{
 			if (this.mainStore?.currentDs === undefined)  {return}
             if(this.mainStore.currentDs.tasks.length == 1){
 
-                /*var dataToWrite = JSON.stringify(this.CollectedData)
-                var bb = new Blob([dataToWrite],{ type: "application/json" });
-                var a = document.createElement('a');
-                a.download = 'TaskFile.txt';
-                a.href = window.URL.createObjectURL(bb);
-                a.click();*/
 
                 var dataToWrite = JSON.stringify(this.CollectedData)
                 localStorage.setItem('oracleResults', dataToWrite);
@@ -512,7 +301,7 @@ export const oracleStore = defineStore('oracleStore',{
                 this.blockTimerVisual();
 
             }
-            else if(this.currentTask < this.dataJson["tasks"].length){
+            else {
                 this.CollectedData.push({
                     "timePerTask": null,
                     "answerGiven": null,
@@ -528,17 +317,6 @@ export const oracleStore = defineStore('oracleStore',{
 
             //useMainStore.nextTask();
 
-        },
-
-        writeData(){
-            if(this.currentTask == this.dataJson["tasks"].length){
-                var dataToWrite = JSON.stringify(this.CollectedData)
-                var bb = new Blob([dataToWrite],{ type: "application/json" });
-                var a = document.createElement('a');
-                a.download = 'TaskFile.txt';
-                a.href = window.URL.createObjectURL(bb);
-                a.click();
-            }
         },
 
         generateTimer(){

@@ -194,3 +194,22 @@
     row-gap: 20px;
     column-gap: 20px;
 }
+
+/* Survey Page */
+
+.survey-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1%
+}
+
+/* Home Page */
+.home-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1%
+}

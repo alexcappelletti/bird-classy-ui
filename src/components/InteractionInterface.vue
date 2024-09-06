@@ -360,7 +360,7 @@ async function confirmAsync(ev) {
         store.nextTask()
 		mainStore.nextTask()
 	}
-	catch (err) { console.error(JSON.stringify(err)) }
+	catch (err) { console.error(err) }
 }
 
 watch(

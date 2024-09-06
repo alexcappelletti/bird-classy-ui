@@ -1,6 +1,6 @@
 <template>
     <div v-if="!mainStore.help" class="oracle-container">
-    
+
         <div class="oracle-prediction">
 
             <div class="oracle-target">
@@ -14,13 +14,13 @@
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Species</h2>
-                    <h2 class="title-large">{{ mainStore.currentTask?.species[store.speciesVisualized]?.speciesName }}</h2>
+                    <h2 class="title-large">{{ mainStore.currentTask.species[store.speciesVisualized].speciesName }}</h2>
                 </div>
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Confidence</h2>
-                    <v-progress-linear id="progressbar" bg-opacity="0.3" :model-value="mainStore.currentTask?.species[store.speciesVisualized]?.confidence"
-                        :color="barColor(mainStore.currentTask?.species[store.speciesVisualized]?.confidence / 100)" rounded rounded-bar height="20px"
+                    <v-progress-linear id="progressbar" bg-opacity="0.3" :model-value="mainStore.currentTask.species[store.speciesVisualized].confidence"
+                        :color="barColor(mainStore.currentTask.species[store.speciesVisualized].confidence / 100)" rounded rounded-bar height="20px"
                         style="width: 150px;"></v-progress-linear>
                 </div>
 
@@ -38,8 +38,8 @@
         <div class="oracle-wiki-container">
 
             <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
-                <p class="oracle-wiki-description body-large" style="color:#000000;"> {{ mainStore.currentTask?.species[store.speciesVisualized].description }}...
-                    <a class='wikilink' @click="store.addWikiClick(); logDBOpenWiki()" :href="mainStore.currentTask?.species[store.speciesVisualized]?.wikiLink"
+                <p class="oracle-wiki-description body-large" style="color:#000000;"> {{ mainStore.currentTask.species[store.speciesVisualized].description }}...
+                    <a class='wikilink' @click="store.addWikiClick(); logDBOpenWiki()" :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
                         target='_blank'>Wikipedia</a>
                 </p>
             </div>
@@ -109,7 +109,7 @@
         <div
             style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary"
-                @click="confirm()">
+                @click="store.setStart(new Date()); store.generateTimer(); mainStore.hideHelp(); logDBSwitchToTask();">
                 Switch to the Task
             </v-btn>
         </div>
@@ -128,10 +128,6 @@ const store = oracleStore()
 const mainStore = useMainStore()
 
 const router = useRouter()
-
-onBeforeMount(() => {
-    store.loadData('./src/assets/pool', 1)
-})
 
 
 onMounted(async () => {
@@ -238,7 +234,7 @@ watch(
 
 </script>
 
-<!-- 
+
 
 <script>
 export default {
@@ -247,4 +243,4 @@ export default {
         //Calls for classification, Images and wikipedia information
     }
 }
-</script> -->
+</script>
