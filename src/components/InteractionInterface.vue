@@ -357,6 +357,7 @@ async function confirmAsync(ev) {
 		store.addCurrentTime(getNow())
 		store.addAnswer()
 		store.closePage()
+        store.nextTask()
 		mainStore.nextTask()
 	}
 	catch (err) { console.error(JSON.stringify(err)) }

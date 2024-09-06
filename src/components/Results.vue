@@ -170,6 +170,7 @@ var similarityCorrects = ref(0)
         console.log(answerJson)
         console.log(localOracle)
         console.log(localSimilarity)
+        console.log(mainStore.exprContext)
 
         ds1 = answerJson[0].tasks
         ds2 = answerJson[1].tasks
