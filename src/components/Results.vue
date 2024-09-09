@@ -1,12 +1,14 @@
 <template>
     <div class="result-page">
 
-        <div style="margin: 20px;" v-if="((similarityUserCorrectTotal + oracleUserCorrectTotal) > 18) && ((similarityTotalTime + oracleTotalTime) < 150)">
+        <div style="margin: 20px;"
+            v-if="((oracleCorrects + similarityCorrects) > ((oracleTotal + similarityTotal)*0.75)) && ((similarityTime + oracleTime) < 150)">
             <p class="title-large">
                 Congratulations, you are as good as a <b>Professional Birdwatcher</b>
             </p>
         </div>
-        <div style="margin: 20px;" v-else-if="((similarityUserCorrectTotal + oracleUserCorrectTotal) > 8) && ((similarityTotalTime + oracleTotalTime) < 250)">
+        <div style="margin: 20px;"
+            v-else-if="((oracleCorrects + similarityCorrects) > ((oracleTotal + similarityTotal)*0.5)) && ((similarityTime + oracleTime) < 250)">
             <p class="title-large">
                 Congratulations, you are as good as as <b>Amateur Birdwatcher</b>
             </p>
@@ -18,8 +20,9 @@
         </div>
 
         <div style="text-align: center">
-            <p class="title-medium">Correct Answers: {{ oracleUserCorrectTotal + similarityUserCorrectTotal }} / 20</p>
-            <p class="title-medium">Total Time: {{ Math.floor((similarityTotalTime + oracleTotalTime)/60) }} minutes {{ ((similarityTotalTime + oracleTotalTime) % 60).toPrecision(2) }} seconds</p>
+            <p class="title-medium">Correct Answers: {{ oracleCorrects + similarityCorrects }} / {{  oracleTotal + similarityTotal }}</p>
+            <p class="title-medium">Total Time: {{ Math.floor((similarityTime + oracleTime) / 60) }} minutes {{
+                ((similarityTime + oracleTime) % 60).toPrecision(2) }} seconds</p>
         </div>
 
         <h2 class="headline-medium" style="margin-top: 10px;">
@@ -29,10 +32,10 @@
         <img style="max-width: 500px;" src="./../assets/HowToOracle.png">
         <div>
             <p class="title-small">
-                Correct Answers: {{ oracleUserCorrectTotal }} / {{ 10 }}
+                Correct Answers: {{ oracleCorrects }} / {{ oracleTotal }}
             </p>
             <p class="title-small">
-                Total Time: {{ oracleTotalTime }} seconds
+                Total Time: {{ Math.floor((oracleTime) / 60) }} minutes {{ (oracleTime % 60).toPrecision(2) }} seconds
             </p>
         </div>
         <h2 class="headline-medium" style="margin-top: 10px;">
@@ -42,94 +45,103 @@
 
         <div>
             <p class="title-small">
-                Correct Answers: {{ similarityUserCorrectTotal }} / {{ 10 }}
+                Correct Answers: {{ similarityCorrects }} / {{ similarityTotal }}
             </p>
             <p class="title-small">
-                Total Time: {{ similarityTotalTime }} seconds
+                Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60).toPrecision(2) }} seconds
             </p>
         </div>
 
-        
+
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { oracleStore } from '@/store/iStore';
-import { interactionStore } from '@/store/iStore';
+import { oracleStore, interactionStore } from '@/store/iStore';
+import { useMainStore } from '@/services/mainStore';
 
 const iStore = interactionStore()
 const oStore = oracleStore()
+const mainStore = useMainStore()
 
 
-const localOracle = JSON.parse(localStorage.getItem('oracleResults'))
-const localSimilarity = JSON.parse(localStorage.getItem('interactionResults'))
-var correctOracle, correctSimilarity
+//const localOracle = JSON.parse(localStorage.getItem('oracleResults'))
+//const localSimilarity = JSON.parse(localStorage.getItem('interactionResults'))
 
-var oracleAnswersUser = ref([])
-var oracleAnswersCorrect = ref([])
-
-var oracleUserCorrect = ref([])
-var oracleUserCorrectTotal = ref(0)
-
-var oracleTimePerTask = ref([])
-var oracleTotalTime = ref(0)
+var answerJson = ref([])
+var oracleCorrects = ref(0)
+var similarityCorrects = ref(0)
+var oracleTotal = ref(0)
+var similarityTotal = ref(0)
+var oracleTime = ref(0)
+var similarityTime = ref(0)
 
 
-var similarityAnswersUser = ref([])
-var similarityAnswersCorrect = ref([])
-
-var similarityUserCorrect = ref([])
-var similarityUserCorrectTotal = ref(0)
-
-var similarityTimePerTask = ref([])
-var similarityTotalTime = ref(0)
-
-fetch('./src/assets/pool2/info.json', {
+fetch('./src/assets/experiment-short.json', {
     headers: {
         'Accept': 'application/json',
     }
 })
-    .then(response => response.json())
-    .then(response => {
-        var tempData = JSON.stringify(response)
-        correctOracle = JSON.parse(tempData)
+.then(response => response.json())
+.then(response => {
+    var tempData = JSON.stringify(response)
+    answerJson = JSON.parse(tempData)
+
+    /*console.log(answerJson)
+    console.log(localOracle)
+    console.log(localSimilarity)
+    console.log(mainStore.exprContext)*/
+
+    var localOracle = oStore.CollectedData
+    var localSimilarity = iStore.CollectedData
+    
+    var dsList = mainStore.exprContext.dsList
+    var uiList = mainStore.exprContext.uiList
+
+    console.log(dsList) 
+    console.log(uiList)
+    console.log(answerJson)
+
+    for(let i = 0; i < answerJson.length; i++){
+
+        for(let j = 0; j < dsList.length; j++){
+
+            if(answerJson[i].name == dsList[j]){
+
+                if(uiList[j] == 'oracle'){
+
+                    for(let y = 0; y < answerJson[i].tasks.length; y++){
+
+                        if(localOracle[y]["answerGiven"] == answerJson[i].tasks[y].correctAnswer)
+                            oracleCorrects.value++
+                        oracleTotal.value++
+                        oracleTime.value += localOracle[y]["timePerTask"]
 
 
-        for (let i = 0; i < 10; i++) {
-            //oracleAnswersCorrect.value.push(correctOracle['tasks'][i]["correctAnswer"])
-            //oracleAnswersUser.value.push(localOracle[i]["answerGiven"])
+                    }
+                }
+                else if(uiList[j] == 'similarity'){
+                    
+                    for(let y = 0; y < answerJson[i].tasks.length; y++){
 
-            oracleAnswersCorrect[i] = correctOracle['tasks'][i]["correctAnswer"]
-            oracleAnswersUser[i] = localOracle[i]["answerGiven"]
-            if (oracleAnswersCorrect[i] == oracleAnswersUser[i]) {
-                oracleUserCorrect.value.push(1)
-                oracleUserCorrectTotal.value += 1
+                        if(localSimilarity[y]["answerGiven"] == answerJson[i].tasks[y].correctAnswer)
+                            similarityCorrects.value++
+                        similarityTotal.value++
+                        similarityTime.value += localSimilarity[y]["timePerTask"]
+
+                        }
+                }
+                
             }
-            else {
-                oracleUserCorrect.value.push(0)
-            }
-
-            oracleTimePerTask[i] = localOracle[i]["timePerTask"]
-            oracleTotalTime.value += localOracle[i]["timePerTask"]
-            oracleTotalTime.value = Math.round(oracleTotalTime.value * 100) / 100
-
         }
-    });
-
-fetch('./src/assets/pool2/info.json', {
-    headers: {
-        'Accept': 'application/json',
     }
-})
-    .then(response => response.json())
-    .then(response => {
-        var tempData = JSON.stringify(response)
-        correctSimilarity = JSON.parse(tempData)
+    
 
 
 
-        for (let i = 0; i < 10; i++) {
+
+        /*for (let i = 0; i < 10; i++) {
             similarityAnswersCorrect[i] = correctSimilarity['tasks'][i]["correctAnswer"]
             similarityAnswersUser[i] = localSimilarity[i]["answerGiven"]
 
@@ -144,8 +156,8 @@ fetch('./src/assets/pool2/info.json', {
             similarityTimePerTask[i] = localSimilarity[i]["timePerTask"]
             similarityTotalTime.value += (localSimilarity[i]["timePerTask"])
             similarityTotalTime.value = Math.round(similarityTotalTime.value * 100) / 100
-        }
+        }*/
 
-    });
+});
 
 </script>
