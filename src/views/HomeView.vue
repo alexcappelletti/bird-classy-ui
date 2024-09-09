@@ -20,7 +20,8 @@ onBeforeMount(() => {
 
 const pageLabel = computed(() => {
 	const rawName = store.navigateNext
-	return rawName?.split("-")[0] ?? "next page"
+	//return rawName?.split("-")[0] ?? "next page"
+	return "Go to UI version 1"
 })
 
 function goToFirstUI() {
