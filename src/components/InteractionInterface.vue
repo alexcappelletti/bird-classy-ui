@@ -90,7 +90,7 @@
 
 						<div class="mx-8 py-2 px-4" style="background-color: #AFCEBC; border-radius: 20px">
 							<p id="description" class="body-large text-justify">
-								{{ mainStore.currentTask?.species[store.cardNumber]?.description }}.. <a
+								{{ mainStore.currentTask?.species[store.cardNumber]?.description.substr(0,320) }}.. <a
 									class='wikilink' :href="mainStore.currentTask?.species[store.cardNumber]?.wikiLink ?? '#' " target='_blank'
 									@click="openWikiLinkAsync(mainStore.currentTask?.species[store.cardNumber])">Wikipedia</a></p>
 						</div>
