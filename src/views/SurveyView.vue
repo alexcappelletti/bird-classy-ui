@@ -14,7 +14,8 @@ const link = computed(() => store.surveyLink + store.user)
 const showNext = ref(false)
 const pageLabel = computed(() => {
 	const rawName = store.navigateNext
-	return rawName?.split("-")[0] ?? "next page"
+	//return rawName?.split("-")[0] ?? "next page"
+	return "Go to UI version 2"
 })
 
 onBeforeMount(() => {
