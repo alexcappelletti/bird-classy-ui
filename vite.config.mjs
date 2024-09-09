@@ -10,7 +10,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: "/bird-classy-u/",
+	base: "/bird-classy-ui/",
   plugins: [
     Vue({
       template: { transformAssetUrls }
