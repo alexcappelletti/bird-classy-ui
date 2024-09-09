@@ -9,34 +9,34 @@ import InteractionInterface from '@/components/InteractionInterface.vue'
 import Results from '@/components/Results.vue'
 import Home from '@/views/HomeView.vue'
 import SurveyView from '@/views/SurveyView.vue'
-
+const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/bird-classy-ui/'
 export function setupRouter(){
 	const mainStore = useMainStore()
 	const routes = [
 		{
 			name: "home-page",
-			path: '/' ,
+			path: `${BASE_URL}` ,
 			query:{ ctx: ""},
 			component: Home,
 		},
 		{
 			name: "oracle-page",
-			path: '/oracle',
+			path: `${BASE_URL}oracle`,
 			component: Oracle,
 		},// only authenticated users can create posts
 		{
 			name: "similarity-page",
-			path: "/similarity",
+			path: `${BASE_URL}similarity`,
 			component: InteractionInterface,
 		},
 		{
 			name: "results-page",
-			path: '/results',
+			path: `${BASE_URL}results`,
 			component: Results,
 		},
 		{
 			name: "survey-page",
-			path: '/survey',
+			path: `${BASE_URL}survey`,
 			component: SurveyView,
 		},
 		
