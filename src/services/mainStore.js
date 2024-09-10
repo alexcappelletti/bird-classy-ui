@@ -79,8 +79,9 @@ export const useMainStore = defineStore('mainStore', () => {
 	}
 
 	async function loadDatasets() {
-		//const response = await fetch("src/assets/experiment.json", {
-		const response = await fetch(`${BASE_URL}experiment-short.json`, {
+		const dsFile = `${BASE_URL}experiment-short.json`
+		console.log(`reading file: ${dsFile}`)//const response = await fetch("src/assets/experiment.json", {
+		const response = await fetch(dsFile, {
 			headers: {
 				'Accept': 'application/json',
 			}
