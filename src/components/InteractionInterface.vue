@@ -119,11 +119,15 @@
             <h2 class="headline-large">Experiment Description</h2>
             <p class="body-large" style="line-height: 1.5;">
                 During this experiment you will be asked to identify various species of birds, with the help of an AI
-                assistant.<br /><br />
-                This interface is built such that, per each task, you will be shown you will be shown one
-                <b>Target Image</b>, this is the picture of the bird you will try
-                to identify.<br />
-                The AI assistant will propose you 3 <b>Suggested Species</b> of birds, then you will be asked to
+                assistant.
+			</p>
+            <p class="headline-small" style="line-height: 0.5;">
+                Structure
+            </p>
+            <p class="body-large" style="line-height: 1.5;">
+                This interface is built such that, per each task, on the left of the monitor you will be shown one
+                <b>Target Image</b>, which is the picture of the bird you will try to identify. While on the right,
+                the AI assistant will propose you 3 <b>Suggested Species</b> of birds, then you will be asked to
                 identify, among these suggested results, which is the correct one.<br />
                 In order to identify the correct species, for each of the <b>Suggested Species</b>, you will be given
                 multiple tools:<br />
@@ -145,25 +149,22 @@
                 bird page and clicking on the
                 <b>Confirm Selection</b> button. <br />
                 Once confirmed your selection, you will be shown another <b>Target Image</b> and a new series of
-                <b>Suggested Species</b>, until the end of the experiment. <br />
-                The experiment will be timed and based on the total time used and the number of correct answers, at the
-                end
-                of the experiment you will be placed in one of 3 tiers: <br />
-            </p>
+                <b>Suggested Species</b>, until the end of the experiment. <br /><br />
+
+				In the top right corner of the screen you will be shown a bar that indicates how much time you have left
+                to complete the current task. If the timer reaches 0, you will pass to the next task and it will be
+                marked as an error.<br /><br />
+                You will be able to go back and read the instructions anytime you want, but the time will keep going for
+                the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
+			</p>
             <ul style="padding-left: 25px;">
                 <li class="body-large" style="line-height: 1.5;">Professional Birdwatcher</li>
                 <li class="body-large" style="line-height: 1.5;">Amateur Birdwatcher</li>
                 <li class="body-large" style="line-height: 1.5;">Novice Birdwatcher</li>
             </ul>
-            <p class="body-large" style="line-height: 1.5;">
-                In the top right corner of the screen you will be shown a bar that indicates how much time you have left
-                to complete the current task you. If the timer reaches 0, you will pass to the next task and it will be
-                marked as an error.<br /><br />
-                You will be able to go back and read the instructions anytime you want, but the time will keep going for
-                the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
-            </p>
+
             <h2 class="headline-large">
-                Example of the interface of a Task
+                Example of a Task
             </h2>
             <p class="body-large" style="line-height: 1.5;">
                 1. This will be the initial interface, with the <b>Target Image</b> on the left and the 3 <b>Suggested
@@ -179,12 +180,25 @@
                 3. Once you analysed the information, you will be able to confirm the selection, if you believe that the
                 species is the correct one, or go back to the initial interface and analyse the others species
             </p>
-            <h2 class="headline-medium">Note</h2>
-            <p class="body-large">
-                The first two tasks will be for you to explore and learn the interface, the timer for neither of the tasks will be started. 
-                During this time, you can also ask any question to the assistant.
-                After the second task, the bar on top will change color, to signal that the experiment is started. The timer for the task will be started and 
-                from that moment up until you complete the task, you should avoid interacting with the assistant.
+			<p class="headline-small" style="line-height: 0.5;">
+                Progress
+            </p>
+            <p class="body-large" style="line-height: 1.5;">
+                This section of the experiment will be composed of <b>10 Tasks.</b><br />
+                Each task will be timed, based on the total time used and the number of correct answers, 
+                after completing both interfaces you will be placed in one of 3 tiers: <br />
+			</p>
+            <h2 class="headline-small" style="line-height: 0.5;">Notes</h2>
+            <p class="body-large" style="line-height: 1.5;">
+                The first two tasks will be for you to explore and learn the interface, the timer for neither of the
+                tasks will be started, the navigation bar on top will also change color, to signal that you are in 
+                the tutorial section.
+                During this time, you can also ask any question to the assistant. <br />
+                After the second task, the bar on top will change color once again, to signal that the experiment is started. 
+                The timer for the task will be started and
+                from that moment up until you complete this section, you should avoid interacting with the assistant.
+                When you reach the end of this section, the interface will change and you will be asked to complete a 
+                survey on the interface you just used.
             </p>
         </div>
 
