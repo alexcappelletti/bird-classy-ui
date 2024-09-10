@@ -9,9 +9,8 @@
 				@click="mainStore.hideHelp(); logDBSwitchToTask();"></v-btn>
 			<v-spacer></v-spacer>
 			<p class="display-small" style="color: #404943;">
-				Bird Classification {{ versionLabel }}
+				Bird Classification {{ versionLabel }} {{trainingLabel}}
 			</p>
-			<p>{{trainingLabel}}</p>
 			
 			<v-spacer></v-spacer>
 			<!--<div id='pgbar' class="progressbar"></div>-->
@@ -41,8 +40,8 @@ const isTraining = computed(() => mainStore.isTrainingTask)
 const trainingLabel = computed(() => mainStore.isTrainingTask? "training": "")
 const versionLabel = computed(() => {
 	const length = mainStore.pages.length
-	if (length >= 1  && length <3) { return "ver. #1" }
-	if (length >= 3 && length  < 5) { return  "ver. #2" }
+	if (length >= 1  && length <3) { return "n° 1" }
+	if (length >= 3 && length  < 5) { return  "n° 2" }
 	return ""
 })
 
@@ -73,7 +72,7 @@ watch(
 <style lang="css">
 
 .training{
-	background-color: rgb(226, 214, 43);
+	background-color: rgb(235, 226, 173);
 
 
 }
