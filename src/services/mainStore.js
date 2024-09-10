@@ -33,6 +33,9 @@ export const useMainStore = defineStore('mainStore', () => {
 	const navigateNext = computed(() => { return navigationPreset.value[0] ?? ""; })
 	const user = computed(() => { return subject.value })
 	const pages = computed(() => pageHistory)
+	const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/bird-classy-ui/'
+
+
 
 	function setExperimentContext(ctx) {
 		const params = ctx.split("-");
@@ -43,14 +46,14 @@ export const useMainStore = defineStore('mainStore', () => {
 		subject.value = params[0]
 		uiLists.value = ["oracle", "similarity"]
 		navigationPreset.value = [
-				"oracle-page",
-				"survey-page",
-				"similarity-page",
-				"survey-page",
-				"results-page"
-			]
+			"oracle-page",
+			"survey-page",
+			"similarity-page",
+			"survey-page",
+			"results-page"
+		]
 		surveyLinks.value = [
-			"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713=", 
+			"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713=",
 			"https://docs.google.com/forms/d/e/1FAIpQLSdz3UyhWQisVnddY7TBOp6ERTfj41ktpJ4MSLPcadUMm-iYWA/viewform?usp=pp_url&entry.671716713="]
 		if (params[1] === "sp") {
 			uiLists.value = ["similarity", "oracle"]
@@ -151,8 +154,8 @@ export const useMainStore = defineStore('mainStore', () => {
 		showHelp,
 		navigateNext,
 		consumePage,
-		user, 
-		surveyLink, 
+		user,
+		surveyLink,
 		exprContext
 	}
 })
