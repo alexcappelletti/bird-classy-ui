@@ -9,38 +9,41 @@ import InteractionInterface from '@/components/InteractionInterface.vue'
 import Results from '@/components/Results.vue'
 import Home from '@/views/HomeView.vue'
 import SurveyView from '@/views/SurveyView.vue'
-const BASE_URL = `/`
+//const BASE_URL = import.meta.env.VITE_BASE_URL ?? `/`
 export function setupRouter(){
+	const BASE_URL = `${import.meta.env.VITE_BASE_URL}`
+	console.log(`setting routes ${BASE_URL}`)
 	const mainStore = useMainStore()
 	const routes = [
 		{
 			name: "home-page",
-			path: `${BASE_URL}` ,
+			path: `` ,
 			query:{ ctx: ""},
 			component: Home,
 		},
 		{
 			name: "oracle-page",
-			path: `${BASE_URL}oracle`,
+			path: `/oracle`,
 			component: Oracle,
 		},// only authenticated users can create posts
 		{
 			name: "similarity-page",
-			path: `${BASE_URL}similarity`,
+			path: `/similarity`,
 			component: InteractionInterface,
 		},
 		{
 			name: "results-page",
-			path: `${BASE_URL}results`,
+			path: `/esults`,
 			component: Results,
 		},
 		{
 			name: "survey-page",
-			path: `${BASE_URL}survey`,
+			path: `/survey`,
 			component: SurveyView,
 		},
 		
 	]
+	
 	const router = createRouter({
 		history: createWebHistory(BASE_URL),
 		routes: routes,
