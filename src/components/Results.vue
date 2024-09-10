@@ -77,8 +77,10 @@ var similarityTotal = ref(0)
 var oracleTime = ref(0)
 var similarityTime = ref(0)
 
+const dsFile = import.meta.env.VITE_DS_FILE ?? 'undef'
+const dsFilePath = `${BASE_URL}${dsFile}`
 
-fetch('./src/assets/experiment-short.json', {
+fetch(dsFilePath, {
     headers: {
         'Accept': 'application/json',
     }
