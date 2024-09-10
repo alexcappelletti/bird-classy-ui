@@ -15,13 +15,12 @@ import { useMainStore } from './services/mainStore'
 // Components
 import App from '@/App.vue'
 
-
+console.log(`env vars ${import.meta.env.VITE_BASE_URL}, ${import.meta.env.VITE_DS_FILE} `)
 const app = createApp(App)
 app.config.errorHandler = (err) => {
 	console.log(err)
 }
-console.log(`env vars ${import.meta.env.VITE_BASE_URL}, ${import.meta.env.VITE_DS_FILE
-	}`)
+
 registerPlugins(app)
 const pinia = createPinia()
 app.use(pinia)

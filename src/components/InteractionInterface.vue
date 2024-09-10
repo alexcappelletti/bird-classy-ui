@@ -236,7 +236,7 @@ function pictureSourceFormat(species, imageIdx, mode) {
 	if (typeof species === "number") {
 		speciesObj = mainStore.currentTask.species[species]
 	}
-	else { speciesObj = species }
+	else {speciesObj = species}
 	const localUrl = `${import.meta.env.VITE_BASE_URL}${speciesObj?.imagesFolder}/${mode}/${imageIdx}.jpg`
 	return localUrl
 }

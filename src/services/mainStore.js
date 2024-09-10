@@ -33,7 +33,7 @@ export const useMainStore = defineStore('mainStore', () => {
 	const navigateNext = computed(() => { return navigationPreset.value[0] ?? ""; })
 	const user = computed(() => { return subject.value })
 	const pages = computed(() => pageHistory)
-	const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/bird-classy-ui/'
+	const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/nope/'
 
 
 
@@ -79,8 +79,8 @@ export const useMainStore = defineStore('mainStore', () => {
 	}
 
 	async function loadDatasets() {
-		const filename = import.meta.env.DSFILE ?? 'experiment.json'
-		const dsFilePath = `${BASE_URL}${filename}`
+		const dsFile = import.meta.env.VITE_DS_FILE ?? 'unde'
+		const dsFilePath = `${BASE_URL}${dsFile}`
 		console.log(`reading file: ${dsFilePath}`)//const response = await fetch("src/assets/experiment.json", {
 		const response = await fetch(dsFilePath, {
 			headers: {
