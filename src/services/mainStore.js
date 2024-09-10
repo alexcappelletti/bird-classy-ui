@@ -53,8 +53,8 @@ export const useMainStore = defineStore('mainStore', () => {
 			"results-page"
 		]
 		surveyLinks.value = [
-			"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713",
-			"https://docs.google.com/forms/d/e/1FAIpQLSf1EABgtJTGQ9qXQEhoZNo-WBNiOJ0UxUwN64UxL2fCzhUGGw/viewform?usp=pp_url&entry.690602845="]
+			"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713=",
+			"https://docs.google.com/forms/d/e/1FAIpQLSeGEb8BfsjlI8EnVCoDn_jpWhCagK3q7Q0ElSbUYyG8JnqauA/viewform?usp=pp_url&entry.671716713="]
 		if (params[1] === "sp") {
 			uiLists.value = ["similarity", "oracle"]
 			navigationPreset.value = [
@@ -65,8 +65,8 @@ export const useMainStore = defineStore('mainStore', () => {
 				"results-page"
 			]
 			surveyLinks.value = [
-				"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713=",
-				"https://docs.google.com/forms/d/e/1FAIpQLSf1EABgtJTGQ9qXQEhoZNo-WBNiOJ0UxUwN64UxL2fCzhUGGw/viewform?usp=pp_url&entry.690602845="
+				"https://docs.google.com/forms/d/e/1FAIpQLSeGEb8BfsjlI8EnVCoDn_jpWhCagK3q7Q0ElSbUYyG8JnqauA/viewform?usp=pp_url&entry.671716713=",
+				"https://docs.google.com/forms/d/e/1FAIpQLSdmkvVrX2VKThLNPgMoQ7eqpvt8uz5Nyc5fqeLo1r6xkYVORA/viewform?usp=pp_url&entry.671716713="
 			]
 		}
 

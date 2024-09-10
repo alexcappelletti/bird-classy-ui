@@ -177,7 +177,7 @@ async function startTask() {
 	store.generateTimer(); 
 	mainStore.hideHelp();
 	mainStore.train();
-    /*try {
+    try {
 		await traceLog({
 			event: "start-task-oracle-ui",
 			params: {
@@ -188,12 +188,12 @@ async function startTask() {
 			userID: mainStore.user
 		})
 	}
-	catch (error) { console.error(JSON.stringify(error)) }*/
+	catch (error) { console.error(JSON.stringify(error)) }
 }
 
 async function switchSpecies(){
     store.rotateSpecies();
-    /*if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) {return;}
+    if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) {return;}
 	try {
 		await traceLog(
 			{
@@ -206,13 +206,13 @@ async function switchSpecies(){
 				userID: mainStore.user
 			})
 	}
-	catch (error){console.error(JSON.stringify(error))}*/
+	catch (error){console.error(JSON.stringify(error))}
 }
 
 async function confirmSelection(){
     
     try {
-		/*await traceLog({
+		await traceLog({
 			event: "confirm-selection-oracle-ui",
 			params: {
 				species: mainStore.currentTask?.species[store.speciesVisualized]?.speciesName,
@@ -220,7 +220,7 @@ async function confirmSelection(){
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
-		})*/
+		})
         store.addCurrentTime(new Date()); 
         store.addAnswer(); 
         store.nextTask(); 
@@ -232,7 +232,7 @@ async function confirmSelection(){
 
 async function openWikiLink(){
     store.addWikiClick();
-    /*try {
+    try {
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "open-wikilink-oracle-ui",
@@ -246,7 +246,7 @@ async function openWikiLink(){
 	}
 	catch (error) {
 		console.error(error)
-	}*/
+	}
 }
 
 watch(

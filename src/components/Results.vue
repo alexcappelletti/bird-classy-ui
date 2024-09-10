@@ -51,7 +51,9 @@
                 Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60).toPrecision(2) }} seconds
             </p>
         </div>
-
+        <div>
+            <v-btn active active-color="green-darken-4" class="ma-4" :href="compSurveyLink" target="_blank" >Press here to open the Survey</v-btn>
+        </div>
 
     </div>
 </template>
@@ -64,7 +66,7 @@ import { useMainStore } from '@/services/mainStore';
 const iStore = interactionStore()
 const oStore = oracleStore()
 const mainStore = useMainStore()
-
+const compSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1EABgtJTGQ9qXQEhoZNo-WBNiOJ0UxUwN64UxL2fCzhUGGw/viewform?usp=pp_url&entry.690602845=" + mainStore.user
 
 //const localOracle = JSON.parse(localStorage.getItem('oracleResults'))
 //const localSimilarity = JSON.parse(localStorage.getItem('interactionResults'))
@@ -78,7 +80,10 @@ var oracleTime = ref(0)
 var similarityTime = ref(0)
 
 const dsFile = import.meta.env.VITE_DS_FILE ?? 'undef'
+const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/nope/'
 const dsFilePath = `${BASE_URL}${dsFile}`
+
+
 
 fetch(dsFilePath, {
     headers: {
