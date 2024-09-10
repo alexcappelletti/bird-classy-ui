@@ -42,7 +42,7 @@ export function setupRouter(){
 		
 	]
 	const router = createRouter({
-		history: createWebHistory(import.meta.env.VITE_BASE_URL),
+		history: createWebHistory(BASE_URL),
 		routes: routes,
 		
 	})
