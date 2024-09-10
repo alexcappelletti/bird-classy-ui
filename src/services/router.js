@@ -11,8 +11,6 @@ import Home from '@/views/HomeView.vue'
 import SurveyView from '@/views/SurveyView.vue'
 //const BASE_URL = import.meta.env.VITE_BASE_URL ?? `/`
 export function setupRouter(){
-	const BASE_URL = `${import.meta.env.VITE_BASE_URL}`
-	console.log(`setting routes ${BASE_URL}`)
 	const mainStore = useMainStore()
 	const routes = [
 		{
@@ -43,7 +41,8 @@ export function setupRouter(){
 		},
 		
 	]
-	
+	const BASE_URL = `${import.meta.env.VITE_BASE_URL}`
+
 	const router = createRouter({
 		history: createWebHistory(BASE_URL),
 		routes: routes,

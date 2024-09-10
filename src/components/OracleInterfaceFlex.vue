@@ -149,7 +149,7 @@ function barColor(percentage) {
 }
 
 const targetImage = computed(()=>{
-	const src = `src/assets/${mainStore.currentTask?.targetImage}`
+	const src = `${import.meta.env.VITE_BASE_URL}${mainStore.currentTask?.targetImage}`
 	return src
 })
 
