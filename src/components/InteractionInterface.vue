@@ -221,7 +221,7 @@ onBeforeMount(() => {
 const isHelpVisible = computed(() => mainStore.help)
 
 const targetImage = computed(() => {
-	const src = `/${mainStore.currentTask?.targetImage}`
+	const src = `${import.meta.env.VITE_BASE_URL}${mainStore.currentTask?.targetImage}`
 	return src
 })
 
@@ -232,7 +232,7 @@ function pictureSourceFormat(species, imageIdx, mode){
 		speciesObj = mainStore.currentTask.species[species]
 	}
 	else {speciesObj = species}
-	const localUrl = `/${speciesObj?.imagesFolder}/${mode}/${imageIdx}.jpg`
+	const localUrl = `${import.meta.env.VITE_BASE_URL}${speciesObj?.imagesFolder}/${mode}/${imageIdx}.jpg`
 	return localUrl
 }
 

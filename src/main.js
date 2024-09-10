@@ -16,18 +16,19 @@ import { oracleStore } from './store/iStore'
 // Components
 import App from '@/App.vue'
 
+console.log(`env vars ${import.meta.env.VITE_BASE_URL}, ${import.meta.env.VITE_DS_FILE} `)
+const app = createApp(App)
+app.config.errorHandler = (err) => {
+	console.log(err)
+}
 
-	const app = createApp(App)
-	app.config.errorHandler = (err) => {
-		console.log(err)
-	}
-	registerPlugins(app)
-	const pinia = createPinia()
-	app.use(pinia)
-	app.provide("mainStore", useMainStore());
-	//router 
-	const router = setupRouter();
-	app.use(router)
+registerPlugins(app)
+const pinia = createPinia()
+app.use(pinia)
+app.provide("mainStore", useMainStore());
+//router 
+const router = setupRouter();
+app.use(router)
 
-	app.mount('#app')
+app.mount('#app')
 
