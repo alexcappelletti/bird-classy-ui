@@ -9,7 +9,7 @@ import InteractionInterface from '@/components/InteractionInterface.vue'
 import Results from '@/components/Results.vue'
 import Home from '@/views/HomeView.vue'
 import SurveyView from '@/views/SurveyView.vue'
-const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/bird-classy-ui/'
+const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/'
 export function setupRouter(){
 	const mainStore = useMainStore()
 	const routes = [
@@ -43,7 +43,8 @@ export function setupRouter(){
 	]
 	const router = createRouter({
 		history: createWebHistory(import.meta.env.VITE_BASE_URL),
-		routes: routes
+		routes: routes,
+		
 	})
 	router.beforeEach(async (to, from) => {
 		try {
