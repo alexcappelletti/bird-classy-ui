@@ -95,7 +95,7 @@
 						<div
 							style="display: flex; flex-direction: row; justify-content: space-between; min-width: 600px; gap: 10px;">
 							<v-btn rounded="pill"
-								@click="handleClosePageAsync(mainStore.currentTask?.species[store.cardNumber])"
+								@click="handleClosePageAsync(mainStore.currentTask?.species[store.cardNumber]);"
 								style="flex-grow: 1;">
 								Back
 							</v-btn>
@@ -203,7 +203,7 @@
 		<div
 			style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
 			<v-btn rounded="pill" color="Primary" @click="startTaskAsync /* logDBSwitchToTask() */">
-				Begin Task
+				To the Task
 			</v-btn>
 		</div>
 
@@ -354,6 +354,7 @@ async function handleClosePageAsync(species) {
 		})
 	}
 	catch (error) { console.error(error) }
+
 }
 async function confirmAsync(ev) {
 	try {
