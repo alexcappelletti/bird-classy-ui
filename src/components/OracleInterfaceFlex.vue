@@ -64,9 +64,9 @@
             </p>
             <p class="body-large" style="line-height: 1.5;">
                 This interface is built so that, per each task, on the left of the monitor you will be shown one <b>Target Image</b>,
-                which is the picture of the bird you will try to identify. While on the right, 
-                the AI assistant will show you its guess: the name of the bird species, and its 
-                confidence that this guess is correct.<br />
+                which is the picture of the bird you will try to identify. While on the right 
+                you will be shown the AI model guess: the name of the bird species, and its 
+                confidence that the guess is correct.<br />
                 If you believe the guess to be wrong, you can see the other suggestions from the model by clicking
                 <b>Other Results</b>. 
                 A different suggestion will be shown to you (for a total of 3 suggestions, after which they
