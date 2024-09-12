@@ -8,10 +8,11 @@
 				:disabled="!(storeI.startSet || storeO.startSet)"
 				@click="mainStore.hideHelp(); logDBSwitchToTask();"></v-btn>
 			<v-spacer></v-spacer>
-			<p class="display-small" style="color: #404943;">
-				Bird Classification {{ versionLabel }} {{trainingLabel}}
+			<p class="display-small text-h3" style="color: #404943;">
+				Bird Classification
 			</p>
-			
+			<p class="subhead text-h6">{{ versionLabel }}</p>
+
 			<v-spacer></v-spacer>
 			<!--<div id='pgbar' class="progressbar"></div>-->
 			<div id="timerDiv">
@@ -37,12 +38,22 @@ const versionLabelRef = ref("");
 
 
 const isTraining = computed(() => mainStore.isTrainingTask)
-const trainingLabel = computed(() => mainStore.isTrainingTask? "training": "")
+const trainingLabel = computed(() => mainStore.isTrainingTask? "- training": "")
 const versionLabel = computed(() => {
 	const length = mainStore.pages.length
-	if (length >= 1  && length <3) { return "n° 1" }
-	if (length >= 3 && length  < 5) { return  "n° 2" }
-	return ""
+	let label = ""
+	if (length >= 1  && length <3) {
+		label = "[version 1"
+		if (mainStore.isTrainingTask) {label += (" - training")}
+		label += "]"
+	}
+	else if (length >= 3 && length  < 5) { 
+		label = "[version 2"
+		if (mainStore.isTrainingTask) { label += (" - training") }
+		label += "]"
+		
+	}
+	return label
 })
 
 
@@ -73,7 +84,10 @@ watch(
 
 .training{
 	background-color: rgb(235, 226, 173);
-
+}
+.subhead {
+	margin-left: 10px;
+	margin-top:10px;
 
 }
 

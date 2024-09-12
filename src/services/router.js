@@ -31,7 +31,7 @@ export function setupRouter(){
 		},
 		{
 			name: "results-page",
-			path: `/esults`,
+			path: `/results`,
 			component: Results,
 		},
 		{

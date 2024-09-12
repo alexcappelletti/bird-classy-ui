@@ -1,7 +1,7 @@
 import * as Realm from 'realm-web';
 
 
-const REALM_APP_ID ="bird_classy_app-jipkckb"// import.meta.env.VUE_APP_REALM_APP_ID;
+const REALM_APP_ID = import.meta.env.VITE_APP_REALM_APP_ID;
 const app = new Realm.App({ id: REALM_APP_ID });
 const credentials = Realm.Credentials.anonymous();
 
