@@ -70,7 +70,8 @@
                 If you believe the guess to be wrong, you can see the other suggestions from the model by clicking
                 <b>Other Results</b>. 
                 A different suggestion will be shown to you (for a total of 3 suggestions, after which they
-                will rotate). <br />
+                will rotate). The order will always be, from the most likely to be correct, to the least likely to be correct
+                (based on the AI model)<br />
                 In order to evaluate and confirm the suggestion, a description of the species from Wikipedia
                 will
                 be present at the bottom of the page, as well as the possibility to open the Wikipedia page to gather

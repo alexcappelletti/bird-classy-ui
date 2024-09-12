@@ -125,7 +125,7 @@
             <p class="body-large" style="line-height: 1.5;">
                 This interface is built such that, per each task, on the left of the monitor you will be shown one
                 <b>Target Image</b>, which is the picture of the bird you will try to identify. While on the right,
-                you will be proposed 3 <b>Suggested Species</b> of birds (based on an AI model calculation), you will then be asked to
+                you will be proposed 3 <b>Suggested Species</b> of birds (based on the AI model), you will then be asked to
                 identify, among these suggested results, which is the correct one. The suggested species will be shown
 				so that the left-most one is the one with the highest likely to be correct (based on the AI model guess), while 
 				the right-most one is the lowest likely to be correct (based on the AI model guess).<br />
