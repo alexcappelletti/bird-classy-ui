@@ -224,7 +224,7 @@ async function confirmSelection(){
         store.addCurrentTime(new Date()); 
         store.addAnswer(); 
         store.nextTask(); 
-        mainStore.nextTask();
+        //mainStore.nextTask(); //moved into store.nextTask(), to handle timeout (when the user runs out of time)
     }
 	catch (err) { console.error(err) }
 

@@ -371,7 +371,7 @@ async function confirmAsync(ev) {
 		store.addAnswer()
 		store.closePage()
 		store.nextTask()
-		mainStore.nextTask()
+		//mainStore.nextTask() //moved into store.nextTask(), to handle timeout (when the user runs out of time)
 	}
 	catch (err) { console.error(err) }
 }

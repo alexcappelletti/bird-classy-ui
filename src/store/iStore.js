@@ -1,6 +1,8 @@
 import { ref } from 'vue';
 import { defineStore } from "pinia";
 import { useMainStore } from '@/services/mainStore';
+import { traceLog } from '@/services/logToMongoDBAtlas';
+
 
 export const interactionStore = defineStore('interactionStore',{
     state: () => {
@@ -114,6 +116,7 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
         nextTask(){
+            console.log("Next")
 			if(this.mainStore?.currentDs === undefined){ return }
             if(this.mainStore.currentDs.tasks.length == 1){
 
@@ -137,6 +140,8 @@ export const interactionStore = defineStore('interactionStore',{
 
                 this.generateTimer();
             }
+
+            this.mainStore.nextTask();
         },
 
 
@@ -162,6 +167,8 @@ export const interactionStore = defineStore('interactionStore',{
                 
                 this.intervalID = setInterval(this.reduceTime, 1000);
             }
+
+            
 
         },
 
@@ -191,13 +198,29 @@ export const interactionStore = defineStore('interactionStore',{
                 this.addCurrentTime(new Date());
                 clearInterval(this.intervalID);
                 this.intervalID = null;
+                this.timeout();
                 this.nextTask();
             }
         },
+
+        async timeout(){
+            try {
+                await traceLog({
+                    event: "timeout-task-similarity-ui",
+                    params: {
+                        taskIdx: this.mainStore?.runTask.length,
+                        datasetName: this.mainStore?.currentTask
+                    },
+                    timestamp: new Date(),
+                    userID: this.mainStore?.user
+                })
+            }
+            catch (error) { console.error(JSON.stringify(error)) }
+        }
     }
 })
 
-export const oracleStore = defineStore('oracleStore',{
+export const oracleStore = defineStore('oracleStore', {
     state: () => {
         return {
 
@@ -219,12 +242,12 @@ export const oracleStore = defineStore('oracleStore',{
             //Used to check if the timer (for the single task) was already started for each task, reset on completion of previous task
             //For the graphical element
             timerOn: false,
-            
+
             //Elements that saved the user actions
             //timePerTask is the time from the start of the task, until the users click the "Confirm" Button or runs out of time
             //answerGiven is the index of the species the user selected as answer
             //openedWiki saves which links are opened by the user during the task, the index of this element is the index of the species, false = wikipedia page not opened
-            CollectedData:[{
+            CollectedData: [{
                 "timePerTask": null,
                 "answerGiven": null,
                 "openedWiki": [false, false, false]
@@ -240,7 +263,7 @@ export const oracleStore = defineStore('oracleStore',{
             intervalID: null,
 
             mainStore: useMainStore(),
-            
+
             //Index of the task the user is completing
             currentTask: 0,
 
@@ -250,48 +273,49 @@ export const oracleStore = defineStore('oracleStore',{
         }
     },
     actions: {
-        setStart(time){
-            if(!this.startSet){
+        setStart(time) {
+            if (!this.startSet) {
                 this.startingTime = time
                 this.startSet = true
             }
         },
 
-        rotateSpecies(){
+        rotateSpecies() {
             console.log()
             this.speciesVisualized = (this.speciesVisualized + 1) % this.mainStore.currentTask.species.length;
         },
 
-        openHelp(){
+        openHelp() {
             this.HelpPage = !this.HelpPage
         },
 
-        addWikiClick(){
+        addWikiClick() {
             this.CollectedData[this.currentTask]["openedWiki"][this.speciesVisualized] = true;
         },
 
-        addCurrentTime(time){
-            
-            if(this.currentTask == 0)
-                this.CollectedData[this.currentTask]["timePerTask"] =  Math.round((Math.abs(time - this.startingTime)/1000)*100)/100
-            else{
+        addCurrentTime(time) {
+
+            if (this.currentTask == 0)
+                this.CollectedData[this.currentTask]["timePerTask"] = Math.round((Math.abs(time - this.startingTime) / 1000) * 100) / 100
+            else {
                 var passedTime = 0
-                for(let i = 0; i< this.CollectedData.length; i++)
+                for (let i = 0; i < this.CollectedData.length; i++)
                     passedTime += this.CollectedData[i]["timePerTask"]
-                this.CollectedData[this.currentTask]["timePerTask"] = Math.round((Math.abs(time - this.startingTime)/1000 - passedTime)*100)/100
+                this.CollectedData[this.currentTask]["timePerTask"] = Math.round((Math.abs(time - this.startingTime) / 1000 - passedTime) * 100) / 100
             }
 
         },
 
-        addAnswer(){
+        addAnswer() {
             this.CollectedData[this.currentTask]["answerGiven"] = this.speciesVisualized
         },
 
-        nextTask(){
+        nextTask() {
+            console.log("Next")
 
             //add if to check if task is finished (pass to next UI)
-			if (this.mainStore?.currentDs === undefined)  {return}
-            if(this.mainStore.currentDs.tasks.length == 1){
+            if (this.mainStore?.currentDs === undefined) { return }
+            if (this.mainStore.currentDs.tasks.length == 1) {
 
 
                 var dataToWrite = JSON.stringify(this.CollectedData)
@@ -315,45 +339,45 @@ export const oracleStore = defineStore('oracleStore',{
                 this.generateTimer();
             }
 
-            //useMainStore.nextTask();
+            this.mainStore.nextTask();
 
         },
 
-        generateTimer(){
-            if(this.timerOn == false && this.currentTask > this.indexNoTimer){
-                
+        generateTimer() {
+            if (this.timerOn == false && this.currentTask > this.indexNoTimer) {
+
                 this.timerOn = true;
 
-                if(this.intervalID != null){
+                if (this.intervalID != null) {
                     clearInterval(this.intervalID)
                     this.intervalID = null;
                 }
 
                 this.timerDuration = 60;
 
-                
+
                 var timerElement = document.getElementById("timerNum");
                 timerElement.textContent = this.timerDuration + "s";
 
 
                 var barElement = document.getElementById("timerBar");
                 barElement.style.width = "100px";
-                
+
                 this.intervalID = setInterval(this.reduceTime, 1000);
             }
 
         },
 
-        blockTimerVisual(){
+        blockTimerVisual() {
             var bar = document.getElementById("timerBar")
             bar.style.width = "0px"
             var timer = document.getElementById("timerNum")
             timer.textContent = "60s"
         },
 
-        reduceTime(){
+        reduceTime() {
 
-            if(this.timerDuration > 1){
+            if (this.timerDuration > 1) {
 
                 this.timerDuration -= 1;
 
@@ -365,13 +389,29 @@ export const oracleStore = defineStore('oracleStore',{
                 //maybe also change color, let's see if doesn't explode
 
             }
-            else{
+            else {
 
                 this.addCurrentTime(new Date());
                 clearInterval(this.intervalID);
                 this.intervalID = null;
+                this.timeout()
                 this.nextTask();
             }
         },
+
+        async timeout() {
+            try {
+                await traceLog({
+                    event: "timeout-task-oracle-ui",
+                    params: {
+                        taskIdx: this.mainStore?.runTask.length,
+                        datasetName: this.mainStore?.currentTask
+                    },
+                    timestamp: new Date(),
+                    userID: this.mainStore?.user
+                })
+            }
+            catch (error) { console.error(JSON.stringify(error)) }
+        }
     }
 })
