@@ -8,6 +8,8 @@
 <script setup>
 import { inject, onBeforeMount, computed } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'
+import { traceLog } from '@/services/logToMongoDBAtlas';
+
 const store = inject('mainStore')
 
 
@@ -24,10 +26,21 @@ const pageLabel = computed(() => {
 	return "Go to UI version 1"
 })
 
-function goToFirstUI() {
+async function goToFirstUI() {
 	console.log("goto first UI")
 	store.consumePage();
-	
+	try {
+		if (store.currentDs?.tasks === undefined || store.currentTask === undefined) { return; }
+		await traceLog({
+			event: "GoToHelpPage",
+			params: {
+				interface: store.currentUI
+			},
+			timestamp: new Date(),
+			userID: store.user
+		})
+	}
+	catch (error) { console.error(error) }
 }
 
 

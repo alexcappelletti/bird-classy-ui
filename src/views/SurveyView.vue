@@ -10,6 +10,8 @@
 
 <script setup>
 import { inject, onBeforeMount, computed, ref } from 'vue'
+import { traceLog } from '@/services/logToMongoDBAtlas';
+
 const store = inject('mainStore')
 
 const link = computed(() => store.surveyLink + store.user)
@@ -30,8 +32,20 @@ onBeforeMount(() => {
 
 
 
-function nextUI() {
+async function nextUI() {
 	console.log("cset new store content")
 	store.consumePage()
+	try {
+		if (store.currentDs?.tasks === undefined || store.currentTask === undefined) { return; }
+		await traceLog({
+			event: "GoToHelpPage",
+			params: {
+				interface: store.currentUI
+			},
+			timestamp: new Date(),
+			userID: store.user
+		})
+	}
+	catch (error) { console.error(error) }
 }
 </script>

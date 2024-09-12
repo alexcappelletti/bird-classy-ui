@@ -181,7 +181,7 @@ async function startTask() {
 		await traceLog({
 			event: "start-task-oracle-ui",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				taskIdx: mainStore.runTask.length,
 				datasetName: mainStore.currentDs.name
 			},
 			timestamp: new Date(),
@@ -199,7 +199,7 @@ async function switchSpecies(){
 			{
 				event: "switch-species" ,
 				params: {
-					taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+					taskIdx: mainStore.runTask.length,
 					species: mainStore.currentTask.species[store.speciesVisualized].speciesName,
 				},
 				timestamp: new Date(),
@@ -216,7 +216,7 @@ async function confirmSelection(){
 			event: "confirm-selection-oracle-ui",
 			params: {
 				species: mainStore.currentTask?.species[store.speciesVisualized]?.speciesName,
-				taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask)
+				taskIdx: mainStore.runTask.length
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
@@ -237,8 +237,8 @@ async function openWikiLink(){
 		await traceLog({
 			event: "open-wikilink-oracle-ui",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
-				species: mainStore.currentDs.tasks.species[store.speciesVisualized].speciesName
+				taskIdx: mainStore.runTask.length,
+				species: mainStore.currentTask.species[store.speciesVisualized].speciesName
 			},
 			timestamp: new Date(),
 			userID: mainStore.user

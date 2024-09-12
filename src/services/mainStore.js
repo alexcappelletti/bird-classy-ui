@@ -158,6 +158,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		consumePage,
 		user,
 		surveyLink,
-		exprContext
+		exprContext,
+		runTask
 	}
 })

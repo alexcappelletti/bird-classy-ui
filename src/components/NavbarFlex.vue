@@ -3,10 +3,10 @@
 		<div class="navbar-elems">
 			<v-btn v-if=!mainStore.help width=130px color="OnSurfaceVariant" rounded="pill" text="How to use"
 				variant="outlined" :disabled="!(storeI.startSet || storeO.startSet)"
-				@click="mainStore.showHelp(); logDBSwitchToHelp();"></v-btn>
+				@click="logDBSwitchToHelp();"></v-btn>
 			<v-btn v-else width=130px color="OnSurfaceVariant" rounded="pill" text="Go to Task" variant="outlined"
 				:disabled="!(storeI.startSet || storeO.startSet)"
-				@click="mainStore.hideHelp(); logDBSwitchToTask();"></v-btn>
+				@click="logDBSwitchToTask();"></v-btn>
 			<v-spacer></v-spacer>
 			<p class="display-small text-h3" style="color: #404943;">
 				Bird Classification
@@ -30,6 +30,8 @@
 import {computed, ref , watch} from 'vue'
 import { interactionStore, oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
+import { traceLog } from '@/services/logToMongoDBAtlas';
+
 const storeI = interactionStore()
 const storeO = oracleStore()
 const mainStore = useMainStore()
@@ -66,6 +68,40 @@ function updateLabel(){
 	// if (idx === 0) { versionLabelRef.value =  "ver. #1" }
 	// else if (idx === 1) { versionLabelRef.value = "ver. #2" }
 	// else { versionLabelRef.value= "" }
+}
+
+async function logDBSwitchToHelp(){
+	mainStore.showHelp(); 
+	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		await traceLog({
+			event: "switchToHelp",
+			params: {
+				taskIdx: mainStore.runTask.length,
+				interface: mainStore.currentUI
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (error) { console.error(error) }
+}
+
+async function logDBSwitchToTask(){
+	mainStore.hideHelp(); 
+	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		await traceLog({
+			event: "switchToTask",
+			params: {
+				taskIdx: mainStore.runTask.length,
+				interface: mainStore.currentUI
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (error) { console.error(error) }
 }
 
 watch(

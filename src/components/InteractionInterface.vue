@@ -273,7 +273,7 @@ async function startTaskAsync(ev) {
 		await traceLog({
 			event: "start-task-similar-ui",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				taskIdx: mainStore.runTask.length,
 				datasetName: mainStore.currentDs.name
 			},
 			timestamp: new Date(),
@@ -291,7 +291,7 @@ async function openTabAsync(tabIdx, label) {
 			{
 				event: "switch-images-tabSet",
 				params: {
-					taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+					taskIdx: mainStore.runTask.length,
 					species: mainStore.currentTask.species[tabIdx].speciesName,
 					caseLabel: label
 				},
@@ -310,7 +310,7 @@ async function openSpeciesCard(s) {
 		await traceLog({
 			event: "openSpeciesCard",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				taskIdx: mainStore.runTask.length,
 				species: species
 			},
 			timestamp: new Date(),
@@ -327,7 +327,7 @@ async function openWikiLinkAsync(species) {
 		await traceLog({
 			event: "openWikiLink",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				taskIdx: mainStore.runTask.length,
 				species: species.speciesName
 			},
 			timestamp: new Date(),
@@ -346,7 +346,7 @@ async function handleClosePageAsync(species) {
 		await traceLog({
 			event: "closeSpeciesCard",
 			params: {
-				taskIdx: mainStore.currentDs.tasks.indexOf(mainStore.currentTask),
+				taskIdx: mainStore.runTask.length,
 				species: species?.speciesName,
 			},
 			timestamp: new Date(),
@@ -362,7 +362,7 @@ async function confirmAsync(ev) {
 			event: "confirm-selection-similar-ui",
 			params: {
 				species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
-				taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask)
+				taskIdx: mainStore.runTask.length
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
