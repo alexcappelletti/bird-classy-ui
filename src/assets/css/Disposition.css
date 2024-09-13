@@ -195,6 +195,17 @@
     column-gap: 20px;
 }
 
+.reverse-interfaces{
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
 /* Survey Page */
 
 .survey-page{

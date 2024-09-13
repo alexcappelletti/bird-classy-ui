@@ -157,11 +157,7 @@
                 You will be able to go back and read the instructions anytime you want, but the time will keep going for
                 the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
 			</p>
-            <ul style="padding-left: 25px;">
-                <li class="body-large" style="line-height: 1.5;">Professional Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Amateur Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Novice Birdwatcher</li>
-            </ul>
+            
 
             <h2 class="headline-large">
                 Example of a Task
@@ -188,6 +184,11 @@
                 Each task will be timed, based on the total time used and the number of correct answers, 
                 after completing both interfaces you will be placed in one of 3 tiers: <br />
 			</p>
+			<ul style="padding-left: 25px;">
+                <li class="body-large" style="line-height: 1.5;">Professional Birdwatcher</li>
+                <li class="body-large" style="line-height: 1.5;">Amateur Birdwatcher</li>
+                <li class="body-large" style="line-height: 1.5;">Novice Birdwatcher</li>
+            </ul>
             <h2 class="headline-small" style="line-height: 0.5;">Notes</h2>
             <p class="body-large" style="line-height: 1.5;">
                 The first two tasks will be for you to explore and learn the interface, the timer for neither of the
