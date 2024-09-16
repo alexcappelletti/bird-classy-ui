@@ -132,26 +132,10 @@
             </v-btn>
         </div>-->
 
-        <div class="interaction-help-page" style="max-width: 800px;">
+        <div class="interaction-help-page" style="max-width: 900px;">
             <h2 class="headline-large">Interface Description</h2>
-            <img style="max-width: 800px;" src="/src/assets/BaseOracleTutorial.png">
-            <ul class="body-large" style="margin-left: 20px;">
-                <li>
-                    <b>Target Image</b> (left), is the picture of the bird that you will try to identify.
-                </li>
-                <li>
-                    <b>Model Suggestion</b> (right), is the proposition made by the AI model: <b>Species</b> indicates the predicted species name, while <b>Confidence</b> indicate how much the model is sure of this prediction
-                </li>
-                <li>
-                    <b>Description</b> (bottom), refers to the model proposition. It describes the physical attribute of what the predicted species, you can use it to check if the prediction is correct. If the information is not sufficient, you can also open the wikipedia page and look for more.
-                </li>
-                <li>
-                    <b>Other Results</b> (button), shows you another proposition. The value that will change are the ones below <b>Model Suggestion</b> and the description. There are 3 propositions per image that will rotate, they will always be ordered by confidence (highest to lowest).
-                </li>
-                <li>
-                    <b>Confirm Selection</b> (button), confirm the prediction that you are seeing. After having confirmed the prediction, you will be shown the next task, until the end of this section.
-                </li>
-            </ul>
+            <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialOracleArrows.png">
+
 
             <!--<p style="line-height: 1.6;" class="body-large">
                 The <b>Target Image</b> on the left is the picture of the bird that you will try to identify.<br>
@@ -162,11 +146,15 @@
                 identify, there will be 3 predictions, shown from the most likely (based on the AI prediction), to the least likely, after which they will rotate. <br>
                 Finally, when you believe to have found the correct prediction, you can confirm it by pressing <b>Confirm Selection</b>, after which you will be moved to the next prediction, until the end of the experiment.
             </p>-->
-            <h2 class="headline-large">Notes</h2>
-            <p class="body-large">
-                To complete each task you will be given 60 seconds, there is a timer on the right of the menu bar that will keep track of time (opening the wikipedia page or going back to the instructions will not stop the timer).
-                The first two tasks will be for you to get comfortable with the interface, so the timer will not start and you can ask the assistant any question you want.
+            <h2 class="headline-large">Scores</h2>
+            <p class="body-large" style="margin-bottom: -15px;">
+                Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
             </p>
+            <ul style="padding-left: 20px;">
+                <li>Professional Birdwatcher</li>
+                <li>Amateur Birdwatcher</li>
+                <li>Novice Birdwatcher</li>
+            </ul>
         </div>
         <div
             style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
