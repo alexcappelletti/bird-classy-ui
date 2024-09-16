@@ -27,26 +27,25 @@
                 </div>
 
                 <div class="oracle-species-confidence">
-                    <v-btn color="Primary" rounded="pill" text="Other results" base-color="#FFFFFF" height="2.5rem"
+                    <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC; max-width: 500px;">
+                        <p class="oracle-wiki-description body-large" style="color:#000000;  max-width: 450px;"> {{
+                            mainStore.currentTask.species[store.speciesVisualized].description.substr(0,300) }}...
+                            <a class='wikilink' @click="openWikiLink()"
+                                :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
+                                target='_blank'>Wikipedia</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="oracle-species-confidence">
+                    <v-btn color="Primary" rounded="pill" text="Try another prediction" base-color="#FFFFFF" height="2.5rem"
                         variant="outlined" elevation="0" @click="switchSpecies()"></v-btn>
-                    <v-btn color="Primary" rounded="pill" text="Confirm Selection" height="2.5rem"
+                    <v-btn color="Primary" rounded="pill" text="Confirm Prediction" height="2.5rem"
                         @click="confirmSelection()"></v-btn>
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="oracle-wiki-container">
-
-            <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
-                <p class="oracle-wiki-description body-large" style="color:#000000;"> {{
-                    mainStore.currentTask.species[store.speciesVisualized].description.substr(0,320) }}...
-                    <a class='wikilink' @click="openWikiLink()"
-                        :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
-                        target='_blank'>Wikipedia</a>
-                </p>
-            </div>
         </div>
 
     </div>
