@@ -1,3 +1,7 @@
+li + li {
+    margin-top: 10px;
+}
+
 /* Move the colors from here, to the inline style with the "var" composition */
 
 .navbar{
@@ -217,6 +221,7 @@
 }
 
 /* Home Page */
+
 .home-page{
     display: flex;
     flex-direction: column;

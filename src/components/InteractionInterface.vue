@@ -57,8 +57,8 @@
 
 
 						<v-tabs align-tabs="center" color="deep-purple-accent-4">
-							<v-tab :text="itemsPics[0]" @click="openTabAsync(0, 'Most')"></v-tab>
-							<v-tab :text="itemsPics[1]" @click="openTabAsync(1, 'Least')"></v-tab>
+							<v-tab style="margin: 0%;" :text="itemsPics[0]" @click="openTabAsync(0, 'Most')"></v-tab>
+							<v-tab style="margin: 0%;" :text="itemsPics[1]" @click="openTabAsync(1, 'Least')"></v-tab>
 						</v-tabs>
 
 						<v-sheet v-if="idTab == 0" class="mx-auto" style="margin-top: -5px;" max-width="790"
@@ -220,10 +220,14 @@ import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
 import { useRouter } from 'vue-router'
 import { amber } from 'vuetify/util/colors';
+import { timerStore } from '@/store/timerStore';
+
 
 const store = interactionStore()
 const mainStore = useMainStore()
 const router = useRouter()
+const timerSt = timerStore()
+
 
 const idTab = ref(0)
 

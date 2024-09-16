@@ -13,13 +13,13 @@
                 <h2 class="headline-large oracle-results-title">Model Suggestion</h2>
 
                 <div class="oracle-species-confidence">
-                    <h2 class="headline-small">Species</h2>
+                    <h2 class="headline-small">Predicted Species</h2>
                     <h2 class="title-large">{{ mainStore.currentTask.species[store.speciesVisualized].speciesName }}
                     </h2>
                 </div>
 
                 <div class="oracle-species-confidence">
-                    <h2 class="headline-small">Confidence</h2>
+                    <h2 class="headline-small">Confidence of the AI <br> tool for prediction</h2>
                     <v-progress-linear id="progressbar" bg-opacity="0.3"
                         :model-value="mainStore.currentTask.species[store.speciesVisualized].confidence"
                         :color="barColor(mainStore.currentTask.species[store.speciesVisualized].confidence / 100)"
@@ -53,7 +53,7 @@
 
     <div v-else style="display: flex; flex-direction: column; align-items: center;">
 
-        <div class="interaction-help-page">
+        <!--<div class="interaction-help-page">
             <h2 class="headline-large">Experiment Description</h2>
             <p class="body-large" style="line-height: 1.5;">
                 During this experiment you will be asked to identify various species of birds, with the help of an AI
@@ -131,6 +131,49 @@
             <v-btn rounded="pill" color="Primary" @click="startTask()">
                 To the Task
             </v-btn>
+        </div>-->
+
+        <div class="interaction-help-page" style="max-width: 800px;">
+            <h2 class="headline-large">Interface Description</h2>
+            <img style="max-width: 800px;" src="/src/assets/BaseOracleTutorial.png">
+            <ul class="body-large" style="margin-left: 20px;">
+                <li>
+                    <b>Target Image</b> (left), is the picture of the bird that you will try to identify.
+                </li>
+                <li>
+                    <b>Model Suggestion</b> (right), is the proposition made by the AI model: <b>Species</b> indicates the predicted species name, while <b>Confidence</b> indicate how much the model is sure of this prediction
+                </li>
+                <li>
+                    <b>Description</b> (bottom), refers to the model proposition. It describes the physical attribute of what the predicted species, you can use it to check if the prediction is correct. If the information is not sufficient, you can also open the wikipedia page and look for more.
+                </li>
+                <li>
+                    <b>Other Results</b> (button), shows you another proposition. The value that will change are the ones below <b>Model Suggestion</b> and the description. There are 3 propositions per image that will rotate, they will always be ordered by confidence (highest to lowest).
+                </li>
+                <li>
+                    <b>Confirm Selection</b> (button), confirm the prediction that you are seeing. After having confirmed the prediction, you will be shown the next task, until the end of this section.
+                </li>
+            </ul>
+
+            <!--<p style="line-height: 1.6;" class="body-large">
+                The <b>Target Image</b> on the left is the picture of the bird that you will try to identify.<br>
+                The <b>Model Suggestion</b> on the right is the proposition made by the AI model, <b>Species</b> indicate the predicted species name, while <b>Confidence</b> indicate how much the model is sure of this prediction<br>
+                At the bottom of the page, there is going to be a <b>Description</b> of what the Predicted Species should look like (from wikipedia), you can use it to understand if the prediction is correct, 
+                from there you can also open the wikipedia page to find more information.<br>
+                By clicking <b>Other Results</b>, you will be given another prediction, so the values under <b>Model Suggestion</b> will change, as well as the description at the bottom of the page. Per each image to 
+                identify, there will be 3 predictions, shown from the most likely (based on the AI prediction), to the least likely, after which they will rotate. <br>
+                Finally, when you believe to have found the correct prediction, you can confirm it by pressing <b>Confirm Selection</b>, after which you will be moved to the next prediction, until the end of the experiment.
+            </p>-->
+            <h2 class="headline-large">Notes</h2>
+            <p class="body-large">
+                To complete each task you will be given 60 seconds, there is a timer on the right of the menu bar that will keep track of time (opening the wikipedia page or going back to the instructions will not stop the timer).
+                The first two tasks will be for you to get comfortable with the interface, so the timer will not start and you can ask the assistant any question you want.
+            </p>
+        </div>
+        <div
+            style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
+            <v-btn rounded="pill" color="Primary" @click="startTask()">
+                To the Task
+            </v-btn>
         </div>
 
     </div>
@@ -143,8 +186,11 @@ import { oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
 import { useRouter } from 'vue-router';
+import { timerStore } from '@/store/timerStore';
+
 const store = oracleStore()
 const mainStore = useMainStore()
+const timerSt = timerStore()
 
 const router = useRouter()
 

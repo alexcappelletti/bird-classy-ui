@@ -15,12 +15,16 @@
 
 			<v-spacer></v-spacer>
 			<!--<div id='pgbar' class="progressbar"></div>-->
-			<div id="timerDiv">
+			<!--<div id="timerDiv">
 				<p id="timerNum" class="body-medium">60s</p>
 				<div id="bgBar" style="min-width: 100px; background-color: gray; height: 5px; border-radius: 5px;">
 					<div id="timerBar" style="width: 0px; height: 5px; background-color: #19ff85; border-radius: 5px;">
 					</div>
 				</div>
+			</div>-->
+			<div>
+				<p>Timer</p>
+				<p id="stopwatch">00:00</p>
 			</div>
 		</div>
 	</div>
@@ -31,6 +35,7 @@ import {computed, ref , watch} from 'vue'
 import { interactionStore, oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
+import { timerStore } from '@/store/timerStore';
 
 const storeI = interactionStore()
 const storeO = oracleStore()

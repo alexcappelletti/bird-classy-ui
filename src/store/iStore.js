@@ -2,11 +2,14 @@ import { ref } from 'vue';
 import { defineStore } from "pinia";
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
+import { timerStore } from './timerStore';
 
 
 export const interactionStore = defineStore('interactionStore',{
     state: () => {
         return {    
+
+            timer: timerStore(),
 
             //Starting point for the timer
             startingTime: 0,
@@ -123,10 +126,10 @@ export const interactionStore = defineStore('interactionStore',{
 
                 /*var dataToWrite = JSON.stringify(this.CollectedData)
                 localStorage.setItem('interactionResults', dataToWrite);*/
-                clearInterval(this.intervalID);
+                /*clearInterval(this.intervalID);
                 this.intervalID = null;
-                this.blockTimerVisual()
-                
+                this.blockTimerVisual()*/
+                this.timer.stopStopwatch()
 
             }
             else{
@@ -138,7 +141,9 @@ export const interactionStore = defineStore('interactionStore',{
                 this.timerOn = false;
                 this.currentTask = this.currentTask + 1;
 
-                this.generateTimer();
+                //this.generateTimer();
+                if(this.currentTask > this.indexNoTimer)
+                    this.timer.startStopwatch();
             }
 
             this.mainStore.nextTask();
@@ -223,6 +228,8 @@ export const interactionStore = defineStore('interactionStore',{
 export const oracleStore = defineStore('oracleStore', {
     state: () => {
         return {
+
+            timer: timerStore(),
 
             //Starting point for the timer
             startingTime: 0,
@@ -311,18 +318,18 @@ export const oracleStore = defineStore('oracleStore', {
         },
 
         nextTask() {
-            console.log("Next")
 
             //add if to check if task is finished (pass to next UI)
             if (this.mainStore?.currentDs === undefined) { return }
             if (this.mainStore.currentDs.tasks.length == 1) {
 
 
-                var dataToWrite = JSON.stringify(this.CollectedData)
-                localStorage.setItem('oracleResults', dataToWrite);
-                clearInterval(this.intervalID);
+                /*var dataToWrite = JSON.stringify(this.CollectedData)
+                localStorage.setItem('oracleResults', dataToWrite);*/
+                /*clearInterval(this.intervalID);
                 this.intervalID = null;
-                this.blockTimerVisual();
+                this.blockTimerVisual();*/
+                this.timer.stopStopwatch()
 
             }
             else {
@@ -334,9 +341,11 @@ export const oracleStore = defineStore('oracleStore', {
                 this.speciesVisualized = 0;
                 this.currentTask = this.currentTask + 1;
 
-                this.timerOn = false;
+                //this.timerOn = false;
 
-                this.generateTimer();
+                //this.generateTimer();
+                if(this.currentTask > this.indexNoTimer)
+                    this.timer.startStopwatch();
             }
 
             this.mainStore.nextTask();
