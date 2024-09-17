@@ -6,6 +6,8 @@ export const timerStore = defineStore('timerStore',{
             startTime: 0,
             stopwatchInterval: null,
             elapsedPausedTime: 0,
+            timeFirstUI: 0,
+            timeSecondUI: 0,
         }
     },
     actions: {
@@ -34,6 +36,15 @@ export const timerStore = defineStore('timerStore',{
         pad(number) {
             // add a leading zero if the number is less than 10
             return (number < 10 ? "0" : "") + number;
+        },
+
+        setIntervalTime(){
+            if(this.timeFirstUI == 0)
+                this.timeFirstUI = this.elapsedPausedTime - this.startTime;
+            else if(this.timeSecondUI == 0)
+                this.timeSecondUI = this.elapsedPausedTime - this.startTime;
+            console.log(this.timeFirstUI)
+            console.log(this.timeSecondUI)
         }
     }
 })

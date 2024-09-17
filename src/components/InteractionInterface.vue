@@ -279,14 +279,9 @@ const model = null;
 
 
 
-function changeTab(tabVal) {
-	idTab.value = tabVal;
-}
-
 async function startTaskAsync(ev) {
 	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 	store.setStart(getNow())
-	store.generateTimer()
 	mainStore.hideHelp()
 	mainStore.train()
 	try {

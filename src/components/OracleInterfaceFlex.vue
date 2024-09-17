@@ -208,7 +208,6 @@ const targetImage = computed(()=>{
 async function startTask() {
     if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 	store.setStart(new Date())
-	store.generateTimer(); 
 	mainStore.hideHelp();
 	mainStore.train();
     try {
