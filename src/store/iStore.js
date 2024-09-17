@@ -130,7 +130,6 @@ export const interactionStore = defineStore('interactionStore',{
                 this.intervalID = null;
                 this.blockTimerVisual()*/
                 this.timer.stopStopwatch()
-                this.timer.setIntervalTime()
 
             }
             else{
@@ -331,7 +330,6 @@ export const oracleStore = defineStore('oracleStore', {
                 this.intervalID = null;
                 this.blockTimerVisual();*/
                 this.timer.stopStopwatch()
-                this.timer.setIntervalTime()
 
 
             }

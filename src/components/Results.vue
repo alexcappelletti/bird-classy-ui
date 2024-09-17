@@ -2,13 +2,13 @@
     <div class="result-page">
 
         <div style="margin: 20px;"
-            v-if="(((oracleCorrects + similarityCorrects) / timer.elapsedPausedTime) > 0.02)">
+            v-if="(((oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) * 2400 > 75)">
             <p class="title-large">
                 Congratulations, you are as good as a <b>Professional Birdwatcher</b>
             </p>
         </div>
         <div style="margin: 20px;"
-            v-else-if="(((oracleCorrects + similarityCorrects) / timer.elapsedPausedTime) > 0.01)">
+            v-else-if="(((oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) * 2400 > 50)">
             <p class="title-large">
                 Congratulations, you are as good as as <b>Amateur Birdwatcher</b>
             </p>
@@ -22,10 +22,10 @@
         <div style="text-align: center">
             <p class="title-medium">Correct Answers: {{ oracleCorrects + similarityCorrects }} / {{ oracleTotal +
                 similarityTotal }}</p>
-            <p class="title-medium">Total Time: {{ Math.floor( timer.elapsedPausedTime / 60) }} minutes {{
-                (timer.elapsedPausedTime % 60).toPrecision(2) }} seconds</p>
+            <p class="title-medium">Total Time: {{ Math.floor( (oracleTime + similarityTime) / 60) }} minutes {{
+                ((oracleTime + similarityTime) % 60) }} seconds</p>
             <p>
-                Total Score: {{ 1000 * (oracleCorrects + similarityCorrects) / timer.elapsedPausedTime }}
+                Total Score: {{ Math.floor(2400 * (oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) }}
             </p>
         </div>
 
@@ -41,7 +41,7 @@
                         Correct Answers: {{ oracleCorrects }} / {{ oracleTotal }}
                     </p>
                     <p class="title-medium">
-                        Total Time: {{ Math.floor((oracleTime) / 60) }} minutes {{ (oracleTime % 60).toPrecision(2) }}
+                        Total Time: {{ Math.floor((oracleTime) / 60) }} minutes {{ (oracleTime % 60) }}
                         seconds
                     </p>
                 </div>
@@ -59,7 +59,7 @@
                         Correct Answers: {{ similarityCorrects }} / {{ similarityTotal }}
                     </p>
                     <p class="title-medium">
-                        Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60).toPrecision(2) }} seconds
+                        Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60) }} seconds
                     </p>
                 </div>
             </div>
@@ -124,14 +124,16 @@ fetch(dsFilePath, {
         var dsList = mainStore.exprContext.dsList
         var uiList = mainStore.exprContext.uiList
 
-        oracleTime = timer.elapsedPausedTime - timer.timeFirstUI
+        
+
+        oracleTime = timer.timeSecondUI
         similarityTime = timer.timeFirstUI
 
         if(uiList[0] == 'oracle'){
             topRes = 'First'
             botRes = 'Second'
             oracleTime = timer.timeFirstUI
-            similarityTime = timer.elapsedPausedTime - timer.timeFirstUI
+            similarityTime = timer.timeSecondUI
         }
 
         console.log(dsList)
