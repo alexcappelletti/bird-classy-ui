@@ -134,7 +134,7 @@
 
         <div class="interaction-help-page" style="max-width: 900px;">
             <h2 class="headline-large">Interface Description</h2>
-            <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialOracleArrows.png">
+            <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialOracle.png">
 
 
             <!--<p style="line-height: 1.6;" class="body-large">
