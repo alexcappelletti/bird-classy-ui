@@ -31,14 +31,7 @@ async function goToFirstUI() {
 	store.consumePage();
 	try {
 		if (store.currentDs?.tasks === undefined || store.currentTask === undefined) { return; }
-		await traceLog({
-			event: "GoToHelpPage",
-			params: {
-				interface: store.currentUI
-			},
-			timestamp: new Date(),
-			userID: store.user
-		})
+	
 	}
 	catch (error) { console.error(error) }
 }

@@ -62,7 +62,7 @@ export function setupRouter(){
 		}
 		catch (err) {
 			console.error(err)
-			return { name: 'errorPage' }
+			return false
 		}
 		return true
 	});

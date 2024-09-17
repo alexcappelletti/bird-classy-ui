@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { inject, onBeforeMount, computed, ref } from 'vue'
+import { inject, onBeforeMount, computed, ref, onMounted } from 'vue'
 import { traceLog } from '@/services/logToMongoDBAtlas';
 
 const store = inject('mainStore')
@@ -21,6 +21,7 @@ const pageLabel = computed(() => {
 	const rawName = store.navigateNext
 	if (rawName.includes("results")) {return "show results"}
 	//return rawName?.split("-")[0] ?? "next page"
+	
 	return "open UI version 2"
 })
 
@@ -28,23 +29,26 @@ onBeforeMount(() => {
 	//console.log(`${store.currentDs.name} ${store.currentDsNa}` ) 
 
 })
-
-
-
+onMounted(async() =>{
+	try {
+		await traceLog({
+			event: "show-survey-link",
+			params: {
+				datasetName: store.currentDs.name,
+				interface: store.currentUI
+			},
+			timestamp: new Date(),
+			userID: store.user
+		})
+	}
+	catch (err) { }
+})
 
 async function nextUI() {
 	console.log("cset new store content")
 	store.consumePage()
 	try {
 		if (store.currentDs?.tasks === undefined || store.currentTask === undefined) { return; }
-		await traceLog({
-			event: "GoToHelpPage",
-			params: {
-				interface: store.currentUI
-			},
-			timestamp: new Date(),
-			userID: store.user
-		})
 	}
 	catch (error) { console.error(error) }
 }

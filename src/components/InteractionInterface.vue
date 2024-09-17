@@ -227,7 +227,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, ref, computed, watch } from 'vue';
+import { onBeforeMount, ref, computed, watch, onMounted } from 'vue';
 import { interactionStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
@@ -248,6 +248,29 @@ onBeforeMount(() => {
 	//get the info on which to load from the link
 	//store.loadData('./src/assets/pool', 2);
 
+})
+onMounted(async() =>{
+	try {
+		await traceLog({
+			event: "start-similarity-ui",
+			params: {
+				datasetName: mainStore.currentDs.name,
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		await traceLog({
+			event: "show-help-page",
+			params: {
+				interface: "similarity"
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		
+
+	}
+	catch (err){}
 })
 
 const isHelpVisible = computed(() => mainStore.help)
@@ -284,17 +307,29 @@ function changeTab(tabVal) {
 }
 
 async function startTaskAsync(ev) {
-	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
-	store.setStart(getNow())
-	store.generateTimer()
-	mainStore.hideHelp()
-	mainStore.train()
 	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		store.setStart(getNow())
+		store.generateTimer()
+		mainStore.hideHelp()
 		await traceLog({
-			event: "start-task-similar-ui",
+			event: "hide-help-page",
 			params: {
-				taskIdx: mainStore.runTask.length,
-				datasetName: mainStore.currentDs.name
+				interface: mainStore.currentUI
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		mainStore.train()
+		await traceLog({
+			event: "begin-sub-task",
+			params: {
+				subTaskIdx: mainStore.runTask.length,
+				datasetName: mainStore.currentDs.name,
+				targetImage: mainStore.currentTask.targetImage,
+				correctSpeciesName: mainStore.currentTask
+					.species[mainStore.currentTask.correctAnswer]
+					.speciesName
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
@@ -304,9 +339,9 @@ async function startTaskAsync(ev) {
 }
 
 async function openTabAsync(tabIdx, label) {
-	idTab.value = tabIdx
-	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 	try {
+		idTab.value = tabIdx
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog(
 			{
 				event: "switch-images-tabSet",
@@ -323,10 +358,10 @@ async function openTabAsync(tabIdx, label) {
 }
 
 async function openSpeciesCard(s) {
-	if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
-	const species = s ?? []
-	const speciesIdx = mainStore.currentTask?.species?.indexOf(s) ?? 0
 	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		const species = s ?? []
+		const speciesIdx = mainStore.currentTask?.species?.indexOf(s) ?? 0
 		await traceLog({
 			event: "openSpeciesCard",
 			params: {
@@ -336,13 +371,14 @@ async function openSpeciesCard(s) {
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
+		store.openPage(speciesIdx)
 	} catch (err) { console.log(err) }
-	store.openPage(speciesIdx)
+
 }
 
 async function openWikiLinkAsync(species) {
-	store.addWikiClick();
 	try {
+		store.addWikiClick();
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "openWikiLink",
@@ -360,8 +396,8 @@ async function openWikiLinkAsync(species) {
 }
 
 async function handleClosePageAsync(species) {
-	store.closePage();
 	try {
+		store.closePage();
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "closeSpeciesCard",
@@ -378,11 +414,17 @@ async function handleClosePageAsync(species) {
 }
 async function confirmAsync(ev) {
 	try {
+		const currentTask = mainStore.currentTask ?? null
+		const rightResponse = 
+			currentTask.species[store.cardNumber].speciesName === 
+			currentTask.species[currentTask.correctAnswer].speciesName
+
 		await traceLog({
-			event: "confirm-selection-similar-ui",
+			event: "confirm-selection-end-subtask",
 			params: {
-				species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
-				taskIdx: mainStore.runTask.length
+				species: currentTask.species[store.cardNumber].speciesName,
+				taskIdx: mainStore.runTask.length,
+				isRightChoice: rightResponse
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
@@ -390,7 +432,24 @@ async function confirmAsync(ev) {
 		store.addCurrentTime(getNow())
 		store.addAnswer()
 		store.closePage()
+		const oldUI = mainStore.currentUI;
 		store.nextTask()
+		if (oldUI === mainStore.currentUI) {
+			await traceLog({
+			event: "begin-sub-task",
+				params: {
+					subTaskIdx: mainStore.runTask.length,
+					datasetName: mainStore.currentDs.name,
+					targetImage: mainStore.currentTask.targetImage,
+					correctSpeciesName: mainStore.currentTask
+						.species[mainStore.currentTask.correctAnswer]
+						.speciesName
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+		}
+
 		//mainStore.nextTask() //moved into store.nextTask(), to handle timeout (when the user runs out of time)
 	}
 	catch (err) { console.error(err) }
@@ -403,7 +462,7 @@ watch(
 		console.log(`hasNext ${newV} <- ${old}; navigateNext ${nextPage} `)
 		try {
 			await traceLog({
-				event: "complete-similar-ui-tasks",
+				event: "complete-similarity-ui",
 				params: {
 					species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
 					taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask),
@@ -412,7 +471,7 @@ watch(
 				timestamp: new Date(),
 				userID: mainStore.user
 			})
-			mainStore.consumePage();
+			mainStore.consumePage()
 			console.log("updating navigation to " + nextPage)
 			router.push({ name: nextPage })
 		}

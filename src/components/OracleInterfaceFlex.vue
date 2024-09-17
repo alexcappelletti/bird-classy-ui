@@ -183,15 +183,25 @@ const router = useRouter()
 
 
 onMounted(async () => {
-    /*try {
-        await traceLog(
-            {
-                event:"oracleTask-numTask",
-                params: "TimePerTask=XXX;AnswerGiven=YYY;OpenedWiki={TFT}",
-                timestamp: new Date(),
-                userID: "UserID"
-            })
-    }catch (err) {console.log(err)}*/
+	try {
+		await traceLog({
+			event: "start-oracle-ui",
+			params: {
+				datasetName: mainStore.currentDs.name,
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		await traceLog({
+			event: "show-help-page",
+			params: {
+				interface: "oracle"
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+	}
+	catch (err) { }
 })
 
 function barColor(percentage) {
@@ -206,17 +216,29 @@ const targetImage = computed(()=>{
 })
 
 async function startTask() {
-    if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
-	store.setStart(new Date())
-	store.generateTimer(); 
-	mainStore.hideHelp();
-	mainStore.train();
-    try {
+	try {
+		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
+		store.setStart(new Date())
+		store.generateTimer(); 
+		mainStore.hideHelp();
 		await traceLog({
-			event: "start-task-oracle-ui",
+			event: "hide-help-page",
 			params: {
-				taskIdx: mainStore.runTask.length,
-				datasetName: mainStore.currentDs.name
+				interface: mainStore.currentUI
+			},
+			timestamp: new Date(),
+			userID: mainStore.user
+		})
+		mainStore.train();
+		await traceLog({
+			event: "begin-sub-task",
+			params: {
+				subTaskIdx: mainStore.runTask.length,
+				datasetName: mainStore.currentDs.name,
+				targetImage: mainStore.currentTask.targetImage,
+				correctSpeciesName: mainStore.currentTask
+					.species[mainStore.currentTask.correctAnswer]
+					.speciesName
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
@@ -244,20 +266,40 @@ async function switchSpecies(){
 }
 
 async function confirmSelection(){
-    
     try {
+		const currentTask = mainStore.currentTask ?? null
+		const rightResponse =
+			currentTask.species[store.speciesVisualized].speciesName ===
+			currentTask.species[currentTask.correctAnswer].speciesName
 		await traceLog({
-			event: "confirm-selection-oracle-ui",
+			event: "confirm-selection-end-task",
 			params: {
 				species: mainStore.currentTask?.species[store.speciesVisualized]?.speciesName,
-				taskIdx: mainStore.runTask.length
+				taskIdx: mainStore.runTask.length,
+				isRightChoice: rightResponse
 			},
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
         store.addCurrentTime(new Date()); 
         store.addAnswer(); 
+		const oldUI = mainStore.currentUI;
         store.nextTask(); 
+		if (oldUI === mainStore.currentUI) {
+			await traceLog({
+				event: "begin-sub-task",
+				params: {
+					subTaskIdx: mainStore.runTask.length,
+					datasetName: mainStore.currentDs.name,
+					targetImage: mainStore.currentTask.targetImage,
+					correctSpeciesName: mainStore.currentTask
+						.species[mainStore.currentTask.correctAnswer]
+						.speciesName
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+		}
         //mainStore.nextTask(); //moved into store.nextTask(), to handle timeout (when the user runs out of time)
     }
 	catch (err) { console.error(err) }
@@ -285,12 +327,24 @@ async function openWikiLink(){
 
 watch(
 	() => mainStore.currentUI,
-	(newV, old) => {
-		const nextPage = mainStore.navigateNext
-		console.log(`hasNext ${newV} <- ${old}; navigateNext ${nextPage} `)
-		console.log("updating navigation to " + nextPage)
-		mainStore.consumePage();
-		router.push({ name: nextPage })
+	async (newV, old) => {
+		try {
+			await traceLog({
+				event: "complete-oracle-ui",
+				params: {
+					species: mainStore.currentTask?.species[store.cardNumber]?.speciesName,
+					taskIdx: mainStore.currentDs?.tasks?.indexOf(mainStore.currentTask),
+					datasetName: mainStore.currentDs?.name
+				},
+				timestamp: new Date(),
+				userID: mainStore.user
+			})
+			const nextPage = mainStore.navigateNext
+			console.log(`hasNext ${newV} <- ${old}; navigateNext ${nextPage} `)
+			console.log("updating navigation to " + nextPage)
+			mainStore.consumePage()
+			router.push({ name: nextPage })
+		}catch (err){console.log(err)}
 
 	})
 
