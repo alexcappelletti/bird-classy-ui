@@ -150,7 +150,7 @@ export const interactionStore = defineStore('interactionStore',{
         },
 
 
-        generateTimer(){
+        /*generateTimer(){
             if(this.timerOn == false && this.currentTask > this.indexNoTimer){
                 
                 this.timerOn = true;
@@ -221,7 +221,7 @@ export const interactionStore = defineStore('interactionStore',{
                 })
             }
             catch (error) { console.error(JSON.stringify(error)) }
-        }
+        }*/
     }
 })
 
@@ -331,6 +331,7 @@ export const oracleStore = defineStore('oracleStore', {
                 this.blockTimerVisual();*/
                 this.timer.stopStopwatch()
 
+
             }
             else {
                 this.CollectedData.push({
@@ -352,7 +353,7 @@ export const oracleStore = defineStore('oracleStore', {
 
         },
 
-        generateTimer() {
+        /*generateTimer() {
             if (this.timerOn == false && this.currentTask > this.indexNoTimer) {
 
                 this.timerOn = true;
@@ -421,6 +422,6 @@ export const oracleStore = defineStore('oracleStore', {
                 })
             }
             catch (error) { console.error(JSON.stringify(error)) }
-        }
+        }*/
     }
 })

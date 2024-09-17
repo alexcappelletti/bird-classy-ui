@@ -23,8 +23,8 @@
 				</div>
 			</div>-->
 			<div>
-				<p>Timer</p>
-				<p id="stopwatch">00:00</p>
+				<p class="body-large">Timer</p>
+				<p class="body-large" id="stopwatch">00:00</p>
 			</div>
 		</div>
 	</div>

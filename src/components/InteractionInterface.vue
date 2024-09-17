@@ -122,7 +122,7 @@
             <p class="body-large" style="margin-bottom: -15px;">
                 Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
             </p>
-            <ul style="padding-left: 20px;">
+            <ul style="padding-left: 20px;" class="body-large">
                 <li>Professional Birdwatcher</li>
                 <li>Amateur Birdwatcher</li>
                 <li>Novice Birdwatcher</li>
@@ -301,10 +301,6 @@ const itemsPics = ['Most Similar Images from this Species', 'Least Similar Image
 const model = null;
 
 
-
-function changeTab(tabVal) {
-	idTab.value = tabVal;
-}
 
 async function startTaskAsync(ev) {
 	try {

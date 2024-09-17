@@ -2,13 +2,13 @@
     <div class="result-page">
 
         <div style="margin: 20px;"
-            v-if="((oracleCorrects + similarityCorrects) > ((oracleTotal + similarityTotal) * 0.75)) && ((similarityTime + oracleTime) < 150)">
+            v-if="(((oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) * 2400 > 75)">
             <p class="title-large">
                 Congratulations, you are as good as a <b>Professional Birdwatcher</b>
             </p>
         </div>
         <div style="margin: 20px;"
-            v-else-if="((oracleCorrects + similarityCorrects) > ((oracleTotal + similarityTotal) * 0.5)) && ((similarityTime + oracleTime) < 250)">
+            v-else-if="(((oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) * 2400 > 50)">
             <p class="title-large">
                 Congratulations, you are as good as as <b>Amateur Birdwatcher</b>
             </p>
@@ -22,8 +22,11 @@
         <div style="text-align: center">
             <p class="title-medium">Correct Answers: {{ oracleCorrects + similarityCorrects }} / {{ oracleTotal +
                 similarityTotal }}</p>
-            <p class="title-medium">Total Time: {{ Math.floor((similarityTime + oracleTime) / 60) }} minutes {{
-                ((similarityTime + oracleTime) % 60).toPrecision(2) }} seconds</p>
+            <p class="title-medium">Total Time: {{ Math.floor( (oracleTime + similarityTime) / 60) }} minutes {{
+                ((oracleTime + similarityTime) % 60) }} seconds</p>
+            <p>
+                Total Score: {{ Math.floor(2400 * (oracleCorrects + similarityCorrects) / (oracleTime + similarityTime)) }}
+            </p>
         </div>
 
         <div :class="{ 'reverse-interfaces' : mainStore.exprContext.uiList[0] == 'similarity', 'result-page' : mainStore.exprContext.uiList[0] == 'oracle' }">
@@ -38,7 +41,7 @@
                         Correct Answers: {{ oracleCorrects }} / {{ oracleTotal }}
                     </p>
                     <p class="title-medium">
-                        Total Time: {{ Math.floor((oracleTime) / 60) }} minutes {{ (oracleTime % 60).toPrecision(2) }}
+                        Total Time: {{ Math.floor((oracleTime) / 60) }} minutes {{ (oracleTime % 60) }}
                         seconds
                     </p>
                 </div>
@@ -56,7 +59,7 @@
                         Correct Answers: {{ similarityCorrects }} / {{ similarityTotal }}
                     </p>
                     <p class="title-medium">
-                        Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60).toPrecision(2) }} seconds
+                        Total Time: {{ Math.floor((similarityTime) / 60) }} minutes {{ (similarityTime % 60) }} seconds
                     </p>
                 </div>
             </div>
@@ -73,11 +76,13 @@
 import { ref } from 'vue';
 import { oracleStore, interactionStore } from '@/store/iStore';
 import { useMainStore } from '@/services/mainStore';
+import { timerStore } from '@/store/timerStore';
 
 const iStore = interactionStore()
 const oStore = oracleStore()
 const mainStore = useMainStore()
 const compSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1EABgtJTGQ9qXQEhoZNo-WBNiOJ0UxUwN64UxL2fCzhUGGw/viewform?usp=pp_url&entry.690602845=" + mainStore.user
+const timer = timerStore()
 
 //const localOracle = JSON.parse(localStorage.getItem('oracleResults'))
 //const localSimilarity = JSON.parse(localStorage.getItem('interactionResults'))
@@ -119,9 +124,16 @@ fetch(dsFilePath, {
         var dsList = mainStore.exprContext.dsList
         var uiList = mainStore.exprContext.uiList
 
+        
+
+        oracleTime = timer.timeSecondUI
+        similarityTime = timer.timeFirstUI
+
         if(uiList[0] == 'oracle'){
             topRes = 'First'
             botRes = 'Second'
+            oracleTime = timer.timeFirstUI
+            similarityTime = timer.timeSecondUI
         }
 
         console.log(dsList)
@@ -141,7 +153,7 @@ fetch(dsFilePath, {
                             if (localOracle[y]["answerGiven"] == answerJson[i].tasks[y].correctAnswer)
                                 oracleCorrects.value++
                             oracleTotal.value++
-                            oracleTime.value += localOracle[y]["timePerTask"]
+                            //oracleTime.value += localOracle[y]["timePerTask"]
 
 
                         }
@@ -153,7 +165,7 @@ fetch(dsFilePath, {
                             if (localSimilarity[y]["answerGiven"] == answerJson[i].tasks[y].correctAnswer)
                                 similarityCorrects.value++
                             similarityTotal.value++
-                            similarityTime.value += localSimilarity[y]["timePerTask"]
+                            ///similarityTime.value += localSimilarity[y]["timePerTask"]
 
                         }
                     }
