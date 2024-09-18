@@ -1,12 +1,12 @@
 <template>
 	<div v-if="!isHelpVisible" class="interaction-container" style="margin-top: 5%;">
 
-		<div class="interaction-vertical" style="position: fixed; left: 20%">
+		<div class="interaction-vertical" style="position: fixed; left: 20%;">
 			<p class="headline-large">Image to Identify</p>
 			<img :src="targetImage" style="border-radius: 5%;">
 		</div>
 
-		<div class="interaction-vertical" style=" position: relative; left: 15%" v-if="!store.cardOpened">
+		<div class="interaction-vertical" style=" position: relative; left: 15%;" v-if="!store.cardOpened">
 			<p class="headline-large">Suggested Species</p>
 
 			<div class="interaction-cards">
@@ -118,7 +118,7 @@
             <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialSimilarityBase.png">
 			<p>By clicking on one of the <b>Suggested Species</b>, like for example, the Blue Coua, the card will expand:</p>
             <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialSimilarityZoom.png">
-			<h2 class="headline-large">Scores</h2>
+			<h2 class="headline-medium">Scores</h2>
             <p class="body-large" style="margin-bottom: -15px;">
                 Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
             </p>

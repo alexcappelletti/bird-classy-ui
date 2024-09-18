@@ -10,7 +10,7 @@
             </div>
 
             <div class="oracle-results">
-                <h2 class="headline-large oracle-results-title">Model Suggestion</h2>
+                <h2 class="headline-large oracle-results-title">Model Suggestion {{ store.speciesVisualized + 1 }} / {{ mainStore.currentTask.species.length }}</h2> 
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Predicted Species</h2>
@@ -146,7 +146,13 @@
                 identify, there will be 3 predictions, shown from the most likely (based on the AI prediction), to the least likely, after which they will rotate. <br>
                 Finally, when you believe to have found the correct prediction, you can confirm it by pressing <b>Confirm Selection</b>, after which you will be moved to the next prediction, until the end of the experiment.
             </p>-->
-            <h2 class="headline-large">Scores</h2>
+            
+            <h2 class="headline-medium">Notes</h2>
+            <p class="body-large" style="margin-bottom: -15px;">
+                There will be 3 predictions per task, after which they will rotate. The order of the predictions will be from the 
+                one with the highest confidence, to the one with the lowest one.
+            </p>
+            <h2 class="headline-medium">Scores</h2>
             <p class="body-large" style="margin-bottom: -15px;">
                 Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
             </p>
