@@ -306,7 +306,6 @@ async function startTaskAsync(ev) {
 	try {
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		store.setStart(getNow())
-		store.generateTimer()
 		mainStore.hideHelp()
 		await traceLog({
 			event: "hide-help-page",
