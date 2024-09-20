@@ -4,23 +4,6 @@ li + li {
 
 /* Move the colors from here, to the inline style with the "var" composition */
 
-.navbar{
-    padding: 1%;
-    background-color: #DBE5DD;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-
-.navbar-elems{
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 90%;
-    justify-content: space-between;
-    align-items: center;
-}
 
 /* Oracle Interface */
 

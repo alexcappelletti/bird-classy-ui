@@ -1,5 +1,5 @@
 <template>
-	<div class="navbar" :class="{training:isTraining}">
+	<div  class="navbar":class="{training:isTraining}" >
 		<div class="navbar-elems">
 			<v-btn v-if=!mainStore.help width=130px color="OnSurfaceVariant" rounded="pill" text="How to use"
 				variant="outlined" :disabled="!(storeI.startSet || storeO.startSet)"
@@ -131,5 +131,27 @@ watch(
 	margin-top:10px;
 
 }
+.navbar {
+	width: 100%;
+	padding: 1%;
+	background-color: #DBE5DD;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: center;
+	
+	
+
+}
+
+.navbar-elems {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 90%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
 
 </style>
