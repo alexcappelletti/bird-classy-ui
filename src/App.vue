@@ -1,10 +1,14 @@
 <template>
-	<v-app>
-		<NavBar />
-		<v-main>
-			<router-view></router-view>
-		</v-main>
-	</v-app>
+	<v-responsive class="border rounded" min-height="1200px">
+		<v-app>
+			<v-app-bar :elevation="2">
+				<NavBar />
+			</v-app-bar>
+			<v-main>
+				<router-view></router-view>
+			</v-main>
+		</v-app>
+	</v-responsive>
 </template>
 
 <script setup>
