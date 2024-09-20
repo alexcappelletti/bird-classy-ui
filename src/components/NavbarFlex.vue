@@ -1,5 +1,5 @@
 <template>
-	<div class="navbar" :class="{training:isTraining}">
+	<div class="navbar" :class="{training:isTraining}" style="position: sticky; top: 0px; z-index: 10;">
 		<div class="navbar-elems">
 			<v-btn v-if=!mainStore.help width=130px color="OnSurfaceVariant" rounded="pill" text="How to use"
 				variant="outlined" :disabled="!(storeI.startSet || storeO.startSet)"
