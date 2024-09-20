@@ -154,7 +154,7 @@
             </p>
             <h2 class="headline-medium">Scores</h2>
             <p class="body-large" style="margin-bottom: -15px;">
-                Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
+                Your performance will be ranked in one of three tiers based on your time and correctness of your decisions:
             </p>
             <ul style="padding-left: 20px;" class="body-large">
                 <li>Professional Birdwatcher</li>
@@ -165,7 +165,7 @@
         <div
             style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
             <v-btn rounded="pill" color="Primary" @click="startTask()">
-                To the Task
+                {{ btnHelpPageText }}
             </v-btn>
         </div>
 
@@ -184,8 +184,9 @@ import { timerStore } from '@/store/timerStore';
 const store = oracleStore()
 const mainStore = useMainStore()
 const timerSt = timerStore()
-
 const router = useRouter()
+
+const btnHelpPageText = ref("To the Tutorial")
 
 
 onMounted(async () => {
@@ -290,6 +291,8 @@ async function confirmSelection(){
         store.addAnswer(); 
 		const oldUI = mainStore.currentUI;
         store.nextTask(); 
+        if(mainStore.runTask.length > 1)
+            btnHelpPageText = "To the Task"
 		if (oldUI === mainStore.currentUI) {
 			await traceLog({
 				event: "begin-sub-task",
