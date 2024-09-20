@@ -47,6 +47,7 @@ onMounted(async() =>{
 async function nextUI() {
 	console.log("cset new store content")
 	store.consumePage()
+	store.consumeLink()
 	try {
 		if (store.currentDs?.tasks === undefined || store.currentTask === undefined) { return; }
 	}

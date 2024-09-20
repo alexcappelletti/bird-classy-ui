@@ -130,6 +130,10 @@ export const useMainStore = defineStore('mainStore', () => {
 		const page = navigationPreset.value.shift()
 		pageHistory.push(page)
 	}
+	function consumeLink() {
+		surveyLinks.value.shift()
+
+	}
 
 	function hideHelp() {
 		helpRef.value = false
@@ -156,6 +160,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		showHelp,
 		navigateNext,
 		consumePage,
+		consumeLink,
 		user,
 		surveyLink,
 		exprContext,

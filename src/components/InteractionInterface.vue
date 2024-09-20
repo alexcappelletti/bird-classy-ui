@@ -319,6 +319,7 @@ async function startTaskAsync(ev) {
 			userID: mainStore.user
 		})
 		mainStore.train()
+		scroll(0,0)
 		await traceLog({
 			event: "begin-sub-task",
 			params: {
@@ -332,8 +333,10 @@ async function startTaskAsync(ev) {
 			timestamp: new Date(),
 			userID: mainStore.user
 		})
+
 	}
 	catch (error) { console.error(JSON.stringify(error)) }
+
 }
 
 async function openTabAsync(tabIdx, label) {
@@ -396,6 +399,7 @@ async function openWikiLinkAsync(species) {
 async function handleClosePageAsync(species) {
 	try {
 		store.closePage();
+		scroll(0,0)
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "closeSpeciesCard",
@@ -430,6 +434,7 @@ async function confirmAsync(ev) {
 		store.addCurrentTime(getNow())
 		store.addAnswer()
 		store.closePage()
+		scroll(0,0)
 		const oldUI = mainStore.currentUI;
 		store.nextTask()
 		if(mainStore.runTask.length > 1)
