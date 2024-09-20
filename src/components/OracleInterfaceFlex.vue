@@ -233,6 +233,7 @@ async function startTask() {
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		store.setStart(new Date())
 		mainStore.hideHelp();
+        scroll(0,0)
 		await traceLog({
 			event: "hide-help-page",
 			params: {
