@@ -76,8 +76,9 @@ function updateLabel(){
 }
 
 async function logDBSwitchToHelp(){
-	mainStore.showHelp(); 
-	try {
+	try {	
+		mainStore.showHelp(); 
+		scroll(0,0)
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "switchToHelp",
@@ -92,9 +93,10 @@ async function logDBSwitchToHelp(){
 	catch (error) { console.error(error) }
 }
 
-async function logDBSwitchToTask(){
-	mainStore.hideHelp(); 
+async function logDBSwitchToTask(){	
 	try {
+		mainStore.hideHelp(); 
+		scroll(0,0)
 		if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) { return; }
 		await traceLog({
 			event: "switchToTask",
