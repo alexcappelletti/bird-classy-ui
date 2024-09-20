@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import {computed, ref , watch} from 'vue'
+import { computed, ref , watch } from 'vue'
 import { interactionStore, oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';

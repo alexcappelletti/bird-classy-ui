@@ -10,7 +10,7 @@
             </div>
 
             <div class="oracle-results">
-                <h2 class="headline-large oracle-results-title">Model Suggestion {{ store.speciesVisualized + 1 }} / {{ mainStore.currentTask.species.length }}</h2> 
+                <h2 class="headline-large oracle-results-title">Model Suggestion</h2> 
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Predicted Species</h2>
@@ -20,10 +20,16 @@
 
                 <div class="oracle-species-confidence">
                     <h2 class="headline-small">Confidence of the AI <br> tool for prediction</h2>
-                    <v-progress-linear id="progressbar" bg-opacity="0.3"
+                    <div class="oracle-confidence">
+                        <p class="body-large" >{{ mainStore.currentTask.species[store.speciesVisualized].confidence }} / 100</p>
+
+                        <v-progress-linear id="progressbar" bg-opacity="0.3"
                         :model-value="mainStore.currentTask.species[store.speciesVisualized].confidence"
                         :color="barColor(mainStore.currentTask.species[store.speciesVisualized].confidence / 100)"
-                        rounded rounded-bar height="20px" style="width: 150px;"></v-progress-linear>
+                        rounded rounded-bar height="20px" style="width: 100px;"></v-progress-linear>
+
+                    </div>
+                    
                 </div>
 
                 <div class="oracle-species-confidence">
@@ -174,7 +180,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, computed, watch } from 'vue';
+import { onBeforeMount, onMounted, computed, watch, ref } from 'vue';
 import { oracleStore } from '@/store/iStore.js'
 import { useMainStore } from '@/services/mainStore';
 import { traceLog } from '@/services/logToMongoDBAtlas';
@@ -292,7 +298,7 @@ async function confirmSelection(){
 		const oldUI = mainStore.currentUI;
         store.nextTask(); 
         if(mainStore.runTask.length > 1)
-            btnHelpPageText = "To the Task"
+            btnHelpPageText.value = "To the Task"
 		if (oldUI === mainStore.currentUI) {
 			await traceLog({
 				event: "begin-sub-task",

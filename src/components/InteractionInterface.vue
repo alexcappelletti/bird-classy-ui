@@ -219,7 +219,7 @@
 		<div
 			style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
 			<v-btn rounded="pill" color="Primary" @click="startTaskAsync /* logDBSwitchToTask() */">
-				To the Task
+				{{ btnHelpPageText }}
 			</v-btn>
 		</div>
 
@@ -243,6 +243,9 @@ const timerSt = timerStore()
 
 
 const idTab = ref(0)
+
+const btnHelpPageText = ref("To the Tutorial")
+
 
 onBeforeMount(() => {
 	//get the info on which to load from the link
@@ -429,6 +432,8 @@ async function confirmAsync(ev) {
 		store.closePage()
 		const oldUI = mainStore.currentUI;
 		store.nextTask()
+		if(mainStore.runTask.length > 1)
+            btnHelpPageText.value = "To the Task"
 		if (oldUI === mainStore.currentUI) {
 			await traceLog({
 			event: "begin-sub-task",
