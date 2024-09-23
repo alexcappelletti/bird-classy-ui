@@ -64,10 +64,6 @@
                 </div>
             </div>
         </div>
-        <div>
-            <v-btn active active-color="green-darken-4" class="ma-4" :href="compSurveyLink" target="_blank">Press here
-                to open the Survey</v-btn>
-        </div>
 
     </div>
 </template>
@@ -81,7 +77,6 @@ import { timerStore } from '@/store/timerStore';
 const iStore = interactionStore()
 const oStore = oracleStore()
 const mainStore = useMainStore()
-const compSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1EABgtJTGQ9qXQEhoZNo-WBNiOJ0UxUwN64UxL2fCzhUGGw/viewform?usp=pp_url&entry.690602845=" + mainStore.user
 const timer = timerStore()
 
 //const localOracle = JSON.parse(localStorage.getItem('oracleResults'))

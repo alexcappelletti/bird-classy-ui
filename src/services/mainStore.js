@@ -163,6 +163,7 @@ export const useMainStore = defineStore('mainStore', () => {
 		consumeLink,
 		user,
 		surveyLink,
+		surveyLinks,
 		exprContext,
 		runTask
 	}

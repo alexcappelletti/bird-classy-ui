@@ -288,8 +288,17 @@ export const oracleStore = defineStore('oracleStore', {
         },
 
         rotateSpecies() {
-            console.log()
             this.speciesVisualized = (this.speciesVisualized + 1) % this.mainStore.currentTask.species.length;
+        },
+
+        nextSpecies() {
+            if(this.speciesVisualized < 2)
+                this.speciesVisualized++
+        },
+
+        prevSpecies() {
+            if(this.speciesVisualized > 0)
+                this.speciesVisualized--
         },
 
         openHelp() {

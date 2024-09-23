@@ -32,9 +32,19 @@
                     
                 </div>
 
-                <div class="oracle-species-confidence">
-                    <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC; max-width: 500px;">
-                        <p class="oracle-wiki-description body-large" style="color:#000000;  max-width: 450px;"> {{
+                <div class="oracle-wiki-container">
+                    <div>
+                        <v-img 
+                        class="rounded-lg"
+                        :src="mainStore?.currentTask?.species[store.speciesVisualized].wikipic" 
+                        :width="175"                        
+                        >
+
+                        </v-img>
+
+                    </div>
+                    <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
+                        <p class="oracle-wiki-description body-large" style="color:#000000;  max-width: 300px;"> {{
                             mainStore.currentTask.species[store.speciesVisualized].description.substr(0,300) }}...
                             <a class='wikilink' @click="openWikiLink()"
                                 :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
@@ -44,10 +54,25 @@
                 </div>
 
                 <div class="oracle-species-confidence">
-                    <v-btn color="Primary" rounded="pill" text="Try another prediction" base-color="#FFFFFF" height="2.5rem"
-                        variant="outlined" elevation="0" @click="switchSpecies()"></v-btn>
+
                     <v-btn color="Primary" rounded="pill" text="Confirm Prediction" height="2.5rem"
                         @click="confirmSelection()"></v-btn>
+
+                    <div class="oracle-right-navigation">
+                        <v-btn :class="{ invisible: !allowPrevious() }" color="Primary" rounded="pill" text="<" base-color="#FFFFFF" height="2.5rem"
+                        variant="outlined" elevation="0" @click="store.prevSpecies()" ></v-btn>
+                        
+                        <v-btn v-if="!noMorePredictions" color="Primary" rounded="pill" text="Next prediction" base-color="#FFFFFF" height="2.5rem"
+                            variant="outlined" elevation="0" @click="store.nextSpecies(); seenAllSpecies();"></v-btn>
+
+                        <v-btn v-if="noMorePredictions" :class="{ invisible: !allowNext() }" color="Primary" rounded="pill" text=">" base-color="#FFFFFF" height="2.5rem"
+                            variant="outlined" elevation="0" @click="store.nextSpecies()" ></v-btn>
+                    </div>
+                    
+                    
+                    
+
+                    
                 </div>
 
             </div>
@@ -193,7 +218,24 @@ const timerSt = timerStore()
 const router = useRouter()
 
 const btnHelpPageText = ref("To the Tutorial")
+const noMorePredictions = ref(false)
 
+function allowPrevious(){
+    if(store.speciesVisualized > 0)
+        return true
+    return false
+}
+
+function allowNext(){
+    if(store.speciesVisualized < 2)
+        return true
+    return false
+}
+
+function seenAllSpecies(){
+    if(store.speciesVisualized == 2)
+        noMorePredictions.value = true
+}
 
 onMounted(async () => {
 	try {
@@ -298,6 +340,7 @@ async function confirmSelection(){
         store.addAnswer(); 
 		const oldUI = mainStore.currentUI;
         store.nextTask(); 
+        scroll(0,0)
         if(mainStore.runTask.length > 1)
             btnHelpPageText.value = "To the Task"
 		if (oldUI === mainStore.currentUI) {
@@ -364,3 +407,9 @@ watch(
 	})
 
 </script>
+
+<style>
+.invisible{
+    visibility: hidden;
+}
+</style>

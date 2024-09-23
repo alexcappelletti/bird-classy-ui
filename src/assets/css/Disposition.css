@@ -73,13 +73,11 @@ li + li {
 }
 
 .oracle-wiki-container{
-    display:flex;
+    display: inline-flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;  
+    flex-wrap: nowrap;
+    justify-content: center;
     align-items: center;
-    border-radius: 1rem;
-    /*background-color: #D8F8E5;*/
 
 }
 
@@ -87,8 +85,7 @@ li + li {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    gap: 1.5rem;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .oracle-wiki-description{
@@ -101,6 +98,24 @@ li + li {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
+}
+
+.oracle-species-navigation{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.oracle-right-navigation{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* justify-content: space-evenly; */
+    align-items: flex-start;
+    gap: 10px;
 }
 
 /* Interactive Interface */
