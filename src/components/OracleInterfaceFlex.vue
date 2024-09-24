@@ -62,7 +62,7 @@
                         <v-btn :class="{ invisible: !allowPrevious() }" color="Primary" rounded="pill" text="<" base-color="#FFFFFF" height="2.5rem"
                         variant="outlined" elevation="0" @click="store.prevSpecies()" ></v-btn>
                         
-                        <v-btn v-if="!noMorePredictions" color="Primary" rounded="pill" text="Next prediction" base-color="#FFFFFF" height="2.5rem"
+                        <v-btn v-if="!noMorePredictions" color="Primary" rounded="pill" text="Other prediction" base-color="#FFFFFF" height="2.5rem"
                             variant="outlined" elevation="0" @click="store.nextSpecies(); seenAllSpecies();"></v-btn>
 
                         <v-btn v-if="noMorePredictions" :class="{ invisible: !allowNext() }" color="Primary" rounded="pill" text=">" base-color="#FFFFFF" height="2.5rem"
