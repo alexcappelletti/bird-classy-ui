@@ -348,7 +348,7 @@ async function openTabAsync(tabIdx, label) {
 				event: "switch-images-tabSet",
 				params: {
 					taskIdx: mainStore.runTask.length,
-					species: mainStore.currentTask.species[tabIdx].speciesName,
+					species: mainStore.currentTask.species[store.cardNumber].speciesName,
 					caseLabel: label
 				},
 				timestamp: new Date(),

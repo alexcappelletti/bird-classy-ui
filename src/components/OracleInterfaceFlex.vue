@@ -60,19 +60,14 @@
 
                     <div class="oracle-right-navigation">
                         <v-btn :class="{ invisible: !allowPrevious() }" color="Primary" rounded="pill" text="<" base-color="#FFFFFF" height="2.5rem"
-                        variant="outlined" elevation="0" @click="store.prevSpecies()" ></v-btn>
+                        variant="outlined" elevation="0" @click="store.prevSpecies(); switchSpeciesLog()" ></v-btn>
                         
                         <v-btn v-if="!noMorePredictions" color="Primary" rounded="pill" text="Other prediction" base-color="#FFFFFF" height="2.5rem"
-                            variant="outlined" elevation="0" @click="store.nextSpecies(); seenAllSpecies();"></v-btn>
+                            variant="outlined" elevation="0" @click="store.nextSpecies(); seenAllSpecies(); switchSpeciesLog()"></v-btn>
 
                         <v-btn v-if="noMorePredictions" :class="{ invisible: !allowNext() }" color="Primary" rounded="pill" text=">" base-color="#FFFFFF" height="2.5rem"
-                            variant="outlined" elevation="0" @click="store.nextSpecies()" ></v-btn>
+                            variant="outlined" elevation="0" @click="store.nextSpecies(); switchSpeciesLog()" ></v-btn>
                     </div>
-                    
-                    
-                    
-
-                    
                 </div>
 
             </div>
@@ -83,100 +78,9 @@
 
     <div v-else style="display: flex; flex-direction: column; align-items: center;">
 
-        <!--<div class="interaction-help-page">
-            <h2 class="headline-large">Experiment Description</h2>
-            <p class="body-large" style="line-height: 1.5;">
-                During this experiment you will be asked to identify various species of birds, with the help of an AI
-                assistant.
-            </p>
-            <p class="headline-small" style="line-height: 0.5;">
-                Structure
-            </p>
-            <p class="body-large" style="line-height: 1.5;">
-                This interface is built so that, per each task, on the left of the monitor you will be shown one <b>Target Image</b>,
-                which is the picture of the bird you will try to identify. While on the right 
-                you will be shown the AI model guess: the name of the bird species, and its 
-                confidence that the guess is correct.<br />
-                If you believe the guess to be wrong, you can see the other suggestions from the model by clicking
-                <b>Other Results</b>. 
-                A different suggestion will be shown to you (for a total of 3 suggestions, after which they
-                will rotate). The order will always be, from the most likely to be correct, to the least likely to be correct
-                (based on the AI model)<br />
-                In order to evaluate and confirm the suggestion, a description of the species from Wikipedia
-                will
-                be present at the bottom of the page, as well as the possibility to open the Wikipedia page to gather
-                more
-                information. <br />
-
-                When you have decided which guess you believe to be the right one, you can confirm it by clicking the
-                <b>Confirm Suggestion</b> button. <br />
-                Once confirmed your selection, you will be shown another <b>Target Image</b> with its respective model
-                suggestions, until the end of the experiment.<br /><br />
-
-                In the top right corner of the screen you will be shown a bar that indicates how much time you have left
-                to complete the current task. If the timer reaches 0, you will pass to the next task and it will be
-                marked as an error.<br /><br />
-
-                You will be able to go back and read the instructions anytime you want, but the time will keep going for
-                the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
-            </p>
-            
-            <ul style="padding-left: 25px;">
-                <li class="body-large" style="line-height: 1.5;">Professional Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Amateur Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Novice Birdwatcher</li>
-            </ul>
-
-            <h2 class="headline-large">
-                Example of a Task
-            </h2>
-            <div>
-                <img style="max-width: 100%;" src="./../assets/HowToOracle.png">
-            </div>
-            <p class="headline-small" style="line-height: 0.5;">
-                Progress
-            </p>
-            <p class="body-large" style="line-height: 1.5;">
-                This section of the experiment will be composed of <b>10 Tasks.</b><br />
-                Each task will be timed, based on the total time used and the number of correct answers, 
-                after completing both interfaces you will be placed in one of 3 tiers: <br />
-            </p>
-            <h2 class="headline-small" style="line-height: 0.5;">Notes</h2>
-            <p class="body-large" style="line-height: 1.5;">
-                The first two tasks will be for you to explore and learn the interface, the timer for neither of the
-                tasks will be started, the navigation bar on top will also change color, to signal that you are in 
-                the tutorial section.
-                During this time, you can also ask any question to the assistant. <br />
-                After the second task, the bar on top will change color once again, to signal that the experiment is started. 
-                The timer for the task will be started and
-                from that moment up until you complete this section, you should avoid interacting with the assistant.
-                When you reach the end of this section, the interface will change and you will be asked to complete a 
-                survey on the interface you just used.
-            </p>
-
-        </div>
-
-        <div
-            style="display: flex; flex-direction: row; justify-content: center; margin-top: -2rem; margin-bottom: 5rem;">
-            <v-btn rounded="pill" color="Primary" @click="startTask()">
-                To the Task
-            </v-btn>
-        </div>-->
-
         <div class="interaction-help-page" style="max-width: 900px;">
             <h2 class="headline-large">Interface Description</h2>
             <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialOracle.png">
-
-
-            <!--<p style="line-height: 1.6;" class="body-large">
-                The <b>Target Image</b> on the left is the picture of the bird that you will try to identify.<br>
-                The <b>Model Suggestion</b> on the right is the proposition made by the AI model, <b>Species</b> indicate the predicted species name, while <b>Confidence</b> indicate how much the model is sure of this prediction<br>
-                At the bottom of the page, there is going to be a <b>Description</b> of what the Predicted Species should look like (from wikipedia), you can use it to understand if the prediction is correct, 
-                from there you can also open the wikipedia page to find more information.<br>
-                By clicking <b>Other Results</b>, you will be given another prediction, so the values under <b>Model Suggestion</b> will change, as well as the description at the bottom of the page. Per each image to 
-                identify, there will be 3 predictions, shown from the most likely (based on the AI prediction), to the least likely, after which they will rotate. <br>
-                Finally, when you believe to have found the correct prediction, you can confirm it by pressing <b>Confirm Selection</b>, after which you will be moved to the next prediction, until the end of the experiment.
-            </p>-->
             
             <h2 class="headline-medium">Notes</h2>
             <p class="body-large" style="margin-bottom: -15px;">
@@ -302,8 +206,7 @@ async function startTask() {
 	catch (error) { console.error(JSON.stringify(error)) }
 }
 
-async function switchSpecies(){
-    store.rotateSpecies();
+async function switchSpeciesLog(){
     if (mainStore.currentDs?.tasks === undefined || mainStore.currentTask === undefined) {return;}
 	try {
 		await traceLog(
