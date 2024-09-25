@@ -13,7 +13,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Shoebill",
 						"confidence": 80,
 						"imagesFolder": "inferencedPics/shoebill",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Balaeniceps_rex.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Balaeniceps_rex.jpg/540px-Balaeniceps_rex.jpg"
 					},
 					{
 						"speciesName": "Asian Openbil Stork",
@@ -21,7 +21,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Asian_openbill",
 						"confidence": 15,
 						"imagesFolder": "inferencedPics/asian openbill stork",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/6/61/Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg/540px-Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg"
 					},
 					{
 						"speciesName": "Lesser Adjutant",
@@ -29,7 +29,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Lesser_adjutant",
 						"confidence": 5,
 						"imagesFolder": "inferencedPics/lesser adjutant",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Lesser_Adjutant_%2CYala_National_Park_.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lesser_Adjutant_%2CYala_National_Park_.jpg/519px-Lesser_Adjutant_%2CYala_National_Park_.jpg"
 					}
 				]
 			},
@@ -44,7 +44,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Burchell%27s_courser",
 						"confidence": 75,
 						"imagesFolder": "inferencedPics/burchells courser",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Cursorius_rufus00a.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cursorius_rufus00a.jpg/524px-Cursorius_rufus00a.jpg"
 					},
 					{
 						"speciesName": "Inland Dotterel",
@@ -52,7 +52,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Inland_dotterel",
 						"confidence": 13,
 						"imagesFolder": "inferencedPics/inland dotterel",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/28/Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg/1080px-Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg"
 					},
 					{
 						"speciesName": "American Avocet",
@@ -60,7 +60,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_avocet",
 						"confidence": 12,
 						"imagesFolder": "inferencedPics/american avocet",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/d/de/American_Avocet1.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/American_Avocet1.jpg/514px-American_Avocet1.jpg"
 					}
 				]
 			},
@@ -75,7 +75,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Striped_owl",
 						"confidence": 45,
 						"imagesFolder": "inferencedPics/striped owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG/960px-Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG"
 					},
 					{
 						"speciesName": "Long-Eared Owl",
@@ -83,7 +83,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Long-eared_owl",
 						"confidence": 35,
 						"imagesFolder": "inferencedPics/long-eared owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg/480px-Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg"
 					},
 					{
 						"speciesName": "Snowy Owl",
@@ -91,7 +91,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Snowy_owl",
 						"confidence": 20,
 						"imagesFolder": "inferencedPics/snowy owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/f/f1/SnowyOwlAmericanBlackDuck.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SnowyOwlAmericanBlackDuck.jpg/1081px-SnowyOwlAmericanBlackDuck.jpg"
 					}
 				]
 			},
@@ -106,7 +106,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Western_house_martin",
 						"confidence": 80,
 						"imagesFolder": "inferencedPics/common house martin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mehlschwalbe_Delichon_urbicum.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mehlschwalbe_Delichon_urbicum.jpg/1080px-Mehlschwalbe_Delichon_urbicum.jpg"
 					},
 					{
 						"speciesName": "Violet Green Swallow",
@@ -122,7 +122,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Sand_martin",
 						"confidence": 8,
 						"imagesFolder": "inferencedPics/sand martin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Bank_Swallow_imported_from_iNaturalist_photo_368217162_on_20_June_2024.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Bank_Swallow_imported_from_iNaturalist_photo_368217162_on_20_June_2024.jpg/1168px-Bank_Swallow_imported_from_iNaturalist_photo_368217162_on_20_June_2024.jpg"
 					}
 				]
 			},
@@ -137,7 +137,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Mourning_dove",
 						"confidence": 50,
 						"imagesFolder": "inferencedPics/mourning dove",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/5/55/Mourning_dove_perched_%2861179%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mourning_dove_perched_%2861179%29.jpg/950px-Mourning_dove_perched_%2861179%29.jpg"
 					},
 					{
 						"speciesName": "European Turtle Dove",
@@ -145,7 +145,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/European_turtle_dove",
 						"confidence": 30,
 						"imagesFolder": "inferencedPics/european turtle dove",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Turtle_dove_%28Streptopelia_turtur_turtur%29_Hungary.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Turtle_dove_%28Streptopelia_turtur_turtur%29_Hungary.jpg/720px-Turtle_dove_%28Streptopelia_turtur_turtur%29_Hungary.jpg"
 					},
 					{
 						"speciesName": "Zebra Dove",
@@ -153,7 +153,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Zebra_dove",
 						"confidence": 20,
 						"imagesFolder": "inferencedPics/zebra dove",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/29/Geopelia_striata_1_crop_-_Chinese_Garden.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Geopelia_striata_1_crop_-_Chinese_Garden.jpg/1080px-Geopelia_striata_1_crop_-_Chinese_Garden.jpg"
 					}
 				]
 			},
@@ -168,7 +168,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Black_skimmer",
 						"confidence": 68,
 						"imagesFolder": "inferencedPics/black skimmer",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Black_skimmers_flapping.png"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Black_skimmers_flapping.png/1080px-Black_skimmers_flapping.png"
 					},
 					{
 						"speciesName": "Oystercatcher",
@@ -176,7 +176,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Oystercatcher",
 						"confidence": 22,
 						"imagesFolder": "inferencedPics/oyster catcher",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Haematopus_longirostris_2.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Haematopus_longirostris_2.jpg/960px-Haematopus_longirostris_2.jpg"
 					},
 					{
 						"speciesName": "Razorbill",
@@ -184,7 +184,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Razorbill",
 						"confidence": 10,
 						"imagesFolder": "inferencedPics/razorbill",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Razorbill_with_a_nice_catch.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Razorbill_with_a_nice_catch.jpg/1080px-Razorbill_with_a_nice_catch.jpg"
 					}
 				]
 			},
@@ -199,7 +199,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_goldfinch",
 						"confidence": 43,
 						"imagesFolder": "inferencedPics/american goldfinch",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Carduelis_tristis_-Michigan%2C_USA_-male-8.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Carduelis_tristis_-Michigan%2C_USA_-male-8.jpg/892px-Carduelis_tristis_-Michigan%2C_USA_-male-8.jpg"
 					},
 					{
 						"speciesName": "Yellow Canary",
@@ -215,7 +215,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Andean_siskin",
 						"confidence": 19,
 						"imagesFolder": "inferencedPics/andean siskin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Carduelis_spinescens.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Carduelis_spinescens.jpg/1280px-Carduelis_spinescens.jpg"
 					}
 				]
 			},
@@ -230,7 +230,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Spoon-billed_sandpiper",
 						"confidence": 83,
 						"imagesFolder": "inferencedPics/spoon biled sandpiper",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/09/Eurynorhynchus_pygmeus_2_-_Pak_Thale.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Eurynorhynchus_pygmeus_2_-_Pak_Thale.jpg/1080px-Eurynorhynchus_pygmeus_2_-_Pak_Thale.jpg"
 					},
 					{
 						"speciesName": "Dunlin",
@@ -238,7 +238,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Dunlin",
 						"confidence": 9,
 						"imagesFolder": "inferencedPics/dunlin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Calidris_alpina_alpina%2C_Riga%2C_Latvia_1.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Calidris_alpina_alpina%2C_Riga%2C_Latvia_1.jpg/960px-Calidris_alpina_alpina%2C_Riga%2C_Latvia_1.jpg"
 					},
 					{
 						"speciesName": "Red Knot",
@@ -246,7 +246,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_knot",
 						"confidence": 8,
 						"imagesFolder": "inferencedPics/red knot",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/03/Rufa_red_knot_%28Calidris_canutus_rufa%29_in_Delaware_Bay%2C_New_Jersey.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Rufa_red_knot_%28Calidris_canutus_rufa%29_in_Delaware_Bay%2C_New_Jersey.jpg/1080px-Rufa_red_knot_%28Calidris_canutus_rufa%29_in_Delaware_Bay%2C_New_Jersey.jpg"
 					}
 				]
 			},
@@ -269,7 +269,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Austral_canastero",
 						"confidence": 14,
 						"imagesFolder": "inferencedPics/austral canastero",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Austral_Canastero_%28Asthenes_anthoides%29_from_behind_%28cropped%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Austral_Canastero_%28Asthenes_anthoides%29_from_behind_%28cropped%29.jpg/701px-Austral_Canastero_%28Asthenes_anthoides%29_from_behind_%28cropped%29.jpg"
 					},
 					{
 						"speciesName": "American Pipit",
@@ -277,7 +277,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Buff-bellied_pipit",
 						"confidence": 14,
 						"imagesFolder": "inferencedPics/american pipit",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/07/Anthus_rubescens_-Harney_County%2C_Oregon%2C_USA-8.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Anthus_rubescens_-Harney_County%2C_Oregon%2C_USA-8.jpg/706px-Anthus_rubescens_-Harney_County%2C_Oregon%2C_USA-8.jpg"
 					}
 				]
 			},
@@ -292,7 +292,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Forest_wagtail",
 						"confidence": 44,
 						"imagesFolder": "inferencedPics/forest wagtail",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/82/Forest_Wagtail_%28cropped%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Forest_Wagtail_%28cropped%29.jpg/1080px-Forest_Wagtail_%28cropped%29.jpg"
 					},
 					{
 						"speciesName": "Ruby Crowned Kinglet",
@@ -300,7 +300,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Ruby-crowned_kinglet",
 						"confidence": 40,
 						"imagesFolder": "inferencedPics/ruby crowned kinglet",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/25/Regulus_calendula1.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Regulus_calendula1.jpg/1028px-Regulus_calendula1.jpg"
 					},
 					{
 						"speciesName": "Common Firecrest",
@@ -308,7 +308,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Common_firecrest",
 						"confidence": 16,
 						"imagesFolder": "inferencedPics/common firecrest",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Common_firecrest_Franconville_03.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Common_firecrest_Franconville_03.jpg/1080px-Common_firecrest_Franconville_03.jpg"
 					}
 				]
 			}
@@ -328,7 +328,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_dipper",
 						"confidence": 95,
 						"imagesFolder": "inferencedPics/american dipper",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/3/39/American_Dipper.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/American_Dipper.jpg/960px-American_Dipper.jpg"
 					},
 					{
 						"speciesName": "Brewers Blackbird",
@@ -344,7 +344,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Alpine_chough",
 						"confidence": 2,
 						"imagesFolder": "inferencedPics/alpine chough",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Alpine_Chough_by_Jim_Higham.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Alpine_Chough_by_Jim_Higham.jpg/529px-Alpine_Chough_by_Jim_Higham.jpg"
 					}
 				]
 			},
@@ -359,7 +359,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_kestrel",
 						"confidence": 69,
 						"imagesFolder": "inferencedPics/american kestrel",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/7/73/AmericanKestrel02.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/AmericanKestrel02.jpg/576px-AmericanKestrel02.jpg"
 					},
 					{
 						"speciesName": "Merlin",
@@ -367,7 +367,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Merlin_(bird)",
 						"confidence": 20,
 						"imagesFolder": "inferencedPics/merlin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Merlin_prey_fencepost_Cochrane_cropped.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Merlin_prey_fencepost_Cochrane_cropped.jpg/900px-Merlin_prey_fencepost_Cochrane_cropped.jpg"
 					},
 					{
 						"speciesName": "Red Tailed Hawk",
@@ -375,7 +375,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Red-tailed_hawk",
 						"confidence": 11,
 						"imagesFolder": "inferencedPics/red tailed hawk",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg/1080px-Red-tailed_Hawk_%2845812546121%29.jpg"
 					}
 				]
 			},
@@ -390,7 +390,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Anna%27s_hummingbird",
 						"confidence": 39,
 						"imagesFolder": "inferencedPics/annas hummingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Anna%27s_hummingbird.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1115px-Anna%27s_hummingbird.jpg"
 					},
 					{
 						"speciesName": "White Eared Hummingbird",
@@ -398,7 +398,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/White-eared_hummingbird",
 						"confidence": 31,
 						"imagesFolder": "inferencedPics/white eared hummingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/b/b1/White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg/480px-White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg"
 					},
 					{
 						"speciesName": "Amethyst Woodstar",
@@ -406,7 +406,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Amethyst_woodstar",
 						"confidence": 30,
 						"imagesFolder": "inferencedPics/amethyst woodstar",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Calliphlox_amethystina_%28male%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Calliphlox_amethystina_%28male%29.jpg/832px-Calliphlox_amethystina_%28male%29.jpg"
 					}
 				]
 			},
@@ -421,7 +421,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_crossbill",
 						"confidence": 73,
 						"imagesFolder": "inferencedPics/red crossbill",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/4/49/Red_Crossbills_%28Male%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Red_Crossbills_%28Male%29.jpg/1080px-Red_Crossbills_%28Male%29.jpg"
 					},
 					{
 						"speciesName": "I'Iwi",
@@ -437,7 +437,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/%CA%BBApapane",
 						"confidence": 3,
 						"imagesFolder": "inferencedPics/apapane",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/83/Pezzillo_Hosmer_%CA%BBApapane-2.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pezzillo_Hosmer_%CA%BBApapane-2.jpg/870px-Pezzillo_Hosmer_%CA%BBApapane-2.jpg"
 					}
 				]
 			},
@@ -452,7 +452,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Black-breasted_puffbird",
 						"confidence": 46,
 						"imagesFolder": "inferencedPics/black breasted puffbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Black-breasted_puffbird_%28Notharchus_pectoralis%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Black-breasted_puffbird_%28Notharchus_pectoralis%29.jpg/720px-Black-breasted_puffbird_%28Notharchus_pectoralis%29.jpg"
 					},
 					{
 						"speciesName": "Barred Puffbird",
@@ -460,7 +460,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Barred_puffbird",
 						"confidence": 40,
 						"imagesFolder": "inferencedPics/barred puffbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/6/60/Nystalus-radiatus-001.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nystalus-radiatus-001.jpg/720px-Nystalus-radiatus-001.jpg"
 					},
 					{
 						"speciesName": "Black Throated Warbler",
@@ -468,7 +468,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Black-throated_gray_warbler",
 						"confidence": 14,
 						"imagesFolder": "inferencedPics/black throated warbler",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Black-throated_Gray_Warbler%2C_Anza-Borrego_Desert_State_Park%2C_California.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Black-throated_Gray_Warbler%2C_Anza-Borrego_Desert_State_Park%2C_California.jpg/900px-Black-throated_Gray_Warbler%2C_Anza-Borrego_Desert_State_Park%2C_California.jpg"
 					}
 				]
 			},
@@ -483,7 +483,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Chucao_tapaculo",
 						"confidence": 49,
 						"imagesFolder": "inferencedPics/chucao tapaculo",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/1/11/Scelorchilus_rubecula.JPG"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Scelorchilus_rubecula.JPG/1079px-Scelorchilus_rubecula.JPG"
 					},
 					{
 						"speciesName": "Great Xenops",
@@ -499,7 +499,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Collared_crescentchest",
 						"confidence": 9,
 						"imagesFolder": "inferencedPics/collared crescentchest",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/9/94/Melanopareia_torquata_-_Collared_Crescentchest.JPG"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Melanopareia_torquata_-_Collared_Crescentchest.JPG/632px-Melanopareia_torquata_-_Collared_Crescentchest.JPG"
 					}
 				]
 			},
@@ -514,7 +514,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Dusky_robin",
 						"confidence": 90,
 						"imagesFolder": "inferencedPics/dusky robin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Melanodryas_vittata_Bruny.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Melanodryas_vittata_Bruny.jpg/606px-Melanodryas_vittata_Bruny.jpg"
 					},
 					{
 						"speciesName": "Says Phoebe",
@@ -522,7 +522,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Say%27s_phoebe",
 						"confidence": 7,
 						"imagesFolder": "inferencedPics/says phoebe",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/85/Sayornis_saya_GNP_01.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Sayornis_saya_GNP_01.jpg/900px-Sayornis_saya_GNP_01.jpg"
 					},
 					{
 						"speciesName": "Grandala",
@@ -530,7 +530,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Grandala",
 						"confidence": 3,
 						"imagesFolder": "inferencedPics/grandala",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Grandalas_in_Nepal.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Grandalas_in_Nepal.jpg/1058px-Grandalas_in_Nepal.jpg"
 					}
 				]
 			},
@@ -553,7 +553,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Flame-colored_tanager",
 						"confidence": 9,
 						"imagesFolder": "inferencedPics/flame tanager",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flame-colored_Tanager_2.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flame-colored_Tanager_2.jpg/961px-Flame-colored_Tanager_2.jpg"
 					},
 					{
 						"speciesName": "Red Fody",
@@ -561,7 +561,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Red_fody",
 						"confidence": 8,
 						"imagesFolder": "inferencedPics/red fody",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/3/31/Madagascar_fody_%28Foudia_madagascariensis%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Madagascar_fody_%28Foudia_madagascariensis%29.jpg/480px-Madagascar_fody_%28Foudia_madagascariensis%29.jpg"
 					}
 				]
 			},
@@ -576,7 +576,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Northern_mockingbird",
 						"confidence": 72,
 						"imagesFolder": "inferencedPics/northern mockingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Mockingbird_in_Bay_Ridge_%2885082%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Mockingbird_in_Bay_Ridge_%2885082%29.jpg/1009px-Mockingbird_in_Bay_Ridge_%2885082%29.jpg"
 					},
 					{
 						"speciesName": "Gray Kingbird",
@@ -584,7 +584,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Gray_kingbird",
 						"confidence": 29,
 						"imagesFolder": "inferencedPics/gray kingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Puerto_Rican_Gray_Kingbird.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Puerto_Rican_Gray_Kingbird.jpg/462px-Puerto_Rican_Gray_Kingbird.jpg"
 					},
 					{
 						"speciesName": "Brown Thrasher",
@@ -592,7 +592,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Brown_thrasher",
 						"confidence": 10,
 						"imagesFolder": "inferencedPics/brown thrasher",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Brown_thrasher_in_CP_%2802147%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Brown_thrasher_in_CP_%2802147%29.jpg/1079px-Brown_thrasher_in_CP_%2802147%29.jpg"
 					}
 				]
 			},
@@ -607,7 +607,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Say%27s_phoebe",
 						"confidence": 43,
 						"imagesFolder": "inferencedPics/says phoebe-1",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/8/85/Sayornis_saya_GNP_01.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Sayornis_saya_GNP_01.jpg/900px-Sayornis_saya_GNP_01.jpg"
 					},
 					{
 						"speciesName": "Gray Kingbird",
@@ -615,7 +615,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Gray_kingbird",
 						"confidence": 30,
 						"imagesFolder": "inferencedPics/gray kingbird-1",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Puerto_Rican_Gray_Kingbird.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Puerto_Rican_Gray_Kingbird.jpg/462px-Puerto_Rican_Gray_Kingbird.jpg"
 					},
 					{
 						"speciesName": "Tropical Kingbird",
@@ -623,7 +623,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Tropical_kingbird",
 						"confidence": 27,
 						"imagesFolder": "inferencedPics/tropical kingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Tropical_kingbird_%28Tyrannus_melancholicus%29.JPG"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tropical_kingbird_%28Tyrannus_melancholicus%29.JPG/1080px-Tropical_kingbird_%28Tyrannus_melancholicus%29.JPG"
 					}
 				]
 			}

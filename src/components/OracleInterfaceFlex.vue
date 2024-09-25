@@ -33,24 +33,29 @@
                 </div>
 
                 <div class="oracle-wiki-container">
-                    <div>
-                        <v-img 
-                        class="rounded-lg"
-                        :src="mainStore?.currentTask?.species[store.speciesVisualized].wikipic" 
-                        :width="175"                        
-                        >
-
-                        </v-img>
-
-                    </div>
-                    <div class="oracle-wiki-text mx-8 py-2 px-4" style="background-color: #AFCEBC;">
-                        <p class="oracle-wiki-description body-large" style="color:#000000;  max-width: 300px;"> {{
+                    
+                    <div class="oracle-wiki-text mx-8 py-4 px-4" style="background-color: #AFCEBC;">
+						
+                        <p class="body-large mr-4" style="color:#000000;  max-width: 300px;"> {{
                             mainStore.currentTask.species[store.speciesVisualized].description.substr(0,300) }}...
                             <a class='wikilink' @click="openWikiLink()"
                                 :href="mainStore.currentTask.species[store.speciesVisualized].wikiLink"
                                 target='_blank'>Wikipedia</a>
                         </p>
+						<div class="rounded-lg oracle-picture" :max-width="175">
+							<div class="rounded-lg oracle-picture" :max-height="220">
+								<v-img 
+								class="rounded-lg"
+								:src="mainStore?.currentTask?.species[store.speciesVisualized].wikipic" 
+								:width="175"
+								>
+								</v-img>
+							</div>
+						</div>
+						
                     </div>
+						
+
                 </div>
 
                 <div class="oracle-species-confidence">
@@ -82,11 +87,6 @@
             <h2 class="headline-large">Interface Description</h2>
             <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialOracle.png">
             
-            <h2 class="headline-medium">Notes</h2>
-            <p class="body-large" style="margin-bottom: -15px;">
-                There will be 3 predictions per task, after which they will rotate. The order of the predictions will be from the 
-                one with the highest confidence, to the one with the lowest one.
-            </p>
             <h2 class="headline-medium">Scores</h2>
             <p class="body-large" style="margin-bottom: -15px;">
                 Your performance will be ranked in one of three tiers based on your time and correctness of your decisions:
@@ -244,6 +244,7 @@ async function confirmSelection(){
 		const oldUI = mainStore.currentUI;
         store.nextTask(); 
         scroll(0,0)
+		noMorePredictions.value = false;
         if(mainStore.runTask.length > 1)
             btnHelpPageText.value = "To the Task"
 		if (oldUI === mainStore.currentUI) {

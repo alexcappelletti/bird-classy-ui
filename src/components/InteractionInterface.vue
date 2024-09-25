@@ -120,7 +120,7 @@
             <img style="max-width: 900px; border: 2px solid black;" src="/src/assets/tutorialSimilarityZoom.png">
 			<h2 class="headline-medium">Scores</h2>
             <p class="body-large" style="margin-bottom: -15px;">
-                Depending on the time you use and the amount of correct answer you give, you will be placed in one of three tiers:
+                Your performance will be ranked in one of three tiers based on your time and correctness of your decisions:
             </p>
             <ul style="padding-left: 20px;" class="body-large">
                 <li>Professional Birdwatcher</li>
@@ -128,92 +128,6 @@
                 <li>Novice Birdwatcher</li>
             </ul>
 
-            <!---<p class="body-large" style="line-height: 1.5;">
-                During this experiment you will be asked to identify various species of birds, with the help of an AI
-                assistant.
-			</p>
-            <p class="headline-small" style="line-height: 0.5;">
-                Structure
-            </p>
-            <p class="body-large" style="line-height: 1.5;">
-                This interface is built such that, per each task, on the left of the monitor you will be shown one
-                <b>Target Image</b>, which is the picture of the bird you will try to identify. While on the right,
-                you will be proposed 3 <b>Suggested Species</b> of birds (based on the AI model), you will then be asked to
-                identify, among these suggested results, which is the correct one. The suggested species will be shown
-				so that the left-most one is the one with the highest likely to be correct (based on the AI model guess), while 
-				the right-most one is the lowest likely to be correct (based on the AI model guess).<br />
-                In order to identify the correct species, for each of the <b>Suggested Species</b>, you will be given
-                multiple tools:<br />
-            </p>
-            <ul style="padding-left: 25px;">
-                <li class="body-large" style="line-height: 1.5;">A brief physical description of the bird, from its
-                    Wikipedia page;</li>
-                <li class="body-large" style="line-height: 1.5;">The ability to open the Wikipedia page in order to find
-                    more information;</li>
-                <li class="body-large" style="line-height: 1.5;">A series of picture of said species that are the
-                    <b>Most Similar</b>
-                    to the target image, according to the AI assistant;</li>
-                <li class="body-large" style="line-height: 1.5;">A series of picture of said species that are the
-                    <b>Least Similar</b>
-                    to the target image, according to the AI assistant;</li>
-            </ul>
-            <p class="body-large" style="line-height: 1.5;">
-                When you have decided which guess you believe to be the right one, you can confirm it by opening the
-                bird page and clicking on the
-                <b>Confirm Selection</b> button. <br />
-                Once confirmed your selection, you will be shown another <b>Target Image</b> and a new series of
-                <b>Suggested Species</b>, until the end of the experiment. <br /><br />
-
-				In the top right corner of the screen you will be shown a bar that indicates how much time you have left
-                to complete the current task. If the timer reaches 0, you will pass to the next task and it will be
-                marked as an error.<br /><br />
-                You will be able to go back and read the instructions anytime you want, but the time will keep going for
-                the task, similarly, if you decide open the wikipedia pages of the birds, time will keep going down.
-			</p>
-            
-
-            <h2 class="headline-large">
-                Example of a Task
-            </h2>
-            <p class="body-large" style="line-height: 1.5;">
-                1. This will be the initial interface, with the <b>Target Image</b> on the left and the 3 <b>Suggested
-                    Species</b> on the right
-            </p>
-            <img style="max-width: 100%;" src="./../assets/Step1Interaction.png">
-            <p class="body-large" style="line-height: 1.5;">
-                2. By clicking one of the suggested species, the card will open and it will show you more information
-                that you can navigate through
-            </p>
-            <img style="max-width: 100%;" src="./../assets/Step2Interaction.png">
-            <p class="body-large" style="line-height: 1.5;">
-                3. Once you analysed the information, you will be able to confirm the selection, if you believe that the
-                species is the correct one, or go back to the initial interface and analyse the others species
-            </p>
-			<p class="headline-small" style="line-height: 0.5;">
-                Progress
-            </p>
-            <p class="body-large" style="line-height: 1.5;">
-                This section of the experiment will be composed of <b>10 Tasks.</b><br />
-                Each task will be timed, based on the total time used and the number of correct answers, 
-                after completing both interfaces you will be placed in one of 3 tiers: <br />
-			</p>
-			<ul style="padding-left: 25px;">
-                <li class="body-large" style="line-height: 1.5;">Professional Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Amateur Birdwatcher</li>
-                <li class="body-large" style="line-height: 1.5;">Novice Birdwatcher</li>
-            </ul>
-            <h2 class="headline-small" style="line-height: 0.5;">Notes</h2>
-            <p class="body-large" style="line-height: 1.5;">
-                The first two tasks will be for you to explore and learn the interface, the timer for neither of the
-                tasks will be started, the navigation bar on top will also change color, to signal that you are in 
-                the tutorial section.
-                During this time, you can also ask any question to the assistant. <br />
-                After the second task, the bar on top will change color once again, to signal that the experiment is started. 
-                The timer for the task will be started and
-                from that moment up until you complete this section, you should avoid interacting with the assistant.
-                When you reach the end of this section, the interface will change and you will be asked to complete a 
-                survey on the interface you just used.
-            </p>-->
         </div>
 
 		<div

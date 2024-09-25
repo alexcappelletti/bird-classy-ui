@@ -13,7 +13,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Shoebill",
 						"confidence": 80,
 						"imagesFolder": "inferencedPics/shoebill",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Balaeniceps_rex.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Balaeniceps_rex.jpg/540px-Balaeniceps_rex.jpg"
 					},
 					{
 						"speciesName": "Asian Openbil Stork",
@@ -21,7 +21,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Asian_openbill",
 						"confidence": 15,
 						"imagesFolder": "inferencedPics/asian openbill stork",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/6/61/Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg/540px-Pair_of_Asian_openbill_%28Anastomus_oscitans%29_by_Shantanu_Kuveskar.jpg"
 					},
 					{
 						"speciesName": "Lesser Adjutant",
@@ -29,7 +29,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Lesser_adjutant",
 						"confidence": 5,
 						"imagesFolder": "inferencedPics/lesser adjutant",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Lesser_Adjutant_%2CYala_National_Park_.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lesser_Adjutant_%2CYala_National_Park_.jpg/519px-Lesser_Adjutant_%2CYala_National_Park_.jpg"
 					}
 				]
 			},
@@ -44,7 +44,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Burchell%27s_courser",
 						"confidence": 75,
 						"imagesFolder": "inferencedPics/burchells courser",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Cursorius_rufus00a.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cursorius_rufus00a.jpg/524px-Cursorius_rufus00a.jpg"
 					},
 					{
 						"speciesName": "Inland Dotterel",
@@ -52,7 +52,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Inland_dotterel",
 						"confidence": 13,
 						"imagesFolder": "inferencedPics/inland dotterel",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/28/Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg/1080px-Inland_Dotterel_-_Deniliquin_-_Victoria_S4E3421_%2822359515396%29.jpg"
 					},
 					{
 						"speciesName": "American Avocet",
@@ -60,7 +60,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_avocet",
 						"confidence": 12,
 						"imagesFolder": "inferencedPics/american avocet",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/d/de/American_Avocet1.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/American_Avocet1.jpg/514px-American_Avocet1.jpg"
 					}
 				]
 			},
@@ -75,7 +75,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Striped_owl",
 						"confidence": 45,
 						"imagesFolder": "inferencedPics/striped owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG/960px-Coruja-orelhuda_no_Zool%C3%B3gico_de_Sorocaba.JPG"
 					},
 					{
 						"speciesName": "Long-Eared Owl",
@@ -83,7 +83,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Long-eared_owl",
 						"confidence": 35,
 						"imagesFolder": "inferencedPics/long-eared owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg/480px-Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg"
 					},
 					{
 						"speciesName": "Snowy Owl",
@@ -91,7 +91,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Snowy_owl",
 						"confidence": 20,
 						"imagesFolder": "inferencedPics/snowy owl",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/f/f1/SnowyOwlAmericanBlackDuck.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SnowyOwlAmericanBlackDuck.jpg/1081px-SnowyOwlAmericanBlackDuck.jpg"
 					}
 				]
 			}
@@ -112,7 +112,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_dipper",
 						"confidence": 95,
 						"imagesFolder": "inferencedPics/american dipper",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/3/39/American_Dipper.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/American_Dipper.jpg/960px-American_Dipper.jpg"
 					},
 					{
 						"speciesName": "Brewers Blackbird",
@@ -128,7 +128,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Alpine_chough",
 						"confidence": 2,
 						"imagesFolder": "inferencedPics/alpine chough",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Alpine_Chough_by_Jim_Higham.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Alpine_Chough_by_Jim_Higham.jpg/529px-Alpine_Chough_by_Jim_Higham.jpg"
 					}
 				]
 			},
@@ -143,7 +143,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/American_kestrel",
 						"confidence": 69,
 						"imagesFolder": "inferencedPics/american kestrel",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/7/73/AmericanKestrel02.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/AmericanKestrel02.jpg/576px-AmericanKestrel02.jpg"
 					},
 					{
 						"speciesName": "Merlin",
@@ -151,7 +151,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Merlin_(bird)",
 						"confidence": 20,
 						"imagesFolder": "inferencedPics/merlin",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Merlin_prey_fencepost_Cochrane_cropped.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Merlin_prey_fencepost_Cochrane_cropped.jpg/900px-Merlin_prey_fencepost_Cochrane_cropped.jpg"
 					},
 					{
 						"speciesName": "Red Tailed Hawk",
@@ -159,7 +159,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Red-tailed_hawk",
 						"confidence": 11,
 						"imagesFolder": "inferencedPics/red tailed hawk",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg/1080px-Red-tailed_Hawk_%2845812546121%29.jpg"
 					}
 				]
 			},
@@ -174,7 +174,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Anna%27s_hummingbird",
 						"confidence": 39,
 						"imagesFolder": "inferencedPics/annas hummingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Anna%27s_hummingbird.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1115px-Anna%27s_hummingbird.jpg"
 					},
 					{
 						"speciesName": "White Eared Hummingbird",
@@ -182,7 +182,7 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/White-eared_hummingbird",
 						"confidence": 31,
 						"imagesFolder": "inferencedPics/white eared hummingbird",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/b/b1/White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg/480px-White-eared_hummingbird_%28Basilinna_leucotis_leucotis%29_male_Finca_El_Pilar.jpg"
 					},
 					{
 						"speciesName": "Amethyst Woodstar",
@@ -190,11 +190,10 @@
 						"wikiLink": "https://en.wikipedia.org/wiki/Amethyst_woodstar",
 						"confidence": 30,
 						"imagesFolder": "inferencedPics/amethyst woodstar",
-						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Calliphlox_amethystina_%28male%29.jpg"
+						"wikipic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Calliphlox_amethystina_%28male%29.jpg/832px-Calliphlox_amethystina_%28male%29.jpg"
 					}
 				]
-			}
-			
+			}			
 		]
 	}
 ]

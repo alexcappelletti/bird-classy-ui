@@ -83,13 +83,9 @@ li + li {
 
 .oracle-wiki-text{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     border-radius: 10px;
-}
-
-.oracle-wiki-description{
-    width: 35rem;
 }
 
 .oracle-confidence{
@@ -116,6 +112,14 @@ li + li {
     /* justify-content: space-evenly; */
     align-items: flex-start;
     gap: 10px;
+}
+
+.oracle-picture{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Interactive Interface */
